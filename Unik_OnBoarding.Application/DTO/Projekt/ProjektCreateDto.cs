@@ -12,7 +12,7 @@ public class ProjektCreateDto
     public string ProjektTitle { get; set; }
 
     [ForeignKey("KundeId")] // Realation mellem Projekt og Kunde 1 to many
-    public Kunde Kunde { get; set; }
+    public Domain.Kunde Kunde { get; set; }
 
     public Guid KundeId { get; set; }
 }
