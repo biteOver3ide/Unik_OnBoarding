@@ -7,12 +7,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DTO\Kunde\" />
     <Folder Include="Features\EmpManager\Command\" />
     <Folder Include="Features\EmpManager\Queries\" />
+    <Folder Include="Features\Stamdata\Command\CreateProjekt\" />
+    <Folder Include="Features\Stamdata\Command\DeleteProjekt\" />
+    <Folder Include="Features\Stamdata\Command\UpdateProjekt\" />
+    <Folder Include="Features\Stamdata\Queries\GetProjektDetail\" />
     <Folder Include="Features\TaskManager\Command\" />
     <Folder Include="Features\TaskManager\Queries\" />
-    <Folder Include="Interfaceses\" />
+    <Folder Include="Validation\" />
     <Folder Include="Profile\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="9.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Unik_OnBoarding.Domain\Unik_OnBoarding.Domain.csproj" />
   </ItemGroup>
 
 </Project>

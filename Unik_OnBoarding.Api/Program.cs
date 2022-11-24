@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Unik_OnBoarding.Persistance.DbContext;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +10,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+// Mirgation 
+// Database
+// Add-Migration InitialMigration -Context UserDbContext -Project LevSundt.Project.UserContext.Migrations
+// Update-Database -Context UserDbContext
+builder.Services.AddDbContext<AppDbContext>(
+    options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
+
+            var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
