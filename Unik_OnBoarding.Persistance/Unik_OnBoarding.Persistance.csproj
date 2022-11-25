@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Unik_OnBoarding.Application\Unik_OnBoarding.Application.csproj" />
     <ProjectReference Include="..\Unik_OnBoarding.Domain\Unik_OnBoarding.Domain.csproj" />
   </ItemGroup>
 
