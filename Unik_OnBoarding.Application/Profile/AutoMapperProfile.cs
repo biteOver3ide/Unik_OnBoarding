@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using Unik_OnBoarding.Application.DTO.Kunde;
+﻿using Unik_OnBoarding.Application.DTO.Kunde;
 using Unik_OnBoarding.Application.DTO.Projekt;
 using Unik_OnBoarding.Domain;
+using AutoMapper;
 
 namespace Unik_OnBoarding.Application.Profile;
 

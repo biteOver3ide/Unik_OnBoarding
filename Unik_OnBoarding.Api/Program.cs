@@ -4,6 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Unik_OnBoarding.Application;
+using Unik_OnBoarding.Application.Features.Stamdata.Queries.GetProjektList;
 using Unik_OnBoarding.Application.Interfaceses;
 using Unik_OnBoarding.Persistance;
 using Unik_OnBoarding.Persistance.DbContext;
@@ -31,7 +32,8 @@ options =>
 //builder.Services.AddPersistenceService();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+//builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(typeof(GetProjektListQueryHandler).GetTypeInfo().Assembly);
 
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(IProjectRepository), typeof(ProjektRepository));

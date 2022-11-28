@@ -11,12 +11,13 @@ public class ProjektRepository : BaseRepository<Projekt>, IProjectRepository
     {
     }
 
-    public async Task<IReadOnlyList<Projekt>> GetAllProjektAsync(bool includeKunde)
+    public async Task<List<Projekt>> GetAllProjektAsync(bool includeKunde)
     {
         var projektList = new List<Projekt>();
-        projektList = includeKunde
-            ? await _appDbContext.Projektes.Include(k => k.KundeId).ToListAsync()
-            : await _appDbContext.Projektes.ToListAsync();
+        //projektList = includeKunde
+        //    ? await _appDbContext.Projektes.Include(k => k.KundeId).ToListAsync()
+        //    : await _appDbContext.Projektes.ToListAsync();
+        projektList= await _appDbContext.Projektes.ToListAsync();
         return projektList;
     }
 
