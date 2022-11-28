@@ -32,8 +32,8 @@ options =>
 //builder.Services.AddPersistenceService();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-//builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-builder.Services.AddMediatR(typeof(GetProjektListQueryHandler).GetTypeInfo().Assembly);
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+//builder.Services.AddMediatR(typeof(GetProjektListQueryHandler).GetTypeInfo().Assembly);
 
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(IProjectRepository), typeof(ProjektRepository));
