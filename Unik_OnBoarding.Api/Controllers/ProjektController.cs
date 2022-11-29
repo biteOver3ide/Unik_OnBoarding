@@ -67,7 +67,7 @@ public class ProjektController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Guid>> AddNewProjekt([FromBody] CreateProjektCommand createProjektCommand)
     {
-        Guid newProejktID = await _mediator.Send(createProjektCommand);
+        var newProejktID = await _mediator.Send(createProjektCommand);
         return Ok(newProejktID);
     }
 
@@ -82,12 +82,12 @@ public class ProjektController : ControllerBase
     }
 
     // DELETE api/<ProjektController>/5
-    [HttpDelete("{id:Guid}",Name = "Delete Project")]
+    [HttpDelete("{id:Guid}", Name = "Delete Project")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> DeleteProjekt(Guid id)
     {
-        var deleteProjekt = new DeleteProjektCommand() { ProjektId = id };
+        var deleteProjekt = new DeleteProjektCommand { ProjektId = id };
         await _mediator.Send(deleteProjekt);
         return NoContent();
     }

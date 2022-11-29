@@ -1,14 +1,7 @@
-using System.Reflection;
-using Autofac.Core;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Unik_OnBoarding.Application;
-using Unik_OnBoarding.Application.Features.Stamdata.Queries.GetProjektList;
-using Unik_OnBoarding.Application.Interfaceses;
 using Unik_OnBoarding.Persistance;
 using Unik_OnBoarding.Persistance.DbContext;
-using Unik_OnBoarding.Persistance.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,19 +12,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Mirgation 
-// Database
-// Add-Migration InitialMigration -Context UserDbContext -Project LevSundt.Project.UserContext.Migrations
-// Update-Database -Context UserDbContext
+
+// Database Migration
+// Add-Migration InitialMigration 
+// Update-Database 
 builder.Services.AddDbContext<AppDbContext>(
-options =>
+    options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
 
+// Dependency Injection
 builder.Services.AppServiceCollection();
 builder.Services.AddPersistenceService();
-
-//builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
-//builder.Services.AddScoped(typeof(IProjectRepository), typeof(ProjektRepository));
 
 var app = builder.Build();
 
