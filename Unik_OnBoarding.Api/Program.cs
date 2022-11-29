@@ -27,16 +27,11 @@ builder.Services.AddDbContext<AppDbContext>(
 options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
 
+builder.Services.AppServiceCollection();
+builder.Services.AddPersistenceService();
 
-//builder.Services.AppServiceCollection(); // inject services from Application, extended IServicesColletion methode 
-//builder.Services.AddPersistenceService();
-
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-//builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-builder.Services.AddMediatR(typeof(GetProjektListQueryHandler).GetTypeInfo().Assembly);
-
-builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
-builder.Services.AddScoped(typeof(IProjectRepository), typeof(ProjektRepository));
+//builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
+//builder.Services.AddScoped(typeof(IProjectRepository), typeof(ProjektRepository));
 
 var app = builder.Build();
 

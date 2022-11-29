@@ -1,18 +1,22 @@
-﻿using Unik_OnBoarding.Application.DTO.Kunde;
+﻿using AutoMapper;
+using Unik_OnBoarding.Application.DTO.Kunde;
 using Unik_OnBoarding.Application.DTO.Projekt;
+using Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
+using Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
 using Unik_OnBoarding.Domain;
-using AutoMapper;
 
-namespace Unik_OnBoarding.Application.Profile;
+namespace Unik_OnBoarding.Application.Mappers;
 
-public class AutoMapperProfile : AutoMapper.Profile
+public class AutoMapping : Profile
 {
-    public AutoMapperProfile()
+    public AutoMapping()
     {
         // Automapping for Projekt
         CreateMap<Projekt, ProjektDto>().ReverseMap();
         CreateMap<Projekt, ProjektCreateDto>().ReverseMap();
         CreateMap<Projekt, ProjektUpdateDto>().ReverseMap();
+        CreateMap<Projekt, CreateProjektCommand>().ReverseMap();
+        CreateMap<Projekt, UpdateProjektCommand>().ReverseMap();
 
         // Automapping for Kunde
         CreateMap<Kunde, KundeDto>().ReverseMap();

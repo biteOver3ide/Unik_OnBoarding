@@ -19,7 +19,7 @@ public class GetProjektDetailQueryHandler : IRequestHandler<GetProjektDetailQuer
     async Task<ProjektDto> IRequestHandler<GetProjektDetailQuery, ProjektDto>.Handle(GetProjektDetailQuery request,
         CancellationToken cancellationToken)
     {
-        var projektFromDb = await _projectRepository.GetProjektByIdAsync(request.ProjektId, true);
+        var projektFromDb = await _projectRepository.GetProjektByIdAsync(request.ProjektId);
         return _mapper.Map<ProjektDto>(projektFromDb);
     }
 }

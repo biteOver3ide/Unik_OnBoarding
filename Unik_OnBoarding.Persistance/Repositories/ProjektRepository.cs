@@ -17,16 +17,14 @@ public class ProjektRepository : BaseRepository<Projekt>, IProjectRepository
         //projektList = includeKunde
         //    ? await _appDbContext.Projektes.Include(k => k.KundeId).ToListAsync()
         //    : await _appDbContext.Projektes.ToListAsync();
-        projektList= await _appDbContext.Projektes.ToListAsync();
+        projektList = await _appDbContext.Projektes.ToListAsync();
         return projektList;
     }
 
-    public async Task<Projekt> GetProjektByIdAsync(Guid projektId, bool includeKunde)
+    public async Task<Projekt> GetProjektByIdAsync(Guid projektId)
     {
         var projekt = new Projekt();
-        projekt = includeKunde
-            ? await _appDbContext.Projektes.Include(k => k.KundeId).FirstOrDefaultAsync(p => p.ProjektId == projektId)
-            : await GetByIdAsync(projektId);
+        projekt = await _appDbContext.Projektes.Where(p => p.ProjektId == projektId).FirstOrDefaultAsync();
         return projekt;
     }
 }

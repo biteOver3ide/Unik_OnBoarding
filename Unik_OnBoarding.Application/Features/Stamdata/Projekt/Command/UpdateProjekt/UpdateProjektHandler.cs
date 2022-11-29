@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using Unik_OnBoarding.Application.DTO.Projekt;
 using Unik_OnBoarding.Application.Interfaceses;
 using Unik_OnBoarding.Domain;
 
@@ -8,8 +7,8 @@ namespace Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
 
 public class UpdateProjektHandler : IRequestHandler<UpdateProjektCommand>
 {
-    private readonly IProjectRepository _projectRepository;
     private readonly IMapper _mapper;
+    private readonly IProjectRepository _projectRepository;
 
     public UpdateProjektHandler(IProjectRepository projectRepository, IMapper mapper)
     {
@@ -18,16 +17,20 @@ public class UpdateProjektHandler : IRequestHandler<UpdateProjektCommand>
     }
 
     // no return type
-    async Task<Unit> IRequestHandler<UpdateProjektCommand, Unit>.Handle(UpdateProjektCommand request, CancellationToken cancellationToken)
+    async Task<Unit> IRequestHandler<UpdateProjektCommand, Unit>.Handle(UpdateProjektCommand request,
+        CancellationToken cancellationToken)
     {
         var projekt = _mapper.Map<Projekt>(request);
 
-        UpdateCommandValidator updateCommandValidator = new();
-        var result = await updateCommandValidator.ValidateAsync(request);
-
-        if (result.Errors.Any())
+        try
         {
-            throw new Exception("Vendlist check din input");
+            UpdateCommandValidator updateCommandValidator = new();
+            var result = await updateCommandValidator.ValidateAsync(request);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
         }
 
         await _projectRepository.UpdateAsync(projekt);

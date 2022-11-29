@@ -6,9 +6,10 @@ public class UpdateCommandValidator : AbstractValidator<UpdateProjektCommand>
 {
     public UpdateCommandValidator()
     {
-        RuleFor(p => p.UpdateProjektDto.ProjektTitle)
+        RuleFor(p => p.ProjektTitle)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(50).MaximumLength(2).WithMessage("check din input længde");
+            //.MaximumLength(50)
+            .MaximumLength(2).WithMessage("check din input længde");
     }
 }
