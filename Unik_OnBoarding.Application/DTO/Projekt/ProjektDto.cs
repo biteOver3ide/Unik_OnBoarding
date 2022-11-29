@@ -2,6 +2,8 @@
 
 public class ProjektDto
 {
+    [Key] public Guid ProjektId { get; set; }
+    [Required] public string ProjektTitle { get; set; }
     public Guid ProjektId { get; set; }
 
     public string ProjektTitle { get; set; }

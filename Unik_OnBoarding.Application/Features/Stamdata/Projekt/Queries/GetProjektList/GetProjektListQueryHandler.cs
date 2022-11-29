@@ -5,7 +5,7 @@ using Unik_OnBoarding.Application.Interfaceses;
 
 namespace Unik_OnBoarding.Application.Features.Stamdata.Queries.GetProjektList;
 
-public class GetProjektListQueryHandler : IRequestHandler<GetProjektListQuery, List<ProjektDto>>
+public class GetProjektListQueryHandler : IRequestHandler<GetProjektListQuery, List<ProjectViewModel>>
 {
     private readonly IMapper _mapper;
     private readonly IProjectRepository _projectRepository;
@@ -16,11 +16,11 @@ public class GetProjektListQueryHandler : IRequestHandler<GetProjektListQuery, L
         _mapper = mapper;
     }
 
-    async Task<List<ProjektDto>> IRequestHandler<GetProjektListQuery, List<ProjektDto>>.Handle(
+    async Task<List<ProjectViewModel>> IRequestHandler<GetProjektListQuery, List<ProjectViewModel>>.Handle(
         GetProjektListQuery request,
         CancellationToken cancellationToken)
     {
         var projektsFromDb = await _projectRepository.GetAllProjektAsync(true);
-        return _mapper.Map<List<ProjektDto>>(projektsFromDb);
+        return _mapper.Map<List<ProjectViewModel>>(projektsFromDb);
     }
 }
