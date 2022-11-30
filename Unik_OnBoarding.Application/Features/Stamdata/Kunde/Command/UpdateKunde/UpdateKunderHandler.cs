@@ -2,6 +2,7 @@
 using MediatR;
 using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.UpdateKunde;
 using Unik_OnBoarding.Application.Interfaceses;
+using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateKunde;
 
@@ -19,7 +20,7 @@ public class UpdateKunderHandler : IRequestHandler<UpdateKunderCommand>
     async Task<Unit> IRequestHandler<UpdateKunderCommand, Unit>.Handle(UpdateKunderCommand request,
         CancellationToken cancellationToken)
     {
-        var kunder = _mapper.Map<Domain.Kunde>(request);
+        var kunder = _mapper.Map<KundeEntity>(request);
 
         try
         {

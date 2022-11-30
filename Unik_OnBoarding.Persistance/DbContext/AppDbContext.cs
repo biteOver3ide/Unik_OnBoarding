@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Unik_OnBoarding.Domain;
+using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Persistance.DbContext;
 
@@ -9,8 +9,8 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
     }
 
-    public DbSet<Kunde> Kunder { get; set; }
-    public DbSet<Projekt> Projektes { get; set; }
+    public DbSet<KundeEntity> Kunder { get; set; }
+    public DbSet<ProjektEntity> Projektes { get; set; }
 
     // DATA SEEDING 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -18,8 +18,8 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
         var kundeid = Guid.Parse("{c5121b63-1bd8-4b99-9712-632603eeb167}");
         var p1 = Guid.Parse("{e7709162-a03f-4b4c-aeba-12573ef27676}");
         var p2 = Guid.Parse("{e660a592-adcc-4046-9247-be98fbb5891f}");
-        modelBuilder.Entity<Kunde>().HasData(
-            new Kunde
+        modelBuilder.Entity<KundeEntity>().HasData(
+            new KundeEntity
             {
                 Kid = kundeid,
                 Email = "aab@vejle.dk",
@@ -29,14 +29,14 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
 
             });
 
-        modelBuilder.Entity<Projekt>().HasData(
-            new Projekt
+        modelBuilder.Entity<ProjektEntity>().HasData(
+            new ProjektEntity
             {
                 ProjektId = p1,
                 KundeId = kundeid,
                 ProjektTitle = "Onboaring Vejle AAB"
             },
-            new Projekt
+            new ProjektEntity
             {
                 ProjektId = p2,
                 KundeId = kundeid,

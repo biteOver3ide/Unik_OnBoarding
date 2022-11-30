@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Unik_OnBoarding.Application.Interfaceses;
+using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.CreateKunde;
 
@@ -17,7 +18,7 @@ public class CreateKunderCommandHandler : IRequestHandler<CreateKunderCommand, G
 
     async Task<Guid> IRequestHandler<CreateKunderCommand, Guid>.Handle(CreateKunderCommand request, CancellationToken cancellationToken)
     {
-        var kunder = _mapper.Map<Domain.Kunde>(request);
+        var kunder = _mapper.Map<KundeEntity>(request);
 
         CreateKunderValidator validator = new();
         var result = await validator.ValidateAsync(request);

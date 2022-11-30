@@ -1,4 +1,4 @@
-﻿namespace Unik_OnBoarding.Application.DTO.Projekt;
+﻿namespace Unik_OnBoarding.Application.Implementation.Projekt.dto;
 
 public class ProjektCreateDto
 {

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Unik_OnBoarding.Application.Interfaceses;
-using Unik_OnBoarding.Domain;
+using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
 
@@ -19,7 +19,7 @@ public class CreateProjektCommandHandler : IRequestHandler<CreateProjektCommand,
     async Task<Guid> IRequestHandler<CreateProjektCommand, Guid>.Handle(CreateProjektCommand request,
         CancellationToken cancellationToken)
     {
-        var projekt = _mapper.Map<Projekt>(request);
+        var projekt = _mapper.Map<ProjektEntity>(request);
 
         CreateProjektValidator validator = new();
         var result = await validator.ValidateAsync(request);

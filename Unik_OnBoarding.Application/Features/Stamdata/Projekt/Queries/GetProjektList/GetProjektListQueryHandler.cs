@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using Unik_OnBoarding.Application.DTO.Projekt;
+using Unik_OnBoarding.Application.Implementation.Projekt.dto;
 using Unik_OnBoarding.Application.Interfaceses;
 
 namespace Unik_OnBoarding.Application.Features.Stamdata.Queries.GetProjektList;

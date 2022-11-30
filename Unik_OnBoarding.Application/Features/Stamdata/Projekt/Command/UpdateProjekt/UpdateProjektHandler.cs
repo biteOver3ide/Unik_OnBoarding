@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Unik_OnBoarding.Application.Interfaceses;
-using Unik_OnBoarding.Domain;
+using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
 
@@ -20,7 +20,7 @@ public class UpdateProjektHandler : IRequestHandler<UpdateProjektCommand>
     async Task<Unit> IRequestHandler<UpdateProjektCommand, Unit>.Handle(UpdateProjektCommand request,
         CancellationToken cancellationToken)
     {
-        var projekt = _mapper.Map<Projekt>(request);
+        var projekt = _mapper.Map<ProjektEntity>(request);
 
         try
         {

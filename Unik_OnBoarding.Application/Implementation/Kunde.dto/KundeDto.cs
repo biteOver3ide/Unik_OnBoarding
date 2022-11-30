@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Unik_OnBoarding.Application.DTO.Kunde;
+namespace Unik_OnBoarding.Application.Implementation.Kunde.dto;
 
 public class KundeDto
 {

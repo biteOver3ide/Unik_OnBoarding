@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\Kunde\" />
+    <Folder Include="Implementation\Kunde.dto\" />
     <Folder Include="Features\EmpManager\Command\" />
     <Folder Include="Features\EmpManager\Queries\" />
     <Folder Include="Features\Stamdata\Kunde\Command\CreateKunde\" />

@@ -1,26 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Application.Interfaceses;
-using Unik_OnBoarding.Domain;
+using Unik_OnBoarding.Domain.Model;
 using Unik_OnBoarding.Persistance.DbContext;
 
 namespace Unik_OnBoarding.Persistance.Repositories;
 
-public class KundeRepository : BaseRepository<Kunde>, IKundeRepository
+public class KundeRepository : BaseRepository<KundeEntity>, IKundeRepository
 {
     public KundeRepository(AppDbContext appDbContext) : base(appDbContext)
     {
     }
 
-    public async Task<List<Kunde>> GetAllKundeAsync(bool includeProjekt)
+    public async Task<List<KundeEntity>> GetAllKundeAsync(bool includeProjekt)
     {
-        var kundelist = new List<Kunde>();
+        var kundelist = new List<KundeEntity>();
         kundelist = await _appDbContext.Kunder.ToListAsync();
         return kundelist;
     }
 
-    public async Task<Kunde> GetKundeByIdAsync(Guid kundeId)
+    public async Task<KundeEntity> GetKundeByIdAsync(Guid kundeId)
     {
-        var kunder = new Kunde();
+        var kunder = new KundeEntity();
         kunder = await _appDbContext.Kunder.Where(k => k.Kid == kundeId).FirstOrDefaultAsync();
         return kunder;
     }

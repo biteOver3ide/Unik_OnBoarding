@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Unik_OnBoarding.Domain.Model;
 
-namespace Unik_OnBoarding.Application.DTO.Projekt;
+namespace Unik_OnBoarding.Application.Implementation.Projekt.dto;
 
 public class ProjektDto
 {
@@ -8,7 +9,7 @@ public class ProjektDto
 
     [Required] public string ProjektTitle { get; set; }
 
-    public Domain.Kunde Kunde { get; set; }
+    public KundeEntity Kunde { get; set; }
 
     public Guid KundeId { get; set; }
 }

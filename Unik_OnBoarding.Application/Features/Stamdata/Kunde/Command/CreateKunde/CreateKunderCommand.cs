@@ -11,4 +11,6 @@ public class CreateKunderCommand : IRequest<Guid>
     public string Email { get; set; }
 
     public int Telefon { get; set; }
+
+    public string Adresse { get; set; }
 }

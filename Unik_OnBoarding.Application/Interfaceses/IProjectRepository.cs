@@ -1,9 +1,9 @@
-﻿using Unik_OnBoarding.Domain;
+﻿using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Application.Interfaceses;
 
-public interface IProjectRepository : IAsyncRepository<Projekt>
+public interface IProjectRepository : IAsyncRepository<ProjektEntity>
 {
-    Task<List<Projekt>> GetAllProjektAsync(bool includeKunde);
-    Task<Projekt> GetProjektByIdAsync(Guid projektId);
+    Task<List<ProjektEntity>> GetAllProjektAsync(bool includeKunde);
+    Task<ProjektEntity> GetProjektByIdAsync(Guid projektId);
 }
