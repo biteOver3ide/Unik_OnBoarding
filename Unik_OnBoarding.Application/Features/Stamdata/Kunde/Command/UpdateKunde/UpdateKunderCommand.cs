@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using MediatR;
 
-namespace Unik_OnBoarding.Application.DTO.Kunde;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.UpdateKunde;
 
-public class KundeDto
+public class UpdateKunderCommand : IRequest
 {
     [Key] public Guid Kid { get; set; }
 

@@ -2,9 +2,9 @@
 
 namespace Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
 
-public class UpdateCommandValidator : AbstractValidator<UpdateProjektCommand>
+public class UpdateCommandKProjektValidator : AbstractValidator<UpdateProjektCommand>
 {
-    public UpdateCommandValidator()
+    public UpdateCommandKProjektValidator()
     {
         RuleFor(p => p.ProjektTitle)
             .NotNull()

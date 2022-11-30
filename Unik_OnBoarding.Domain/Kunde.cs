@@ -12,25 +12,12 @@ public class Kunde
     [DisplayName("Erhvervs navn")]
     public string Name { get; set; }
 
-    [Required]
-    [EmailAddress]
-    public string Email { get; set; }
+    [Required] [EmailAddress] public string Email { get; set; }
 
-    [Required]
-    [Phone]
-    public int Telefon { get; set; }
+    [Required] [Phone] public int Telefon { get; set; }
+
+    [Required] public string Adresse { get; set; }
 
     // Navigation prop
     public List<Projekt>? Projekt { get; set; } // En kunde kunde har null eller flere Projekt (derfor har vi set et ?)
 }
-
-
-
-
-
-
-
-
-
-
-

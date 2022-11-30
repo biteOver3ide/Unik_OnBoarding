@@ -10,6 +10,10 @@
     <Folder Include="DTO\Kunde\" />
     <Folder Include="Features\EmpManager\Command\" />
     <Folder Include="Features\EmpManager\Queries\" />
+    <Folder Include="Features\Stamdata\Kunde\Command\CreateKunde\" />
+    <Folder Include="Features\Stamdata\Kunde\Command\DeleteKunde\" />
+    <Folder Include="Features\Stamdata\Kunde\Queries\GetKundeList\" />
+    <Folder Include="Features\Stamdata\Kunde\Queries\GetKundeDetail\" />
     <Folder Include="Features\TaskManager\Command\" />
     <Folder Include="Features\TaskManager\Queries\" />
     <Folder Include="Validation\" />

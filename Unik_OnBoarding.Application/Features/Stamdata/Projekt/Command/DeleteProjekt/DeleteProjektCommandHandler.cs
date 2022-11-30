@@ -12,13 +12,12 @@ public class DeleteProjektCommandHandler : IRequestHandler<DeleteProjektCommand>
         _projectRepository = projectRepository;
     }
 
-    public async Task<Unit> Handle(DeleteProjektCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(DeleteProjektCommand request,
+        CancellationToken cancellationToken)
     {
-
         var projektFromDb = await _projectRepository.GetByIdAsync(request.ProjektId);
 
         await _projectRepository.DeleteAsync(projektFromDb);
         return Unit.Value;
-
     }
 }

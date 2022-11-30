@@ -3,6 +3,8 @@ using Unik_OnBoarding.Application.DTO.Kunde;
 using Unik_OnBoarding.Application.DTO.Projekt;
 using Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
 using Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
+using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.CreateKunde;
+using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.UpdateKunde;
 using Unik_OnBoarding.Domain;
 
 namespace Unik_OnBoarding.Application.Mappers;
@@ -22,5 +24,7 @@ public class AutoMapping : Profile
         CreateMap<Kunde, KundeDto>().ReverseMap();
         CreateMap<Kunde, KundeCreateDto>().ReverseMap();
         CreateMap<Kunde, KundeUpdateDto>().ReverseMap();
+        CreateMap<Kunde, CreateKunderCommand>().ReverseMap();
+        CreateMap<Kunde, UpdateKunderCommand>().ReverseMap();
     }
 }

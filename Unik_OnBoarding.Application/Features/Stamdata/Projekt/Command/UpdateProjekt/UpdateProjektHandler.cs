@@ -24,7 +24,7 @@ public class UpdateProjektHandler : IRequestHandler<UpdateProjektCommand>
 
         try
         {
-            UpdateCommandValidator updateCommandValidator = new();
+            UpdateCommandKProjektValidator updateCommandValidator = new();
             var result = await updateCommandValidator.ValidateAsync(request);
         }
         catch (Exception e)

@@ -1,14 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using Unik_OnBoarding.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Unik_OnBoarding.Application.DTO.Projekt;
 
 public class ProjektUpdateDto
 {
-    [Key]
-    public Guid ProjektId { get; set; }
+    [Key] public Guid ProjektId { get; set; }
 
     [Required]
     [DisplayName("Projekt title")]
