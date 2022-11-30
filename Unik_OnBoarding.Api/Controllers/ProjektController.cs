@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Unik_OnBoarding.Application.DTO.Projekt;
 using Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
@@ -16,22 +15,18 @@ namespace Unik_OnBoarding.Api.Controllers;
 [ApiController]
 public class ProjektController : ControllerBase
 {
-    private IMapper _mapper;
-
-    private IMediator _mediator;
+    private readonly IMediator _mediator;
 
     public ProjektController(IMediator mediator)
     {
         _mediator = mediator;
     }
 
-    protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-
-    // Get all
+    // GET: api/<ProjektController>
     [HttpGet(Name = "GetAll")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAllProjekts()
     {
         try
         {
@@ -42,7 +37,6 @@ public class ProjektController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
-
 
     // GET api/<ProjektController>/5
     [HttpGet("{id:Guid}", Name = "Get Projekt by ID")]
@@ -67,8 +61,16 @@ public class ProjektController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Guid>> AddNewProjekt([FromBody] CreateProjektCommand createProjektCommand)
     {
-        var newProejktID = await _mediator.Send(createProjektCommand);
-        return Ok(newProejktID);
+        try
+        {
+            var newProejktID = await _mediator.Send(createProjektCommand);
+            return Ok(newProejktID);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
     }
 
     // PUT api/<ProjektController>/5
@@ -77,8 +79,16 @@ public class ProjektController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> UpdateProjekt([FromBody] UpdateProjektCommand updateProjektCommand)
     {
-        await _mediator.Send(updateProjektCommand);
-        return NoContent();
+        try
+        {
+            await _mediator.Send(updateProjektCommand);
+            return NoContent();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
     }
 
     // DELETE api/<ProjektController>/5
@@ -87,8 +97,16 @@ public class ProjektController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> DeleteProjekt(Guid id)
     {
-        var deleteProjekt = new DeleteProjektCommand { ProjektId = id };
-        await _mediator.Send(deleteProjekt);
-        return NoContent();
+        try
+        {
+            var deleteProjekt = new DeleteProjektCommand { ProjektId = id };
+            await _mediator.Send(deleteProjekt);
+            return NoContent();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            throw;
+        }
     }
 }
