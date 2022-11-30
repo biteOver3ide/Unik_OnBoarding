@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
 using MediatR;
 
 namespace Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.UpdateKunde;

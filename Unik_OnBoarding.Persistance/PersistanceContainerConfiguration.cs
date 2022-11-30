@@ -10,6 +10,7 @@ public static class PersistanceContainerConfiguration
     {
         service.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
         service.AddScoped(typeof(IProjectRepository), typeof(ProjektRepository));
+        service.AddScoped(typeof(IKundeRepository), typeof(KundeRepository));
 
         return service;
     }

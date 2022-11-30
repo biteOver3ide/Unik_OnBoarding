@@ -23,8 +23,10 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
             {
                 Kid = kundeid,
                 Email = "aab@vejle.dk",
+                Adresse = "Vejlevej 123",
                 Name = "AAB Vejle",
                 Telefon = 41424344
+
             });
 
         modelBuilder.Entity<Projekt>().HasData(

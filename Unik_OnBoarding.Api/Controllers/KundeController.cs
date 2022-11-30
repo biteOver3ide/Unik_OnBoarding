@@ -24,7 +24,6 @@ public class KundeController : ControllerBase
 
     // GET: api/<KundeController>
     [HttpGet]
-    [HttpGet(Name = "GetAll")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetAllKunder()
