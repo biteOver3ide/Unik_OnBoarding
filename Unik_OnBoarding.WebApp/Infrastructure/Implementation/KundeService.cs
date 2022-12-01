@@ -22,9 +22,9 @@ public class KundeService : IKundeService
         throw new NotImplementedException();
     }
 
-    public Task<KundeQueryResultDto?> Get(int id)
+    public async Task<KundeQueryResultDto?> Get(Guid id)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<KundeQueryResultDto>($"api/Kunde/{id}");
     }
 
     public async Task<IEnumerable<KundeQueryResultDto>?> GetAll()

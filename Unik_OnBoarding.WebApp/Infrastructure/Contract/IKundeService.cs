@@ -6,6 +6,6 @@ public interface IKundeService
 {
     Task Create(KundeCreateDto dto);
     Task Edit(KundeUpdateDto kundeUpdateViewModel);
-    Task<KundeQueryResultDto?> Get(int id);
+    Task<KundeQueryResultDto?> Get(Guid id);
     Task<IEnumerable<KundeQueryResultDto>?> GetAll();
 }
