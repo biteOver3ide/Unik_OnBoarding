@@ -15,15 +15,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastucture", "Infrastuct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8916AAA0-9AFD-44EC-BEA4-267B6B19724C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBoarding.Domain", "Unik_OnBoarding.Domain\Unik_OnBoarding.Domain.csproj", "{F00A77E0-9DF7-424B-AB52-26A1C8632700}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoarding.Domain", "Unik_OnBoarding.Domain\Unik_OnBoarding.Domain.csproj", "{F00A77E0-9DF7-424B-AB52-26A1C8632700}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBoarding.Application", "Unik_OnBoarding.Application\Unik_OnBoarding.Application.csproj", "{1FA83DDF-EF9F-4475-933B-55D87B571715}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoarding.Application", "Unik_OnBoarding.Application\Unik_OnBoarding.Application.csproj", "{1FA83DDF-EF9F-4475-933B-55D87B571715}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBoarding.Persistance", "Unik_OnBoarding.Persistance\Unik_OnBoarding.Persistance.csproj", "{4702454C-38F5-4966-A73A-88F338B281F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoarding.Persistance", "Unik_OnBoarding.Persistance\Unik_OnBoarding.Persistance.csproj", "{4702454C-38F5-4966-A73A-88F338B281F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBoarding.WebApp", "Unik_OnBoarding.WebApp\Unik_OnBoarding.WebApp.csproj", "{817603ED-3D52-486B-B80B-F661BD203921}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoarding.WebApp", "Unik_OnBoarding.WebApp\Unik_OnBoarding.WebApp.csproj", "{817603ED-3D52-486B-B80B-F661BD203921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBoarding.Api", "Unik_OnBoarding.Api\Unik_OnBoarding.Api.csproj", "{B9A7CA83-9953-4AF4-BB75-A86C04D106ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoarding.Api", "Unik_OnBoarding.Api\Unik_OnBoarding.Api.csproj", "{B9A7CA83-9953-4AF4-BB75-A86C04D106ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

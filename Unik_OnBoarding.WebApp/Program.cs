@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.WebApp.Data;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract;
+using Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
+
+builder.Services.AddHttpClient<IKundeService, KundeService>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"])
+);
+//builder.Services.AddScoped<IKundeService, KundeService>();
 
 var app = builder.Build();
 
