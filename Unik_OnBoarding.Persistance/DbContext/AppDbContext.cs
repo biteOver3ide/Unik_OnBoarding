@@ -11,6 +11,7 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
 
     public DbSet<KundeEntity> Kunder { get; set; }
     public DbSet<ProjektEntity> Projektes { get; set; }
+    public DbSet<MedarbejderEntity> Medarbejder { get; set; }
 
     // DATA SEEDING 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

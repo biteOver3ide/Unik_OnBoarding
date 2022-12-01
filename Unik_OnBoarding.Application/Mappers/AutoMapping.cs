@@ -3,7 +3,10 @@ using Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
 using Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
 using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.CreateKunde;
 using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.UpdateKunde;
+using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.CreateMedarbejder;
+using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.UpdateMedarbejder;
 using Unik_OnBoarding.Application.Implementation.Kunde.dto;
+using Unik_OnBoarding.Application.Implementation.Medarbejder.dto;
 using Unik_OnBoarding.Application.Implementation.Projekt.dto;
 using Unik_OnBoarding.Domain.Model;
 
@@ -26,5 +29,12 @@ public class AutoMapping : Profile
         CreateMap<KundeEntity, KundeUpdateDto>().ReverseMap();
         CreateMap<KundeEntity, CreateKunderCommand>().ReverseMap();
         CreateMap<KundeEntity, UpdateKunderCommand>().ReverseMap();
+
+        // Automapping for Medarbejder
+        CreateMap<MedarbejderEntity, MedarbejderDto>().ReverseMap();
+        CreateMap<MedarbejderEntity, MedarbejderCreateDto>().ReverseMap();
+        CreateMap<MedarbejderEntity, MedarbejderUpdateDto>().ReverseMap();
+        CreateMap<MedarbejderEntity, CreateMedarbejderCommand>().ReverseMap();
+        CreateMap<MedarbejderEntity, UpdateMedarbejderCommand>().ReverseMap();
     }
 }
