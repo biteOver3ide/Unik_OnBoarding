@@ -16,7 +16,7 @@ public class UpdateMedarbejderCommandHandler : IRequestHandler<UpdateMedarbejder
         _mapper = mapper;
     }
 
-    async Task<Unit> IRequestHandler<UpdateMedarbejderCommand, Unit>.Handle(UpdateMedarbejderCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(UpdateMedarbejderCommand request, CancellationToken cancellationToken)
     {
         var medarbejder = _mapper.Map<MedarbejderEntity>(request);
 
@@ -35,5 +35,4 @@ public class UpdateMedarbejderCommandHandler : IRequestHandler<UpdateMedarbejder
 
         return Unit.Value;
     }
-
 }
