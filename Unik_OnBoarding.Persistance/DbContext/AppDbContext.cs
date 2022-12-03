@@ -12,6 +12,9 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<KundeEntity> Kunder { get; set; }
     public DbSet<ProjektEntity> Projektes { get; set; }
     public DbSet<MedarbejderEntity> Medarbejder { get; set; }
+    public DbSet<KompetenceEntity> Kompetencerne { get; set; }
+    public DbSet<OpgaverEntity> Opgaver { get; set; }
+    public DbSet<BookingEntity> Bookinger { get; set; }
 
     // DATA SEEDING 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,7 +30,6 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
                 Adresse = "Vejlevej 123",
                 Name = "AAB Vejle",
                 Telefon = 41424344
-
             });
 
         modelBuilder.Entity<ProjektEntity>().HasData(
@@ -41,7 +43,7 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
             {
                 ProjektId = p2,
                 KundeId = kundeid,
-                ProjektTitle = "Onboaring Kolding AAB",
+                ProjektTitle = "Onboaring Kolding AAB"
             }
         );
     }

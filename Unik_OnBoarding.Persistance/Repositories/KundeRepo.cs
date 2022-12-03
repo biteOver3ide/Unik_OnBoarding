@@ -5,9 +5,9 @@ using Unik_OnBoarding.Persistance.DbContext;
 
 namespace Unik_OnBoarding.Persistance.Repositories;
 
-public class KundeRepository : BaseRepository<KundeEntity>, IKundeRepository
+public class KundeRepo : BaseRepo<KundeEntity>, IKundeRepository
 {
-    public KundeRepository(AppDbContext appDbContext) : base(appDbContext)
+    public KundeRepo(AppDbContext appDbContext) : base(appDbContext)
     {
     }
 

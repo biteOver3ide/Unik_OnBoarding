@@ -15,9 +15,9 @@ public class DeleteKunderCommandHandler : IRequestHandler<DeleteKunderCommand>
 
     public async Task<Unit> Handle(DeleteKunderCommand request, CancellationToken cancellationToken)
     {
-        var KundeFromDb = await _kundeRepository.GetByIdAsync(request.Kid);
+        var kundeFromDb = await _kundeRepository.GetByIdAsync(request.Kid);
 
-        await _kundeRepository.DeleteAsync(KundeFromDb);
+        await _kundeRepository.DeleteAsync(kundeFromDb);
         return Unit.Value;
     }
 }

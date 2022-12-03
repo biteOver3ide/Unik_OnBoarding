@@ -22,6 +22,41 @@ namespace Unik_OnBoarding.Persistance.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("Unik_OnBoarding.Domain.Model.BookingEntity", b =>
+                {
+                    b.Property<Guid>("BookId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("MedarbejderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OpgaveId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProjektId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("BookId");
+
+                    b.HasIndex("MedarbejderId");
+
+                    b.HasIndex("OpgaveId");
+
+                    b.HasIndex("ProjektId");
+
+                    b.ToTable("Bookinger");
+                });
+
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.KompetenceEntity", b =>
                 {
                     b.Property<Guid>("KompetenceId")
@@ -43,7 +78,7 @@ namespace Unik_OnBoarding.Persistance.Migrations
 
                     b.HasIndex("MedarbejderEntityMedarbejderId");
 
-                    b.ToTable("KompetenceEntity");
+                    b.ToTable("Kompetencerne");
                 });
 
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.KundeEntity", b =>
@@ -112,6 +147,26 @@ namespace Unik_OnBoarding.Persistance.Migrations
                     b.ToTable("Medarbejder");
                 });
 
+            modelBuilder.Entity("Unik_OnBoarding.Domain.Model.OpgaverEntity", b =>
+                {
+                    b.Property<Guid>("OpgaveId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Beskrivelse")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OpgaveName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("OpgaveId");
+
+                    b.ToTable("Opgaver");
+                });
+
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.ProjektEntity", b =>
                 {
                     b.Property<Guid>("ProjektId")
@@ -124,6 +179,12 @@ namespace Unik_OnBoarding.Persistance.Migrations
                     b.Property<string>("ProjektTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.HasKey("ProjektId");
 
@@ -144,6 +205,33 @@ namespace Unik_OnBoarding.Persistance.Migrations
                             KundeId = new Guid("c5121b63-1bd8-4b99-9712-632603eeb167"),
                             ProjektTitle = "Onboaring Kolding AAB"
                         });
+                });
+
+            modelBuilder.Entity("Unik_OnBoarding.Domain.Model.BookingEntity", b =>
+                {
+                    b.HasOne("Unik_OnBoarding.Domain.Model.MedarbejderEntity", "Medarbejder")
+                        .WithMany()
+                        .HasForeignKey("MedarbejderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Unik_OnBoarding.Domain.Model.OpgaverEntity", "Opgave")
+                        .WithMany()
+                        .HasForeignKey("OpgaveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Unik_OnBoarding.Domain.Model.ProjektEntity", "Projekt")
+                        .WithMany()
+                        .HasForeignKey("ProjektId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Medarbejder");
+
+                    b.Navigation("Opgave");
+
+                    b.Navigation("Projekt");
                 });
 
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.KompetenceEntity", b =>

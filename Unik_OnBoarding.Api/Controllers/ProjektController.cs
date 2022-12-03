@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
 using Unik_OnBoarding.Application.Features.Stamdata.Command.DeleteProjekt;
 using Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
+using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Notifications;
 using Unik_OnBoarding.Application.Features.Stamdata.Queries.GetProjektDetail;
 using Unik_OnBoarding.Application.Features.Stamdata.Queries.GetProjektList;
 using Unik_OnBoarding.Application.Implementation.Projekt.dto;
@@ -64,6 +65,7 @@ public class ProjektController : ControllerBase
         try
         {
             var newProejktID = await _mediator.Send(createProjektCommand);
+            await _mediator.Publish(new NotifyKunde());
             return Ok(newProejktID);
         }
         catch (Exception e)

@@ -7,10 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Stamdata\Booking\Command\CreateBooking\" />
+    <Folder Include="Features\Stamdata\Booking\Command\UpdateBooking\" />
+    <Folder Include="Features\Stamdata\Booking\Queries\GetBookingList\" />
+    <Folder Include="Features\Stamdata\Booking\Queries\GetBookingDetail\" />
+    <Folder Include="Features\Stamdata\Kompetence\Command\CreateKompetence\" />
+    <Folder Include="Features\Stamdata\Kompetence\Command\DeleteKompetence\" />
+    <Folder Include="Features\Stamdata\Kompetence\Command\UpdateKompetence\" />
+    <Folder Include="Features\Stamdata\Kompetence\Queries\GetKompetenceList\" />
+    <Folder Include="Features\Stamdata\Kompetence\Queries\GetKompetenceDetail\" />
     <Folder Include="Features\Stamdata\Medarbejder\Command\DeleteMedarbejder\" />
     <Folder Include="Features\Stamdata\Medarbejder\Command\UpdateMedarbejder\" />
     <Folder Include="Features\Stamdata\Medarbejder\Queries\GetMedarbejderDetail\" />
     <Folder Include="Features\Stamdata\Medarbejder\Queries\GetMedarbejderList\" />
+    <Folder Include="Features\Stamdata\Opgaver\Command\CreateOpgaver\" />
+    <Folder Include="Features\Stamdata\Opgaver\Command\DeleteOpgaver\" />
+    <Folder Include="Features\Stamdata\Opgaver\Command\UpdateOpgaver\" />
+    <Folder Include="Features\Stamdata\Opgaver\Queries\GetOpgaverList\" />
+    <Folder Include="Features\Stamdata\Opgaver\Queries\GetOpgaverDetail\" />
+    <Folder Include="Features\Stamdata\Projekt\Notifications\" />
     <Folder Include="Implementation\Kunde.dto\" />
     <Folder Include="Features\EmpManager\Command\" />
     <Folder Include="Features\EmpManager\Queries\" />
@@ -22,7 +37,8 @@
     <Folder Include="Features\TaskManager\Queries\" />
     <Folder Include="Implementation\Medarbejder.dto\" />
     <Folder Include="Implementation\Kompetencer.dto\" />
-    <Folder Include="Validation\" />
+    <Folder Include="Implementation\Booking.dto\" />
+    <Folder Include="Implementation\Opgaver.dto\" />
   </ItemGroup>
 
   <ItemGroup>

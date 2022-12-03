@@ -5,7 +5,7 @@ using Unik_OnBoarding.Persistance.DbContext;
 
 namespace Unik_OnBoarding.Persistance.Repositories;
 
-public class MedarbejderRepo : BaseRepository<MedarbejderEntity>, IMedarbejderRepository
+public class MedarbejderRepo : BaseRepo<MedarbejderEntity>, IMedarbejderRepository
 {
     public MedarbejderRepo(AppDbContext appDbContext) : base(appDbContext)
     {

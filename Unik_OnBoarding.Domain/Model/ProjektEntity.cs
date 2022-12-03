@@ -13,4 +13,7 @@ public class ProjektEntity
     public KundeEntity Kunde { get; set; }
 
     public Guid KundeId { get; set; }
+
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
 }

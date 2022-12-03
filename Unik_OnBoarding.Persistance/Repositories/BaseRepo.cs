@@ -4,11 +4,11 @@ using Unik_OnBoarding.Persistance.DbContext;
 
 namespace Unik_OnBoarding.Persistance.Repositories;
 
-public class BaseRepository<T> : IAsyncRepository<T> where T : class
+public class BaseRepo<T> : IAsyncRepository<T> where T : class
 {
     protected readonly AppDbContext _appDbContext;
 
-    public BaseRepository(AppDbContext appDbContext)
+    public BaseRepo(AppDbContext appDbContext)
     {
         _appDbContext = appDbContext;
     }

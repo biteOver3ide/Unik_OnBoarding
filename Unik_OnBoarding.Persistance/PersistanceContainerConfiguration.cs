@@ -8,10 +8,13 @@ public static class PersistanceContainerConfiguration
 {
     public static IServiceCollection AddPersistenceService(this IServiceCollection service)
     {
-        service.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
-        service.AddScoped(typeof(IProjectRepository), typeof(ProjektRepository));
-        service.AddScoped(typeof(IKundeRepository), typeof(KundeRepository));
+        service.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepo<>));
+        service.AddScoped(typeof(IProjectRepository), typeof(ProjektRepo));
+        service.AddScoped(typeof(IKundeRepository), typeof(KundeRepo));
         service.AddScoped(typeof(IMedarbejderRepository), typeof(MedarbejderRepo));
+        service.AddScoped(typeof(IBookingRepository), typeof(BookingRepo));
+        service.AddScoped(typeof(IKompetencerRepository), typeof(KompetenceRepo));
+        service.AddScoped(typeof(IOpgaverRepository), typeof(OpgaverRepo));
 
         return service;
     }

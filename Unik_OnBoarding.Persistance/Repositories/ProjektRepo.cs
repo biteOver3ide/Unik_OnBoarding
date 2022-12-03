@@ -5,9 +5,9 @@ using Unik_OnBoarding.Persistance.DbContext;
 
 namespace Unik_OnBoarding.Persistance.Repositories;
 
-public class ProjektRepository : BaseRepository<ProjektEntity>, IProjectRepository
+public class ProjektRepo : BaseRepo<ProjektEntity>, IProjectRepository
 {
-    public ProjektRepository(AppDbContext appDbContext) : base(appDbContext)
+    public ProjektRepo(AppDbContext appDbContext) : base(appDbContext)
     {
     }
 

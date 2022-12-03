@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Data;
+using AutoMapper;
 using MediatR;
 using Unik_OnBoarding.Application.Interfaceses;
 using Unik_OnBoarding.Domain.Model;
@@ -27,9 +28,9 @@ public class UpdateProjektHandler : IRequestHandler<UpdateProjektCommand>
             UpdateCommandKProjektValidator updateCommandValidator = new();
             var result = await updateCommandValidator.ValidateAsync(request);
         }
-        catch (Exception e)
+        catch (DBConcurrencyException e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(e.Message); // TODO  manage Concurrency excaption
             throw;
         }
 
