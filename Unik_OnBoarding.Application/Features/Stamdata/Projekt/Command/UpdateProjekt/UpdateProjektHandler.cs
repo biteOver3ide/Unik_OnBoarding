@@ -4,7 +4,7 @@ using MediatR;
 using Unik_OnBoarding.Application.Interfaceses;
 using Unik_OnBoarding.Domain.Model;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.UpdateProjekt;
 
 public class UpdateProjektHandler : IRequestHandler<UpdateProjektCommand>
 {

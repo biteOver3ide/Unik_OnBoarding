@@ -3,7 +3,7 @@ using MediatR;
 using Unik_OnBoarding.Application.Implementation.Projekt.dto;
 using Unik_OnBoarding.Application.Interfaceses;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Queries.GetProjektDetail;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Projekt.Queries.GetProjektDetail;
 
 public class GetProjektDetailQueryHandler : IRequestHandler<GetProjektDetailQuery, ProjektDto>
 {

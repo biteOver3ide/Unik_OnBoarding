@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using Unik_OnBoarding.Application.Features.Stamdata.Booking.Command.CreateBooking;
 using Unik_OnBoarding.Application.Features.Stamdata.Booking.Command.UpdateBooking;
-using Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
-using Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
 using Unik_OnBoarding.Application.Features.Stamdata.Kompetence.Command.CreateKompetence;
 using Unik_OnBoarding.Application.Features.Stamdata.Kompetence.Command.UpdateKompetence;
 using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.CreateKunde;
@@ -11,6 +9,8 @@ using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.CreateMe
 using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.UpdateMedarbejder;
 using Unik_OnBoarding.Application.Features.Stamdata.Opgaver.Command.CreateOpgaver;
 using Unik_OnBoarding.Application.Features.Stamdata.Opgaver.Command.UpdateOpgaver;
+using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.CreateProjekt;
+using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.UpdateProjekt;
 using Unik_OnBoarding.Application.Implementation.Booking.dto;
 using Unik_OnBoarding.Application.Implementation.Kompetencer.dto;
 using Unik_OnBoarding.Application.Implementation.Kunde.dto;

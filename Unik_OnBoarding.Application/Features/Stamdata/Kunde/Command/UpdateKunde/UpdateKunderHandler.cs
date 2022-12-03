@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
-using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.UpdateKunde;
 using Unik_OnBoarding.Application.Interfaceses;
 using Unik_OnBoarding.Domain.Model;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateKunde;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.UpdateKunde;
 
 public class UpdateKunderHandler : IRequestHandler<UpdateKunderCommand>
 {

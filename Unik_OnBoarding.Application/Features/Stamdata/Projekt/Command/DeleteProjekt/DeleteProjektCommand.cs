@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Command.DeleteProjekt;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.DeleteProjekt;
 
 public class DeleteProjektCommand : IRequest
 {

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.UpdateProjekt;
 
 public class UpdateCommandKProjektValidator : AbstractValidator<UpdateProjektCommand>
 {

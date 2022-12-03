@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.CreateProjekt;
 
 public class CreateProjektValidator : AbstractValidator<CreateProjektCommand>
 {

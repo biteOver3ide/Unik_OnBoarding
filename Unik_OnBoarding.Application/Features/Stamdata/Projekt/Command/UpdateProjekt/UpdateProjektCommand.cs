@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using MediatR;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Command.UpdateProjekt;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.UpdateProjekt;
 
 public class UpdateProjektCommand : IRequest
 {

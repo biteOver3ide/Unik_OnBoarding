@@ -18,7 +18,8 @@ builder.Services.AddSwaggerGen();
 // Update-Database 
 builder.Services.AddDbContext<AppDbContext>(
     options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString"),
+            x => x.MigrationsAssembly("Unik_OnBoarding.Persistance.User.Migartions")));
 
 // Dependency Injection
 builder.Services.AppServiceCollection();

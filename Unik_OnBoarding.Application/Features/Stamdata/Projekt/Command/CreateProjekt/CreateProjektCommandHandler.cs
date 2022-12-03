@@ -3,7 +3,7 @@ using MediatR;
 using Unik_OnBoarding.Application.Interfaceses;
 using Unik_OnBoarding.Domain.Model;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Command.CreateProjekt;
+namespace Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.CreateProjekt;
 
 public class CreateProjektCommandHandler : IRequestHandler<CreateProjektCommand, Guid>
 {

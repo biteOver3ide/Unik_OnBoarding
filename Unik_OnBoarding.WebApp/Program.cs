@@ -1,25 +1,47 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Unik_OnBoarding.WebApp.Data;
+using Unik_OnBoarding.User.Persistance;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract;
 using Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("UserAppConnection");
+builder.Services.AddDbContext<UserDbContext>(options =>
+    options.UseSqlServer(connectionString,
+        x => x.MigrationsAssembly("Unik_OnBoarding.Persistance.User.Migartions")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddRazorPages();
+// Add User Login
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+    {
+        {
+            options.Password.RequiredLength = 5;
+            options.Password.RequireDigit = false;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequiredUniqueChars = 0;
+            options.Password.RequireUppercase = false;
+            options.SignIn.RequireConfirmedAccount = true;
+        }
+    })
+    .AddEntityFrameworkStores<UserDbContext>();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policyBulder => policyBulder.RequireClaim("Admin"));
+});
+
+builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/KundePages");
+    options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
+});
 
 builder.Services.AddHttpClient<IKundeService, KundeService>(client =>
     client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"])
 );
-//builder.Services.AddScoped<IKundeService, KundeService>();
 
 var app = builder.Build();
 
