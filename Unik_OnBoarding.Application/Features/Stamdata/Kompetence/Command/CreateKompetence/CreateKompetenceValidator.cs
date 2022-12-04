@@ -18,6 +18,6 @@ public class CreateKompetenceValidator : AbstractValidator<CreateKompetenceComma
         RuleFor(b => b.Beskrivelse)
             .NotEmpty()
             .NotNull()
-            .MaximumLength(150).WithMessage("Må ikke være længer end 50 bogstaver");
+            .MaximumLength(150).WithMessage("Må ikke være længer end 150 bogstaver");
     }
 }

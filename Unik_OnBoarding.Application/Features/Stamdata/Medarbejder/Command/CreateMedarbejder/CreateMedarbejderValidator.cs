@@ -26,9 +26,5 @@ public class CreateMedarbejderValidator : AbstractValidator<CreateMedarbejderCom
         RuleFor(t => t.Telefon)
             .NotEmpty().WithMessage("Skal ikke være tomt")
             .NotNull();
-
-        RuleFor(j => j.Job)
-            .NotEmpty().WithMessage("Skal ikke være tomt")
-            .NotNull();
     }
 }
