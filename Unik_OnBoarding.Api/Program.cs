@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Application;
 using Unik_OnBoarding.Persistance;
 using Unik_OnBoarding.Persistance.DbContext;
-using Unik_OnBoaring.SqlServerContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
