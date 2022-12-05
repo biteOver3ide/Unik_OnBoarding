@@ -9,11 +9,10 @@ public class ProjektEntity
 
     [Required] public string ProjektTitle { get; set; }
 
+    public Guid KundeId { get; set; }
+
     [ForeignKey("KundeId")] // Realation mellem Projekt og Kunde 1 to many
     public KundeEntity Kunde { get; set; }
 
-    public Guid KundeId { get; set; }
-
-    [Timestamp]
-    public byte[] RowVersion { get; set; }
+    [Timestamp] public byte[] RowVersion { get; set; }
 }

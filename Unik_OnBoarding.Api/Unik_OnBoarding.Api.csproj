@@ -4,6 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>08d6e56f-693f-4128-8d03-38cb67a3b5b0</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +22,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
@@ -29,6 +33,8 @@
     <ProjectReference Include="..\Unik_OnBoarding.Persistance.Migartions\Unik_OnBoarding.Persistance.User.Migartions.csproj" />
     <ProjectReference Include="..\Unik_OnBoarding.Persistance\Unik_OnBoarding.Persistance.csproj" />
     <ProjectReference Include="..\Unik_OnBoarding.User.Persistance\Unik_OnBoarding.User.Persistance.csproj" />
+    <ProjectReference Include="..\Unik_OnBoaring.SqlServerContext.Mirgrations\Unik_OnBoaring.SqlServerContext.Mirgrations.csproj" />
+    <ProjectReference Include="..\Unik_OnBoaring.SqlServerContext\Unik_OnBoaring.SqlServerContext.csproj" />
   </ItemGroup>
 
 </Project>

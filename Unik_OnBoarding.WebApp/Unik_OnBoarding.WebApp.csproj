@@ -14,6 +14,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +25,10 @@
     <ProjectReference Include="..\Unik_OnBoarding.Application\Unik_OnBoarding.Application.csproj" />
     <ProjectReference Include="..\Unik_OnBoarding.Domain\Unik_OnBoarding.Domain.csproj" />
     <ProjectReference Include="..\Unik_OnBoarding.Persistance.Migartions\Unik_OnBoarding.Persistance.User.Migartions.csproj" />
+    <ProjectReference Include="..\Unik_OnBoarding.Persistance\Unik_OnBoarding.Persistance.csproj" />
     <ProjectReference Include="..\Unik_OnBoarding.User.Persistance\Unik_OnBoarding.User.Persistance.csproj" />
+    <ProjectReference Include="..\Unik_OnBoaring.SqlServerContext.Mirgrations\Unik_OnBoaring.SqlServerContext.Mirgrations.csproj" />
+    <ProjectReference Include="..\Unik_OnBoaring.SqlServerContext\Unik_OnBoaring.SqlServerContext.csproj" />
   </ItemGroup>
 
 </Project>

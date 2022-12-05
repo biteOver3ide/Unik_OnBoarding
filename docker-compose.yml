@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  unik_onboarding.api:
+    image: ${DOCKER_REGISTRY-}unikonboardingapi
+    build:
+      context: .
+      dockerfile: Unik_OnBoarding.Api\Dockerfile

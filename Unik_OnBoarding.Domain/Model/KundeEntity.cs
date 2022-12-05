@@ -20,4 +20,7 @@ public class KundeEntity
 
     // Navigation prop
     public List<ProjektEntity>? Projekt { get; set; } // En kunde kunde har null eller flere Projekt (derfor har vi set et ?)
+
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
 }

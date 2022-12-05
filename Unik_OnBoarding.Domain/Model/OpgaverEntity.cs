@@ -12,4 +12,7 @@ public class OpgaverEntity
     public string OpgaveName { get; set; }
 
     public string Beskrivelse { get; set; }
+
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
 }

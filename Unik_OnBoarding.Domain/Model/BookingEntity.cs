@@ -10,25 +10,30 @@ public class BookingEntity
     {
     }
 
-    public BookingEntity(Guid bookId, Guid projekt, Guid opgaveId, Guid medarbejderId, DateTime startDate,
+    public BookingEntity(Guid bookId, Guid projektid, Guid opgaveId, Guid medarbejderId, DateTime startDate,
         DateTime endDate)
     {
         BookId = bookId;
-        ProjektId = projekt;
+        ProjektId = projektid;
         OpgaveId = opgaveId;
         MedarbejderId = medarbejderId;
         StartDate = startDate;
         EndDate = endDate;
         Duration = BusinessDaysLeft(startDate, EndDate);
     }
-
-    [Key] public Guid BookId { get; set; }
+    [Key]
+    public Guid BookId { get; set; }
+    public int Duration { get; set; }
     public Guid ProjektId { get; set; }
     public Guid OpgaveId { get; set; }
     public Guid MedarbejderId { get; set; }
-    public int Duration { get; set; }
+
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
 
     // Navigation prop
+
+    [ForeignKey("OpgaveId")]
     public OpgaverEntity Opgave { get; set; }
 
     [ForeignKey("ProjektId")]

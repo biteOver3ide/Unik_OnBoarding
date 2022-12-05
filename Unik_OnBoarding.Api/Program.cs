@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Application;
 using Unik_OnBoarding.Persistance;
 using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoaring.SqlServerContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,10 +17,15 @@ builder.Services.AddSwaggerGen();
 // Database Migration
 // Add-Migration InitialMigration 
 // Update-Database 
-builder.Services.AddDbContext<AppDbContext>(
+//builder.Services.AddDbContext<Unik_OnBoardingContext>(
+//    options =>
+//        options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
+
+builder.Services.AddDbContext<Unik_OnBoardingContext>(
     options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString"),
-            x => x.MigrationsAssembly("Unik_OnBoarding.Persistance.User.Migartions")));
+            x => x.MigrationsAssembly("Unik_OnBoaring.SqlServerContext.Mirgrations")));
+
 
 // Dependency Injection
 builder.Services.AppServiceCollection();
