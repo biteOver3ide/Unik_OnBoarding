@@ -13,6 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Docker
+builder.Configuration.AddEnvironmentVariables();
 
 // Database Migration
 // Add-Migration InitialMigration 
@@ -21,10 +23,9 @@ builder.Services.AddSwaggerGen();
 //    options =>
 //        options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
 
-builder.Services.AddDbContext<Unik_OnBoardingContext>(
+builder.Services.AddDbContext<AppDbContext>(
     options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString"),
-            x => x.MigrationsAssembly("Unik_OnBoaring.SqlServerContext.Mirgrations")));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
 
 
 // Dependency Injection
