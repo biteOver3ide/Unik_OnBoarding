@@ -12,23 +12,34 @@ public class BookingService : IBookingService
         _httpClient = httpClient;
     }
 
-    public Task Create(BookingCreateDto dto)
+    async Task IBookingService.Create(BookingCreateDto dto)
+    {
+        {
+            var response = await _httpClient.PostAsJsonAsync("api/Booking", dto);
+
+            if (response.IsSuccessStatusCode)
+                return;
+
+            var message = await response.Content.ReadAsStringAsync();
+            throw new Exception(message);
+        }
+    }
+
+    Task IBookingService.Edit(BookingUpdateDto bookingUpdateViewModel)
     {
         throw new NotImplementedException();
     }
 
-    public Task Edit(BookingUpdateDto bookingUpdateViewModel)
+    Task<BookingQueryResultDto?> IBookingService.Get(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<BookingQueryResultDto?> Get(Guid id)
+    Task<IEnumerable<BookingQueryResultDto>?> IBookingService.GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<BookingQueryResultDto>?> GetAll()
-    {
-        throw new NotImplementedException();
-    }
+
+
 }

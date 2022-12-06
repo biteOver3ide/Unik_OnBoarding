@@ -12,24 +12,23 @@ public class KundeService : IKundeService
         _httpClient = httpClient;
     }
 
-    public async Task Create(KundeCreateDto dto)
+    async Task IKundeService.Create(KundeCreateDto dto)
     {
-        throw new NotImplementedException();
+        await _httpClient.PostAsJsonAsync("api/Kunde", dto);
     }
 
-    public Task Edit(KundeUpdateDto kundeUpdateViewModel)
+    async Task IKundeService.Edit(KundeUpdateDto kundeUpdateViewModel)
     {
-        throw new NotImplementedException();
+        await _httpClient.PutAsJsonAsync($"api/Kunde", kundeUpdateViewModel);
     }
 
-    public async Task<KundeQueryResultDto?> Get(Guid id)
+    async Task<KundeQueryResultDto?> IKundeService.Get(Guid id)
     {
         return await _httpClient.GetFromJsonAsync<KundeQueryResultDto>($"api/Kunde/{id}");
     }
 
-    public async Task<IEnumerable<KundeQueryResultDto>?> GetAll()
+    async Task<IEnumerable<KundeQueryResultDto>?> IKundeService.GetAll()
     {
         return await _httpClient.GetFromJsonAsync<List<KundeQueryResultDto>>("api/Kunde");
     }
-    //https://localhost:7241/api/GetAllKunder
 }
