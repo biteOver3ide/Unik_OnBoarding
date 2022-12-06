@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.User.Persistance;
-using Unik_OnBoarding.WebApp.Infrastructure.Contract;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 using Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,13 +44,24 @@ builder.Services.AddRazorPages(options =>
     //options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
 });
 
-builder.Services.AddHttpClient<IKundeService, KundeService>(client =>
-    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"])
-);
+// IHttpClientFactory
+builder.Services.AddHttpClient<IKompetenceService, KompetenceService>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
 
-builder.Services.AddHttpClient<IBooking, KundeService>(client =>
-    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"])
-);
+builder.Services.AddHttpClient<IKundeService, KundeService>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
+
+builder.Services.AddHttpClient<IBookingService, BookingService>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
+
+builder.Services.AddHttpClient<IMedarbejderService, MedarbejderService>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
+
+builder.Services.AddHttpClient<IOpgaverService, OpgaverService>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
+
+builder.Services.AddHttpClient<IProjektService, ProjektService>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
 
 var app = builder.Build();
 

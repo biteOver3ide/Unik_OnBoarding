@@ -18,6 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\Contract\Dtos\Projekt\" />
+    <Folder Include="Infrastructure\Contract\Dtos\Opgaver\" />
+    <Folder Include="Infrastructure\Contract\Dtos\Medarbejder\" />
+    <Folder Include="Infrastructure\Contract\Dtos\Kompetence\" />
+    <Folder Include="Infrastructure\Contract\Dtos\Booking\" />
     <Folder Include="Mappers\" />
   </ItemGroup>
 

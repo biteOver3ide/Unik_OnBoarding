@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dto;
-using Unik_OnBoarding.WebApp.Infrastructure.Contract;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Pages.KundePages
 {

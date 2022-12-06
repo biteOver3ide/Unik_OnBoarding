@@ -1,6 +1,6 @@
-﻿using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dto;
+﻿using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
 
-namespace Unik_OnBoarding.WebApp.Infrastructure.Contract;
+namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 public interface IKundeService
 {
