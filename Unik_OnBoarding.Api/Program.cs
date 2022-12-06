@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Application;
 using Unik_OnBoarding.Persistance;
 using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoaring.SqlServerContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Dependency Injection
+builder.Services.AppServiceCollection();
+builder.Services.AddPersistenceService();
 
 //Docker
 builder.Configuration.AddEnvironmentVariables();
@@ -27,9 +32,7 @@ builder.Services.AddDbContext<AppDbContext>(
         options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnectionString")));
 
 
-// Dependency Injection
-builder.Services.AppServiceCollection();
-builder.Services.AddPersistenceService();
+
 
 var app = builder.Build();
 

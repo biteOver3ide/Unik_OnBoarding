@@ -1,0 +1,169 @@
+﻿@page
+@model CreateModel
+@{
+}
+<section class="header d-flex justify-content-between">
+	<div class="fs-3">
+		Unik
+	</div>
+	<div class="fs-4 d-flex">
+		<a href="">Logout</a>
+	</div>
+</section>
+<div class="container bg-slate-200">
+	<section id="main">
+		<h1 class="text-4xl text-center py-10">Convertering</h1>
+		<div class="task-wrapper">
+			<div class="d-flex align-items-center">
+				<div class=" m-10 p-6 border-2 bg-blue-50 flex justify-between">
+					<div class="card w-100">
+						<div class="card-body">
+							<div class="dropdown">
+								<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+									Project 1.2
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+									<li>
+										<a class="dropdown-item" href="#">Project 2</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Project 3</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Project 4</a>
+									</li>
+								</ul>
+							</div>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+							<!-- <a href="#" class="btn btn-primary">Button</a> -->
+							<p>Task Filter</p>
+							<div>
+								<button class="btn btn-sm btn-primary">In Progress</button>
+								<button class="btn btn-sm btn-secondary">In Progress</button>
+								<button class="btn btn-sm btn-success">Completed</button>
+								<button class="btn btn-sm btn-danger">In Progress</button>
+								<button class="btn btn-sm btn-warning">In Progress</button>
+							</div>
+						</div>
+					</div>
+					<div class="card w-100 mr-2 mt-4">
+						<div class="card-body">
+							<h5 class="card-title">Client: <span class="text-danger">Girover Company</span></h5>
+							<p>
+								the project is to find a solution for technology company to organize tasks between developers.
+							</p>
+							<!-- <a href="#" class="btn btn-primary">Button</a> -->
+						</div>
+					</div>
+				</div>
+				<div style="width: 400px;">
+					<h2 class="text-center">Tasks Chart</h2>
+					<canvas id="myChart" width="200" height="200"></canvas>
+				</div>
+			</div>
+			<!-- <h2 for="project" class="mr-10 text-2xl">Completed tasks</h2> -->
+			<div class=" m-10 p-6 border-2 bg-blue-50">
+				<div class="">
+					<h2 for="project" class="mr-10 text-2xl">Tekninker tasks</h2>
+					<!-- Card Start -->
+					<div class="card text-black w-100">
+						<div class="card-header text-danger d-flex justify-content-between  j-card-header j-border-success fw-bold">Completed Tasks <span class="badge bg-success">Completed</span></div>
+						<div class="card-body">
+							<table class="table table-info">
+								<tr>
+									<td>Taks 1</td>
+									<td>11-11-2022</td>
+									<td class="text-primary">Description of this task</td>
+									<td class="text-success">competed</td>
+								</tr>
+								<tr>
+									<td>Taks 2</td>
+									<td>11-11-2022</td>
+									<td class="text-primary">Description of this task</td>
+									<td class="text-success">competed</td>
+								</tr>
+								<tr>
+									<td>Taks 3</td>
+									<td>11-11-2022</td>
+									<td class="text-primary">Description of this task</td>
+									<td class="text-success">competed</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<!-- Card END -->
+					<h2 for="project" class="mr-10 text-2xl">My tasks</h2>
+					<div class="d-flex flex-wrap">
+						<!-- Card Start -->
+						<div class="card text-black j-card">
+							<div class="card-header text-danger d-flex justify-content-between  j-card-header j-border-success fw-bold">Task 1.1 <span class="badge bg-success">Completed</span></div>
+							<div class="card-body">
+								<div class="d-flex justify-content-between">
+									<span>Start Date: <span class="text-danger">11-11-2022</span></span>
+									<span>End Date: <span class="text-danger">21-11-2022</span></span>
+									<span>Estimate: <span class="text-danger">10 days</span></span>
+								</div>
+								<!-- <div>End Date: <span class="">21-11-2022</span></div> -->
+								<p class="text-primary">
+									in this task you must install a server in the company.
+									in this task you must install a server in the company.
+									....
+									<br>
+									<a href="">more</a>
+								</p>
+								<div class="">
+									<button class="btn btn-sm btn-primary in-progress">In Progress</button>
+									<button class="btn btn-sm btn-success completed" task-id="2">Completed</button>
+									<!-- <button disabled class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+										Task Status
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+										<li><a class="dropdown-item" href="#">Start</a></li>
+										<li><a class="dropdown-item" href="#">In Progress</a></li>
+										<li><a class="dropdown-item" href="#">Pending</a></li>
+										<li><a class="dropdown-item" href="#">End</a></li>
+									</ul> -->
+								</div>
+							</div>
+						</div>
+						<!-- Card END -->
+						<!-- Card Start -->
+						<div class="card j-card text-black">
+							<div class="card-header text-danger d-flex justify-content-between  j-card-header j-border-warning fw-bold">Task 1.1 <span class="badge bg-warning">Completed</span></div>
+							<div class="card-body">
+								<div class="d-flex justify-content-between">
+									<span>Start Date: <span class="text-danger">11-11-2022</span></span>
+									<span>End Date: <span class="text-danger">21-11-2022</span></span>
+									<span>Estimate: <span class="text-danger">10 days</span></span>
+								</div>
+								<!-- <div>End Date: <span class="">21-11-2022</span></div> -->
+								<p class="text-primary">
+									in this task you must install a server in the company.
+									in this task you must install a server in the company.
+									....
+									<br>
+									<a href="">more</a>
+								</p>
+								<div class="">
+									<button class="btn btn-sm btn-primary in-progress">In Progress</button>
+									<button class="btn btn-sm btn-success completed" task-id="3">Completed</button>
+								</div>
+							</div>
+						</div>
+						<!-- Card END -->
+						<!-- Card END -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<section class="footer">
+	<div class="text-center">
+		Copyright 2022
+	</div>
+</section>
+<script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+<script src="~/js/chart.js"></script>

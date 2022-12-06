@@ -31,9 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoarding.Persistance.User.Migartions", "Unik_OnBoarding.Persistance.Migartions\Unik_OnBoarding.Persistance.User.Migartions.csproj", "{B1368BE4-830B-4136-929A-1ABCD73141B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBoaring.SqlServerContext", "Unik_OnBoaring.SqlServerContext\Unik_OnBoaring.SqlServerContext.csproj", "{07749C26-C4B5-4809-9624-EC8EC05C5C88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoaring.SqlServerContext", "Unik_OnBoaring.SqlServerContext\Unik_OnBoaring.SqlServerContext.csproj", "{07749C26-C4B5-4809-9624-EC8EC05C5C88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBoaring.SqlServerContext.Mirgrations", "Unik_OnBoaring.SqlServerContext.Mirgrations\Unik_OnBoaring.SqlServerContext.Mirgrations.csproj", "{2B71DEEE-5ECB-4C3B-A34E-5E7ED45F727C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoaring.SqlServerContext.Mirgrations", "Unik_OnBoaring.SqlServerContext.Mirgrations\Unik_OnBoaring.SqlServerContext.Mirgrations.csproj", "{2B71DEEE-5ECB-4C3B-A34E-5E7ED45F727C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{140A1B6B-DFC1-4A3A-8BD8-4F862BE48CC9}"
 EndProject

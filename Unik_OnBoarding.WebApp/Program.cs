@@ -7,11 +7,15 @@ using Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Docker
+builder.Configuration.AddEnvironmentVariables();
+Console.WriteLine(builder.Configuration.GetConnectionString("UserAppConnection"));
+
 var connectionString = builder.Configuration.GetConnectionString("UserAppConnection");
 builder.Services.AddDbContext<UserDbContext>(options =>
     options.UseSqlServer(connectionString,
         x => x.MigrationsAssembly("Unik_OnBoarding.Persistance.User.Migartions")));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+//builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // Add User Login
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
@@ -28,18 +32,23 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     })
     .AddEntityFrameworkStores<UserDbContext>();
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("AdminPolicy", policyBulder => policyBulder.RequireClaim("Admin"));
-});
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("AdminPolicy", policyBulder => policyBulder.RequireClaim("Admin"));
+//});
 
 builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeFolder("/KundePages");
-    options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
+    options.Conventions.AuthorizeFolder("/Admin");
+    //options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
 });
 
 builder.Services.AddHttpClient<IKundeService, KundeService>(client =>
+    client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"])
+);
+
+builder.Services.AddHttpClient<IBooking, KundeService>(client =>
     client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"])
 );
 
