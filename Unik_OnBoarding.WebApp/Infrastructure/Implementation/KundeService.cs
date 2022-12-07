@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Unik_OnBoarding.Application.Implementation.Kunde.dto;
+using Unik_OnBoarding.Persistance.Repositories;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 using KundeCreateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde.KundeCreateDto;
@@ -16,9 +17,9 @@ public class KundeService : IKundeService
         _httpClient = httpClient;
     }
 
-    public Task<IEnumerable<KundeDto>> GetAllDataAsync(Expression<Func<KundeDto, bool>>? filter = null)
+    public async Task<IEnumerable<KundeDto>> GetAllDataAsync(Expression<Func<KundeDto, bool>>? filter = null)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<IEnumerable<KundeDto>>($"api/Kunde");
     }
 
     public Task<KundeDto> GetByIdAsync(Guid Id, Expression<Func<KundeDto, bool>>? filter = null)

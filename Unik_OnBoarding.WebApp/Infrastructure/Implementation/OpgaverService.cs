@@ -36,8 +36,8 @@ public class OpgaverService : IOpgaverService
         throw new NotImplementedException();
     }
 
-    Task<IEnumerable<OpgaverDto>> IOpgaverService.GetAllDataAsync(Expression<Func<OpgaverDto, bool>>? filter)
+    async Task<IEnumerable<OpgaverDto>> IOpgaverService.GetAllDataAsync(Expression<Func<OpgaverDto, bool>>? filter)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<IEnumerable<OpgaverDto>>("api/Opgaver");
     }
 }

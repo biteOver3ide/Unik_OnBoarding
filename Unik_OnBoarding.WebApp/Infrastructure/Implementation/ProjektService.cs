@@ -36,8 +36,8 @@ public class ProjektService : IProjektService
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<ProjektDto>> GetAllDataAsync(Expression<Func<ProjektDto, bool>>? filter = null)
+    public async Task<IEnumerable<ProjektDto>> GetAllDataAsync(Expression<Func<ProjektDto, bool>>? filter = null)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<IEnumerable<ProjektDto>>($"api/Projekt");
     }
 }

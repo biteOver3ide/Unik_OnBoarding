@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using Unik_OnBoarding.Domain.Model;
 
-namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
+namespace Unik_OnBoarding.WebApp.Pages.Admin.ViewModel;
 
-public class BookingCreateDto
+public class CreateBookingDto
 {
     public Guid ProjectId { get; set; }
     public Guid OpgaveId { get; set; }
@@ -22,5 +21,4 @@ public class BookingCreateDto
     [DisplayName("Slut dato")]
     public DateTime EndDate { get; set; }
     public int Duration { get; set; }
-    public byte[] RowVersion { get; set; }
 }

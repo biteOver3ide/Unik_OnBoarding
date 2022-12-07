@@ -2,3 +2,83 @@
 @model Unik_OnBoarding.WebApp.Pages.Admin.Bookings.CreateModel
 @{
 }
+<form method="post">
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Ny Booking</h2>
+			<hr />
+		</div>
+		<div asp-validation-summary="All"></div>
+		@*<div class="mb-3">
+			<label asp-for="Booking.ProjectId"></label>
+			<input asp-for="Kunde.FullName" class="form-control" required />
+			<span asp-validation-for="Kunde.FullName" class="text-danger"></span>
+		</div>*@
+		@*<div class="mb-3">
+			<label> Vælg klient</label>
+			<select asp-for="Booking.ProjectId" asp-items="@(new SelectList(Model.KunderList,"KundeId","FullName"))" class="form-select" aria-label="Default select example"
+					required>
+				<option value="">Vælg en</option>
+			</select>
+		</div>*@
+		<div class="mb-3">
+			<label> Vælg Projek</label>
+			<select asp-for="Booking.ProjectId" asp-items="@(new SelectList(Model.ProjectsList,"ProjectId","ProjectTitle"))" class="form-select" aria-label="Default select example"
+					required>
+				<option value="">Vælg en</option>
+			</select>
+		</div>
+		<div class="mb-3">
+			<label> Vælg Opgave</label>
+			<select asp-for="Booking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList,"OpgaveId","Title"))" class="form-control" required>
+				<option value="">Vælg en</option>
+			</select>
+		</div>
+		<div class="mb-3">
+			<label> Vælg Medarbejde</label>
+			<select asp-for="Booking.MedarbejdeId" asp-items="@(new SelectList(Model.MedarbejderList,"MedarbejdeId","FirstName"))" class="form-control" required>
+				<option value="">Vælg en</option>
+			</select>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+		</div>
+		<div class="mb-3">
+			<div class="row align-items-center p-2">
+				<div class="col-3" id="firstDate">Start Dato:</div>
+				<div class="col-3">
+					<input type="datetime-local" class="form-control" asp-for="Booking.StartDate" />
+				</div>
+				<div class="col-3" id="secondDate">End Dato:</div>
+				<div class="col-3">
+					<input type="datetime-local" class="form-control" asp-for="Booking.EndDate"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<input type="number" class="form-control" asp-for="Booking.Duration" />
+		</div>
+
+		@*<div class="mb-3">
+			<label asp-for="Kunde.Email"></label>
+			<input asp-for="Kunde.Email" class="form-control" required />
+			<span asp-validation-for="Kunde.Email" class="text-danger"></span>
+		</div>*@
+		@*<div class="mb-3">
+			<label asp-for="Kunde.Phone"></label>
+			<input asp-for="Kunde.Phone" class="form-control" />
+			<span asp-validation-for="Kunde.Phone" class="text-danger"></span>
+		</div>*@
+		<button type="submit" class="btn btn-primary" style="width:150px;">Create</button>
+		<a asp-page="Index" class="btn btn-secondary" style="width:150px;"> Back to List</a>
+
+	</div>
+
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
