@@ -1,5 +1,9 @@
-﻿using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
+﻿using System.Linq.Expressions;
+using Unik_OnBoarding.Application.Implementation.Opgaver.dto;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
+using OpgaverCreateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver.OpgaverCreateDto;
+using OpgaverUpdateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver.OpgaverUpdateDto;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
@@ -28,6 +32,11 @@ public class OpgaverService : IOpgaverService
     }
 
     public Task<IEnumerable<OpgaverQueryResultDto>?> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<IEnumerable<OpgaverDto>> IOpgaverService.GetAllDataAsync(Expression<Func<OpgaverDto, bool>>? filter)
     {
         throw new NotImplementedException();
     }

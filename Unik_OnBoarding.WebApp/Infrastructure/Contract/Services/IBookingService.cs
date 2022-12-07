@@ -8,5 +8,6 @@ public interface IBookingService
     Task Edit(BookingUpdateDto bookingUpdateViewModel);
     Task<BookingQueryResultDto?> Get(Guid id);
     Task<IEnumerable<BookingQueryResultDto>?> GetAll();
+
 }
 

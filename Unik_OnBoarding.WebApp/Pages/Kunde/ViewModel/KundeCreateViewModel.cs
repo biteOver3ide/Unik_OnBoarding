@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Unik_OnBoarding.WebApp.Pages.KundePages.KundeViewModel;
+namespace Unik_OnBoarding.WebApp.Pages.Kunde.ViewModel;
 
 public class KundeCreateDto
 {

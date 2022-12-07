@@ -1,5 +1,9 @@
-﻿using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt;
+﻿using System.Linq.Expressions;
+using Unik_OnBoarding.Application.Implementation.Projekt.dto;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
+using ProjektCreateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt.ProjektCreateDto;
+using ProjektUpdateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt.ProjektUpdateDto;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
@@ -28,6 +32,11 @@ public class ProjektService : IProjektService
     }
 
     public Task<IEnumerable<ProjektQueryResultDto>?> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<ProjektDto>> GetAllDataAsync(Expression<Func<ProjektDto, bool>>? filter = null)
     {
         throw new NotImplementedException();
     }

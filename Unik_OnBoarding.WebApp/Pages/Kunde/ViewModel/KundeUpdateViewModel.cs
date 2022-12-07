@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Unik_OnBoarding.WebApp.Pages.KundePages.KundeViewModel;
+namespace Unik_OnBoarding.WebApp.Pages.Kunde.ViewModel;
 
-public class KundeIndexViewModel
+public class KundeUpdateDto
 {
     [Key] public Guid Kid { get; set; }
 
@@ -13,4 +13,5 @@ public class KundeIndexViewModel
     [Required][EmailAddress] public string Email { get; set; }
 
     public int Telefon { get; set; }
+
 }

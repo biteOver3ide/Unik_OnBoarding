@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
-namespace Unik_OnBoarding.WebApp.Pages.KundePages;
+namespace Unik_OnBoarding.WebApp.Pages.Kunde;
 
 public class IndexModel : PageModel
 {

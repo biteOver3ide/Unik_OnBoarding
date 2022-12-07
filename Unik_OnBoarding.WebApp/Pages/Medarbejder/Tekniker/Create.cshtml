@@ -1,0 +1,170 @@
+﻿@page
+@using Unik_OnBoarding.Domain.Model
+@model Unik_OnBoarding.WebApp.Pages.Medarbejder.Tekniker.CreateModel
+@{
+}
+
+<h2>Opret Medarbejder</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <label asp-for="Model.Fornavn" class="control-label"></label>
+                <input asp-for="Model.Fornavn" class="form-control" />
+                <span asp-validation-for="Model.Fornavn" class="text-danger"></span>
+            </div>
+	        <div class="form-group">
+		        <label asp-for="Model.Efternavn" class="control-label"></label>
+		        <input asp-for="Model.Efternavn" class="form-control" />
+		        <span asp-validation-for="Model.Efternavn" class="text-danger"></span>
+	        </div>
+	        <div class="form-group">
+		        <label asp-for="Model.Email" class="control-label"></label>
+                <input asp-for="Model.Email" class="form-control" />
+                <span asp-validation-for="Model.Email" class="text-danger"></span>
+	        </div>
+	        <div class="form-group">
+		        <label asp-for="Model.Telefon" class="control-label"></label>
+		        <input asp-for="Model.Telefon" class="form-control" />
+		        <span asp-validation-for="Model.Telefon" class="text-danger"></span>
+	        </div>
+@*	        <div class="dropdown">
+		        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+			        Vælg Jobtitel
+		        </a>
+
+		        <ul class="dropdown-menu">
+                    <li><a class="@Jobtitler.Tekniker" href="#">Tekniker</a></li>
+                    <li><a class="@Jobtitler.Konsulent" href="#">Konsulent</a></li>
+                    <li><a class="@Jobtitler.Konvertering" href="#">Konvertering</a></li>
+		        </ul>
+	        </div>*@
+	        <div class="form-group">
+                <input type="submit" value="Add Medarbejder" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@*<form>
+    <fieldset>
+	    <legend>Opret Medarbejder</legend>
+
+	    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+	    <div class="form-group row">
+		    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+		    <div class="col-sm-10">
+			    <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="email@example.com">
+		    </div>
+	    </div>
+	    <div class="form-group">
+		    <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+		    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	    </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="exampleSelect1" class="form-label mt-4">Example select</label>
+            <select class="form-select" id="exampleSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleSelect2" class="form-label mt-4">Example multiple select</label>
+            <select multiple="" class="form-select" id="exampleSelect2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4">Example textarea</label>
+            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="formFile" class="form-label mt-4">Default file input example</label>
+            <input class="form-control" type="file" id="formFile">
+        </div>
+        <fieldset class="form-group">
+            <legend class="mt-4">Radio buttons</legend>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                <label class="form-check-label" for="optionsRadios1">
+                    Option one is this and that—be sure to include why it's great
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                <label class="form-check-label" for="optionsRadios2">
+                    Option two can be something else and selecting it will deselect option one
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
+                <label class="form-check-label" for="optionsRadios3">
+                    Option three is disabled
+                </label>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <legend class="mt-4">Checkboxes</legend>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Default checkbox
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="">
+                <label class="form-check-label" for="flexCheckChecked">
+                    Checked checkbox
+                </label>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <legend class="mt-4">Switches</legend>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+            </div>
+        </fieldset>
+        <fieldset class="form-group">
+            <legend class="mt-4">Ranges</legend>
+            <label for="customRange1" class="form-label">Example range</label>
+            <input type="range" class="form-range" id="customRange1">
+            <label for="disabledRange" class="form-label">Disabled range</label>
+            <input type="range" class="form-range" id="disabledRange" disabled="">
+            <label for="customRange3" class="form-label">Example range</label>
+            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+</form>*@

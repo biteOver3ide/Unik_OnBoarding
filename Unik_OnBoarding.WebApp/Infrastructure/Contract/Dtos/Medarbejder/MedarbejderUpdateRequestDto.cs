@@ -1,10 +1,9 @@
-﻿using MediatR;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Unik_OnBoarding.Domain.Model;
 
-namespace Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.CreateMedarbejder;
+namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 
-public class CreateMedarbejderCommand : IRequest<Guid>
+public class MedarbejderUpdateRequestDto
 {
     [Key] public Guid MedarbejderId { get; set; }
 
@@ -20,6 +19,6 @@ public class CreateMedarbejderCommand : IRequest<Guid>
 
     public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
 
-    [Timestamp]
-    public byte[] RowVersion { get; set; }
+    //[Timestamp]
+    //public byte[] RowVersion { get; set; }
 }

@@ -17,4 +17,7 @@ public class UpdateMedarbejderCommand : IRequest
     [Required] public string Telefon { get; set; }
 
     public Jobtitler Job { get; set; }
+
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
 }

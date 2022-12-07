@@ -34,15 +34,15 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 
 //builder.Services.AddAuthorization(options =>
 //{
-//    options.AddPolicy("AdminPolicy", policyBulder => policyBulder.RequireClaim("Admin"));
+//    options.AddPolicy("TeknikerPolicy", policyBulder => policyBulder.RequireClaim("Tekniker"));
 //});
-
-builder.Services.AddRazorPages(options =>
-{
-    options.Conventions.AuthorizeFolder("/KundePages");
-    options.Conventions.AuthorizeFolder("/Admin");
-    //options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
-});
+builder.Services.AddRazorPages();
+//builder.Services.AddRazorPages(options =>
+//{
+//    options.Conventions.AuthorizeFolder("/Medarbejder/Tekniker", "TeknikerPolicy");
+//    //options.Conventions.AuthorizeFolder("/Admin");
+//    //options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
+//});
 
 // IHttpClientFactory
 builder.Services.AddHttpClient<IKompetenceService, KompetenceService>(client =>
