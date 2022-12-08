@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
-using Unik_OnBoarding.WebApp.Pages.Medarbejder.ViewModel;
 
-namespace Unik_OnBoarding.WebApp.Pages.Medarbejder.Tekniker;
+namespace Unik_OnBoarding.WebApp.Pages.Medarbejder;
 
 public class CreateModel : PageModel
 {

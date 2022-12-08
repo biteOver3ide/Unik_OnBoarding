@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
-namespace Unik_OnBoarding.WebApp.Pages.Medarbejder.Tekniker
+namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
 {
     public class IndexModel : PageModel
     {
