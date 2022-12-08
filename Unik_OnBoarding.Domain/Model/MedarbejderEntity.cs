@@ -16,7 +16,7 @@ public class MedarbejderEntity
 
     public Jobtitler Job { get; set; }
 
-    public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
+    //public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
 
     [Timestamp]
     public byte[] RowVersion { get; set; }

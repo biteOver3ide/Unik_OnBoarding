@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 using Unik_OnBoarding.WebApp.Pages.Medarbejder.ViewModel;
@@ -15,25 +16,20 @@ public class CreateModel : PageModel
         _medarbejderService = medarbejderService;
     }
 
-    [BindProperty] public MedarbejderCreateViewModel Model { get; set; } = new();
+    [BindProperty] public MedarbejderCreateRequestDto crt { get; set; }
 
     public async Task<IActionResult> OnPost()
     {
-        var dto = new MedarbejderCreateRequestDto
-        {
-            MedarbejderId = Model.MedarbejderId,Fornavn = Model.Fornavn, Efternavn = Model.Efternavn, Email = Model.Email, Job= Model.Job, Kompetencer = Model.Kompetencer, Telefon = Model.Telefon
-        };
         try
         {
-            await _medarbejderService.Create(dto);
+            if (!ModelState.IsValid) return Page();
+            await _medarbejderService.Create(crt);
+            return new RedirectToPageResult("/Medarbejder/Tekniker/Index");
         }
-        catch (Exception e)
+        catch (DbUpdateConcurrencyException e)
         {
-            ModelState.AddModelError(string.Empty, e.Message);
+            ModelState.AddModelError(string.Empty, "Concurrency conflict");
             return Page();
         }
-
-
-        return new RedirectToPageResult("/Medarbejder/Tekniker/Index");
     }
 }

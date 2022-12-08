@@ -6,11 +6,9 @@ namespace Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.Crea
 
 public class CreateMedarbejderCommand : IRequest<Guid>
 {
-    [Key] public Guid MedarbejderId { get; set; }
-
     [Required] public string Fornavn { get; set; }
 
-    public string Efternavn { get; set; }
+    [Required] public string Efternavn { get; set; }
 
     [Required] public string Email { get; set; }
 
@@ -18,8 +16,5 @@ public class CreateMedarbejderCommand : IRequest<Guid>
 
     public Jobtitler Job { get; set; }
 
-    public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
-
-    [Timestamp]
-    public byte[] RowVersion { get; set; }
+    //public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
 }

@@ -4,7 +4,7 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 
 public class MedarbejderQueryResultDto
 {
-    public Guid MedarbejderId { get; set; }
+    //public Guid MedarbejderId { get; set; }
 
     public string Fornavn { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Application.Interfaceses;
 using Unik_OnBoarding.Domain.Model;
 
@@ -25,7 +26,7 @@ public class UpdateMedarbejderCommandHandler : IRequestHandler<UpdateMedarbejder
             UpdateMedarbejderCommandValidator updateCommandMedarbejderValidator = new();
             var result = await updateCommandMedarbejderValidator.ValidateAsync(request);
         }
-        catch (Exception e)
+        catch (DbUpdateConcurrencyException e)
         {
             Console.WriteLine(e.Message);
             throw;

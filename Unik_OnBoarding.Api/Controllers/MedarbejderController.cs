@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
 using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.CreateMedarbejder;
 using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.DeleteMedarbejder;
 using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Queries.GetMedarbejderDetail;
@@ -55,10 +56,11 @@ public class MedarbejderController : ControllerBase
     }
 
     // POST api/<MedarbejderController>
-    [HttpPost(Name = "Add new Medarbejder")]
+    [HttpPost]
+    [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Guid>> AddNewMedarbejder(
+    public async Task<ActionResult<Guid>> Post(
         [FromBody] CreateMedarbejderCommand createMedarbejderCommand)
     {
         try

@@ -5,8 +5,6 @@ namespace Unik_OnBoarding.Application.Implementation.Medarbejder.dto;
 
 public class MedarbejderCreateDto
 {
-    [Key] public Guid MedarbejderId { get; set; }
-
     public string Fornavn { get; set; }
 
     public string Efternavn { get; set; }
@@ -15,7 +13,7 @@ public class MedarbejderCreateDto
 
     public string Telefon { get; set; }
 
-    public Jobtitler Job { get; set; }
+    //public Jobtitler Job { get; set; }
 
-    public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
+    //public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
 }

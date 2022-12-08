@@ -46,5 +46,9 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
                 ProjektTitle = "Onboaring Kolding AAB"
             }
         );
+        modelBuilder.Entity<MedarbejderEntity>() // to save enum as a string
+            .Property(u => u.Job)
+            .HasConversion<string>()
+            .HasMaxLength(50);
     }
 }

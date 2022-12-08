@@ -34,10 +34,10 @@ namespace Unik_OnBoarding.WebApp.Pages.Admin.Bookings
         public IEnumerable<MedarbejderDto> MedarbejderList { get; set; }
         public async Task OnGet()
         {
-            //OpgaverList = await _OpgaveService.GetAllDataAsync();
+            OpgaverList = await _OpgaveService.GetAllDataAsync();
             MedarbejderList = await _MarbejdeService.GetAllDataAsync();
-            //ProjectsList = await _ProjectService.GetAllDataAsync(null);
-            //KunderList = await _KundeService.GetAllDataAsync();
+            ProjectsList = await _ProjectService.GetAllDataAsync(null);
+            KunderList = await _KundeService.GetAllDataAsync();
         }
 
 
