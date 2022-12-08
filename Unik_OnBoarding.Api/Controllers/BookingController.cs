@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Unik_OnBoarding.Application.Features.Stamdata.Booking.Command.CreateBooking;
-using Unik_OnBoarding.Application.Features.Stamdata.Booking.Command.DeleteBooking;
-using Unik_OnBoarding.Application.Features.Stamdata.Booking.Command.UpdateBooking;
-using Unik_OnBoarding.Application.Features.Stamdata.Booking.Queries.GetBookingDetail;
-using Unik_OnBoarding.Application.Features.Stamdata.Booking.Queries.GetBookingList;
+using Unik_OnBoarding.Application.Features.Booking.Command.CreateBooking;
+using Unik_OnBoarding.Application.Features.Booking.Command.DeleteBooking;
+using Unik_OnBoarding.Application.Features.Booking.Command.UpdateBooking;
+using Unik_OnBoarding.Application.Features.Booking.Queries.GetBookingDetail;
+using Unik_OnBoarding.Application.Features.Booking.Queries.GetBookingList;
 using Unik_OnBoarding.Application.Implementation.Booking.dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

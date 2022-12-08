@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.CreateKunde;
-using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.DeleteKunde;
-using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Command.UpdateKunde;
-using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Queries.GetKundeDetail;
-using Unik_OnBoarding.Application.Features.Stamdata.Kunde.Queries.GetKundeList;
+using Unik_OnBoarding.Application.Features.Kunde.Command.CreateKunde;
+using Unik_OnBoarding.Application.Features.Kunde.Command.DeleteKunde;
+using Unik_OnBoarding.Application.Features.Kunde.Command.UpdateKunde;
+using Unik_OnBoarding.Application.Features.Kunde.Queries.GetKundeDetail;
+using Unik_OnBoarding.Application.Features.Kunde.Queries.GetKundeList;
 using Unik_OnBoarding.Application.Implementation.Kunde.dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

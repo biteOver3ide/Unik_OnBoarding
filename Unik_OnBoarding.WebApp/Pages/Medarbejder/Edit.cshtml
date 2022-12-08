@@ -1,50 +1,56 @@
 ﻿@page
+@using Unik_OnBoarding.Domain.Model
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model EditModel
 @{
 }
-<h2>Edit</h2>
 
-<h4>Department</h4>
-@*<hr />
+<h2>Edit Medarbejder</h2>
+<hr/>
 <div class="row">
 	<div class="col-md-4">
-		<form asp-action="Edit">
+		<form method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<input type="hidden" asp-for="DepartmentID" />
-			<input type="hidden" asp-for="RowVersion" />
 			<div class="form-group">
-				<label asp-for="Name" class="control-label"></label>
-				<input asp-for="Name" class="form-control" />
-				<span asp-validation-for="Name" class="text-danger"></span>
+				<label asp-for="Urt.Fornavn" class="control-label"></label>
+				<input asp-for="Urt.Fornavn" class="form-control" />
+				<span asp-validation-for="Urt.Fornavn" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<label asp-for="Budget" class="control-label"></label>
-				<input asp-for="Budget" class="form-control" />
-				<span asp-validation-for="Budget" class="text-danger"></span>
+				<label asp-for="Urt.Efternavn" class="control-label"></label>
+				<input asp-for="Urt.Efternavn" class="form-control" />
+				<span asp-validation-for="Urt.Efternavn" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<label asp-for="StartDate" class="control-label"></label>
-				<input asp-for="StartDate" class="form-control" />
-				<span asp-validation-for="StartDate" class="text-danger"></span>
+				<label asp-for="Urt.Email" class="control-label"></label>
+				<input asp-for="Urt.Email" class="form-control" />
+				<span asp-validation-for="Urt.Email" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<label asp-for="InstructorID" class="control-label"></label>
-				<select asp-for="InstructorID" class="form-control" asp-items="ViewBag.InstructorID">
-					<option value="">-- Select Administrator --</option>
+				<label asp-for="Urt.Telefon" class="control-label"></label>
+				<input asp-for="Urt.Telefon" class="form-control" />
+				<span asp-validation-for="Urt.Telefon" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Urt.Job" class="control-label"></label>
+				<select asp-for="Urt.Job"
+				        class="form-control" 
+				        asp-items="Html.GetEnumSelectList<Jobtitler>()">
+					<option>Select type ...</option>
 				</select>
-				<span asp-validation-for="InstructorID" class="text-danger"></span>
+				<span asp-validation-for="Urt.Job" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<input type="submit" value="Save" class="btn btn-default" />
+				<input type="submit" value="Add Medarbejder" class="btn btn-primary form-control"/>
 			</div>
 		</form>
 	</div>
 </div>
 
 <div>
-	<a asp-action="Index">Back to List</a>
+	<a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {
 	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}*@
+}

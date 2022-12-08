@@ -27,7 +27,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Create">Dashboard</a>
 	                    </li>
 	                    <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Tekniker/Create">Medarbejder Create</a>
+		                    <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Create">Medarbejder Create</a>
+	                    </li>
+	                    <li class="nav-item">
+		                    <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Edit">Medarbejder Update</a>
 	                    </li>
 @*	                   @if (AuthService.AuthorizeAsync(User, "TeknikerPolicy").Result.Succeeded)
 	                   {

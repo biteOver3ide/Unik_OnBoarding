@@ -17,32 +17,21 @@ public class MedarbejderService : IMedarbejderService
     async Task IMedarbejderService.Create(MedarbejderCreateRequestDto dto)
     {
         var response = await _httpClient.PostAsJsonAsync("api/Medarbejder", dto);
-    }
 
-    async Task IMedarbejderService.CreateAsync(MedarbejderCreateRequestDto entity)
-    {
-        var response = await _httpClient.PostAsJsonAsync("api/Medarbejder", entity);
+        //if (response.IsSuccessStatusCode) return;
 
-        if (response.IsSuccessStatusCode)
-        {
-            var result = await response.Content.ReadAsStringAsync();
-            Console.WriteLine("Result: {0}", result);
-        }
-        else
-        {
-            Console.WriteLine("The request failed with status code: {0}", response.StatusCode);
-
-            // Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
-            Console.WriteLine(response.Headers.ToString());
-
-            var responseContent = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(responseContent);
-        }
+        //var message = await response.Content.ReadAsStringAsync();
+        //throw new Exception(message);
     }
 
     async Task IMedarbejderService.Edit(MedarbejderUpdateRequestDto medarbejderUpdateDto)
     {
-        await _httpClient.PutAsJsonAsync("api/Medarbejder", medarbejderUpdateDto);
+        var response = await _httpClient.PutAsJsonAsync("api/Medarbejder", medarbejderUpdateDto);
+
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
 
     async Task<MedarbejderQueryResultDto?> IMedarbejderService.Get(Guid id)

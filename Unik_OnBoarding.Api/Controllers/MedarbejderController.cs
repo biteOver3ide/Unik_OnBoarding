@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
-using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.CreateMedarbejder;
-using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Command.DeleteMedarbejder;
-using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Queries.GetMedarbejderDetail;
-using Unik_OnBoarding.Application.Features.Stamdata.Medarbejder.Queries.GetMedarbejderList;
+using Unik_OnBoarding.Application.Features.Medarbejder.Command.CreateMedarbejder;
+using Unik_OnBoarding.Application.Features.Medarbejder.Command.DeleteMedarbejder;
+using Unik_OnBoarding.Application.Features.Medarbejder.Queries.GetMedarbejderDetail;
+using Unik_OnBoarding.Application.Features.Medarbejder.Queries.GetMedarbejderList;
 using Unik_OnBoarding.Application.Implementation.Kunde.dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -76,7 +76,7 @@ public class MedarbejderController : ControllerBase
     }
 
     // PUT api/<MedarbejderController>/5
-    [HttpPut(Name = "Update Medarbejder")]
+    [HttpPut(Name = "EDIT")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> UpdateMedarbejder([FromBody] CreateMedarbejderCommand createMedarbejderCommand)

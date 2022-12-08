@@ -11,45 +11,34 @@
 		<form method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
-                <label asp-for="crt.Fornavn" class="control-label"></label>
-                <input asp-for="crt.Fornavn" class="form-control" />
-                <span asp-validation-for="crt.Fornavn" class="text-danger"></span>
+                <label asp-for="Crt.Fornavn" class="control-label"></label>
+                <input asp-for="Crt.Fornavn" class="form-control" />
+                <span asp-validation-for="Crt.Fornavn" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-                <label asp-for="crt.Efternavn" class="control-label"></label>
-                <input asp-for="crt.Efternavn" class="form-control" />
-                <span asp-validation-for="crt.Efternavn" class="text-danger"></span>
+                <label asp-for="Crt.Efternavn" class="control-label"></label>
+                <input asp-for="Crt.Efternavn" class="form-control" />
+                <span asp-validation-for="Crt.Efternavn" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-                <label asp-for="crt.Email" class="control-label"></label>
-                <input asp-for="crt.Email" class="form-control" />
-                <span asp-validation-for="crt.Email" class="text-danger"></span>
+                <label asp-for="Crt.Email" class="control-label"></label>
+                <input asp-for="Crt.Email" class="form-control" />
+                <span asp-validation-for="Crt.Email" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<label asp-for="crt.Telefon" class="control-label"></label>
-				<input asp-for="crt.Telefon" class="form-control" />
-				<span asp-validation-for="crt.Telefon" class="text-danger"></span>
+                <label asp-for="Crt.Telefon" class="control-label"></label>
+                <input asp-for="Crt.Telefon" class="form-control" />
+                <span asp-validation-for="Crt.Telefon" class="text-danger"></span>
 			</div>
 			<div class="form-group">
-				<label asp-for="crt.Job" class="control-label"></label>
-                <select asp-for="crt.Job"
+                <label asp-for="Crt.Job" class="control-label"></label>
+                <select asp-for="Crt.Job"
                         class="form-control" 
 				        asp-items="Html.GetEnumSelectList<Jobtitler>()">
 					<option>Select type ...</option>
 				</select>
-                <span asp-validation-for="crt.Job" class="text-danger"></span>
+                <span asp-validation-for="Crt.Job" class="text-danger"></span>
 			</div>
-			@*	        <div class="dropdown">
-		        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-			        Vælg Jobtitel
-		        </a>
-
-		        <ul class="dropdown-menu">
-                    <li><a class="@Jobtitler.Tekniker" href="#">Tekniker</a></li>
-                    <li><a class="@Jobtitler.Konsulent" href="#">Konsulent</a></li>
-                    <li><a class="@Jobtitler.Konvertering" href="#">Konvertering</a></li>
-		        </ul>
-	        </div>*@
 			<div class="form-group">
 				<input type="submit" value="Add Medarbejder" class="btn btn-primary form-control"/>
 			</div>

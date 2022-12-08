@@ -8,8 +8,7 @@ public interface IMedarbejderService
 {
     Task Create(MedarbejderCreateRequestDto dto);
     Task Edit(MedarbejderUpdateRequestDto medarbejderUpdateDto);
-    Task<MedarbejderQueryResultDto?> Get(Guid id);
+    Task<MedarbejderQueryResultDto> Get(Guid id);
     Task<IEnumerable<MedarbejderQueryResultDto>?> GetAll();
-    Task CreateAsync(MedarbejderCreateRequestDto entity);
     Task<IEnumerable<MedarbejderDto>> GetAllDataAsync(Expression<Func<MedarbejderDto, bool>>? filter = null);
 }

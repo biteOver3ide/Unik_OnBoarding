@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.CreateProjekt;
-using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.DeleteProjekt;
-using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Command.UpdateProjekt;
-using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Notifications;
-using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Queries.GetProjektDetail;
-using Unik_OnBoarding.Application.Features.Stamdata.Projekt.Queries.GetProjektList;
+using Unik_OnBoarding.Application.Features.Projekt.Command.CreateProjekt;
+using Unik_OnBoarding.Application.Features.Projekt.Command.DeleteProjekt;
+using Unik_OnBoarding.Application.Features.Projekt.Command.UpdateProjekt;
+using Unik_OnBoarding.Application.Features.Projekt.Notifications;
+using Unik_OnBoarding.Application.Features.Projekt.Queries.GetProjektDetail;
+using Unik_OnBoarding.Application.Features.Projekt.Queries.GetProjektList;
 using Unik_OnBoarding.Application.Implementation.Projekt.dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

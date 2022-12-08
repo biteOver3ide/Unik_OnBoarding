@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Unik_OnBoarding.Application.Features.Stamdata.Kompetence.Command.CreateKompetence;
-using Unik_OnBoarding.Application.Features.Stamdata.Kompetence.Command.DeleteKompetence;
-using Unik_OnBoarding.Application.Features.Stamdata.Kompetence.Command.UpdateKompetence;
-using Unik_OnBoarding.Application.Features.Stamdata.Kompetence.Queries.GetKompetenceDetail;
-using Unik_OnBoarding.Application.Features.Stamdata.Kompetence.Queries.GetKompetenceList;
+using Unik_OnBoarding.Application.Features.Kompetence.Command.CreateKompetence;
+using Unik_OnBoarding.Application.Features.Kompetence.Command.DeleteKompetence;
+using Unik_OnBoarding.Application.Features.Kompetence.Command.UpdateKompetence;
+using Unik_OnBoarding.Application.Features.Kompetence.Queries.GetKompetenceDetail;
+using Unik_OnBoarding.Application.Features.Kompetence.Queries.GetKompetenceList;
 using Unik_OnBoarding.Application.Implementation.Kompetencer.dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

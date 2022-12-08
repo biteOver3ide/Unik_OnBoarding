@@ -15,14 +15,16 @@ public class CreateModel : PageModel
         _medarbejderService = medarbejderService;
     }
 
-    [BindProperty] public MedarbejderCreateRequestDto crt { get; set; }
+    [BindProperty] public MedarbejderCreateRequestDto Crt { get; set; }
 
     public async Task<IActionResult> OnPost()
     {
+
+        if (!ModelState.IsValid) return Page();
+
         try
         {
-            if (!ModelState.IsValid) return Page();
-            await _medarbejderService.Create(crt);
+            await _medarbejderService.Create(Crt);
             return new RedirectToPageResult("/Medarbejder/Tekniker/Index");
         }
         catch (DbUpdateConcurrencyException e)

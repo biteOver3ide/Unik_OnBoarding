@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Unik_OnBoarding.Application.Features.Stamdata.Opgaver.Command.CreateOpgaver;
-using Unik_OnBoarding.Application.Features.Stamdata.Opgaver.Command.DeleteOpgaver;
-using Unik_OnBoarding.Application.Features.Stamdata.Opgaver.Command.UpdateOpgaver;
-using Unik_OnBoarding.Application.Features.Stamdata.Opgaver.Queries.GetOpgaverDetail;
-using Unik_OnBoarding.Application.Features.Stamdata.Opgaver.Queries.GetOpgaverList;
+using Unik_OnBoarding.Application.Features.Opgaver.Command.CreateOpgaver;
+using Unik_OnBoarding.Application.Features.Opgaver.Command.DeleteOpgaver;
+using Unik_OnBoarding.Application.Features.Opgaver.Command.UpdateOpgaver;
+using Unik_OnBoarding.Application.Features.Opgaver.Queries.GetOpgaverDetail;
+using Unik_OnBoarding.Application.Features.Opgaver.Queries.GetOpgaverList;
 using Unik_OnBoarding.Application.Implementation.Opgaver.dto;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
