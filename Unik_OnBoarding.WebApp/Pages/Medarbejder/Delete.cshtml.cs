@@ -6,24 +6,24 @@ using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
 {
-    public class EditModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly IMedarbejderService _medarbejderService;
 
-        public EditModel(IMedarbejderService medarbejderService)
+        public DeleteModel(IMedarbejderService medarbejderService)
         {
             _medarbejderService = medarbejderService;
         }
 
-        [BindProperty] public MedarbejderQueryResultDto Urt { get; set; }
+        [BindProperty] public MedarbejderQueryResultDto Drt { get; set; }
 
-        public async Task<IActionResult> OnGet(Guid Id)
+        public async Task<IActionResult> OnGet(Guid id)
         {
-            if (Id == null) return NotFound();
+            if (id == null) return NotFound();
 
             try
             {
-                Urt = await _medarbejderService.Get(Id);
+                Drt = await _medarbejderService.Get(id);
             }
             catch (Exception e)
             {
@@ -35,21 +35,19 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
         }
 
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost(Guid id)
         {
-
             if (!ModelState.IsValid)
-                return Page( );
-
+                return Page();
             try
             {
-                await _medarbejderService.Edit(Urt);
+                await _medarbejderService.Delete(id);
                 return RedirectToPage("/Medarbejder/Index");
             }
             catch (DbUpdateConcurrencyException e)
             {
                 ModelState.AddModelError(string.Empty, $"Concurrency conflict {e}");
-                return Page( );
+                return Page();
             }
         }
     }

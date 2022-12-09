@@ -14,9 +14,10 @@ public class MedarbejderService : IMedarbejderService
         _httpClient = httpClient;
     }
 
-    async Task IMedarbejderService.Create(MedarbejderCreateRequestDto dto)
+    async Task IMedarbejderService.Create(MedarbejderCreateRequestDto medarbejderCreatedto)
     {
-        var response = await _httpClient.PostAsJsonAsync("api/Medarbejder", dto);
+        var response =
+            await _httpClient.PostAsJsonAsync("api/Medarbejder", medarbejderCreatedto);
 
         if (response.IsSuccessStatusCode) return;
 
@@ -24,14 +25,20 @@ public class MedarbejderService : IMedarbejderService
         throw new Exception(message);
     }
 
-    async Task IMedarbejderService.Edit(MedarbejderQueryResultDto editDto)
+    async Task IMedarbejderService.Delete(Guid id)
     {
-        /*var response = */await _httpClient.PutAsJsonAsync("api/Medarbejder", editDto);
+        await _httpClient.DeleteAsync($"api/Medarbejder/{id}");
+    }
 
-        //if (response.IsSuccessStatusCode) return;
+    async Task IMedarbejderService.Edit(MedarbejderQueryResultDto medarbejderUpdateDto)
+    {
+        var response =
+            await _httpClient.PutAsJsonAsync("api/Medarbejder", medarbejderUpdateDto);
 
-        //var message = await response.Content.ReadAsStringAsync();
-        //throw new Exception(message);
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
 
     async Task<MedarbejderQueryResultDto?> IMedarbejderService.Get(Guid id)

@@ -25,6 +25,7 @@ public class MedarbejderController : ControllerBase
 
     // GET: api/<MedarbejderController>
     [HttpGet]
+    [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetAllMedarbejder()
@@ -41,6 +42,7 @@ public class MedarbejderController : ControllerBase
 
     // GET api/<MedarbejderController>/5
     [HttpGet("{id:Guid}", Name = "Get Medarbejder by ID")]
+    [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<KundeDto>> GetMedarbejderByID(Guid id)
@@ -78,6 +80,7 @@ public class MedarbejderController : ControllerBase
 
     // PUT api/<MedarbejderController>/5
     [HttpPut(Name = "EDIT")]
+    [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> UpdateMedarbejder([FromBody] UpdateMedarbejderCommand updateMedarbejderCommand)
@@ -96,6 +99,7 @@ public class MedarbejderController : ControllerBase
 
     // DELETE api/<MedarbejderController>/5
     [HttpDelete("{id:Guid}", Name = "Delete Medarbejder")]
+    [Consumes(MediaTypeNames.Application.Json)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> DeleteMedarbejder(Guid id)

@@ -16,5 +16,4 @@ public class CreateMedarbejderCommand : IRequest<Guid>
 
     public Jobtitler Job { get; set; }
 
-    //public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
 }
