@@ -15,7 +15,7 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
             _medarbejderService = medarbejderService;
         }
 
-        [BindProperty] public MedarbejderUpdateRequestDto Urt { get; set; }
+        [BindProperty] public MedarbejderQueryResultDto Urt { get; set; }
 
         public async Task<IActionResult> OnGet(Guid Id)
         {
@@ -37,18 +37,20 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
 
         public async Task<IActionResult> OnPost()
         {
-            if (!ModelState.IsValid) return Page();
+            await _medarbejderService.Edit(Urt);
+            return new RedirectToPageResult("/Medarbejder/Index");
 
-            try
-            {
-                await _medarbejderService.Edit(new MedarbejderUpdateRequestDto());
-                return new RedirectToPageResult("/Medarbejder/Index");
-            }
-            catch (DbUpdateConcurrencyException e)
-            {
-                ModelState.AddModelError(string.Empty, "Concurrency conflict");
-                return Page();
-            }
+            //if (!ModelState.IsValid) return Page();
+
+            //try
+            //{
+
+            //}
+            //catch (DbUpdateConcurrencyException e)
+            //{
+            //    ModelState.AddModelError(string.Empty, "Concurrency conflict");
+            //    return Page();
+            //}
         }
     }
 }

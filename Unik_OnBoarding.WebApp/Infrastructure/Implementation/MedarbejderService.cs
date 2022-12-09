@@ -18,20 +18,20 @@ public class MedarbejderService : IMedarbejderService
     {
         var response = await _httpClient.PostAsJsonAsync("api/Medarbejder", dto);
 
-        //if (response.IsSuccessStatusCode) return;
-
-        //var message = await response.Content.ReadAsStringAsync();
-        //throw new Exception(message);
-    }
-
-    async Task IMedarbejderService.Edit(MedarbejderUpdateRequestDto medarbejderUpdateDto)
-    {
-        var response = await _httpClient.PutAsJsonAsync("api/Medarbejder", medarbejderUpdateDto);
-
         if (response.IsSuccessStatusCode) return;
 
         var message = await response.Content.ReadAsStringAsync();
         throw new Exception(message);
+    }
+
+    async Task IMedarbejderService.Edit(MedarbejderQueryResultDto editDto)
+    {
+        /*var response = */await _httpClient.PutAsJsonAsync("api/Medarbejder", editDto);
+
+        //if (response.IsSuccessStatusCode) return;
+
+        //var message = await response.Content.ReadAsStringAsync();
+        //throw new Exception(message);
     }
 
     async Task<MedarbejderQueryResultDto?> IMedarbejderService.Get(Guid id)

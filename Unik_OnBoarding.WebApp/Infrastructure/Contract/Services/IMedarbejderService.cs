@@ -7,8 +7,8 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 public interface IMedarbejderService
 {
     Task Create(MedarbejderCreateRequestDto dto);
-    Task Edit(MedarbejderUpdateRequestDto medarbejderUpdateDto);
-    Task<MedarbejderQueryResultDto> Get(Guid id);
+    Task Edit(MedarbejderQueryResultDto medarbejderUpdateDto);
+    Task<MedarbejderQueryResultDto?> Get(Guid id);
     Task<IEnumerable<MedarbejderQueryResultDto>?> GetAll();
     Task<IEnumerable<MedarbejderDto>> GetAllDataAsync(Expression<Func<MedarbejderDto, bool>>? filter = null);
 }

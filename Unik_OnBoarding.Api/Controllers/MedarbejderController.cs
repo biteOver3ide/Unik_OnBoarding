@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using Unik_OnBoarding.Application.Features.Medarbejder.Command.CreateMedarbejder;
 using Unik_OnBoarding.Application.Features.Medarbejder.Command.DeleteMedarbejder;
+using Unik_OnBoarding.Application.Features.Medarbejder.Command.UpdateMedarbejder;
 using Unik_OnBoarding.Application.Features.Medarbejder.Queries.GetMedarbejderDetail;
 using Unik_OnBoarding.Application.Features.Medarbejder.Queries.GetMedarbejderList;
 using Unik_OnBoarding.Application.Implementation.Kunde.dto;
@@ -79,11 +80,11 @@ public class MedarbejderController : ControllerBase
     [HttpPut(Name = "EDIT")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> UpdateMedarbejder([FromBody] CreateMedarbejderCommand createMedarbejderCommand)
+    public async Task<ActionResult> UpdateMedarbejder([FromBody] UpdateMedarbejderCommand updateMedarbejderCommand)
     {
         try
         {
-            await _mediator.Send(createMedarbejderCommand);
+            await _mediator.Send(updateMedarbejderCommand);
             return NoContent();
         }
         catch (Exception e)
