@@ -37,20 +37,22 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
 
         public async Task<IActionResult> OnPost()
         {
-            await _medarbejderService.Edit(Urt);
-            return new RedirectToPageResult("/Medarbejder/Index");
+            //await _medarbejderService.Edit(Urt);
+            //return RedirectToPage("/Medarbejder/Index");
 
-            //if (!ModelState.IsValid) return Page();
+            if (!ModelState.IsValid)
+                return Page( );
 
-            //try
-            //{
-
-            //}
-            //catch (DbUpdateConcurrencyException e)
-            //{
-            //    ModelState.AddModelError(string.Empty, "Concurrency conflict");
-            //    return Page();
-            //}
+            try
+            {
+                await _medarbejderService.Edit(Urt);
+                return RedirectToPage("/Medarbejder/Index");
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                ModelState.AddModelError(string.Empty, $"Concurrency conflict {e}");
+                return Page( );
+            }
         }
     }
 }
