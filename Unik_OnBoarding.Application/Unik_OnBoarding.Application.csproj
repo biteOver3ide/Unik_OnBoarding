@@ -8,9 +8,9 @@
 
   <ItemGroup>
     <Folder Include="Implementation\Kunde.dto\" />
-    <Folder Include="Implementation\Medarbejder.dto\" />
     <Folder Include="Implementation\Kompetencer.dto\" />
     <Folder Include="Implementation\Booking.dto\" />
+    <Folder Include="Implementation\Medarbejder.dto\" />
     <Folder Include="Implementation\Opgaver.dto\" />
   </ItemGroup>
 

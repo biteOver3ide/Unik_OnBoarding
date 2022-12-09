@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Unik_OnBoarding.Domain.Model;
+using Unik_OnBoarding.Persistance.Migrations;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 
@@ -17,8 +18,5 @@ public class MedarbejderUpdateRequestDto
 
     public Jobtitler Job { get; set; }
 
-    //public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
-
-    //[Timestamp]
-    //public byte[] RowVersion { get; set; }
+    [Timestamp] public RowVersion RowVersion { get; set; }
 }

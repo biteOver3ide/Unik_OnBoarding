@@ -25,7 +25,7 @@ public class CreateModel : PageModel
         try
         {
             await _medarbejderService.Create(Crt);
-            return new RedirectToPageResult("/Medarbejder/Tekniker/Index");
+            return new RedirectToPageResult("/Medarbejder/Index");
         }
         catch (DbUpdateConcurrencyException e)
         {
