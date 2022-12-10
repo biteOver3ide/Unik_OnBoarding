@@ -1,0 +1,62 @@
+﻿@page
+@model Unik_OnBoarding.WebApp.Pages.Kunde.DeleteModel
+@{
+}
+<h2>Delete Kunde</h2>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<input type="hidden" asp-for="Drt.RowVersion" class="form-control" />
+			<input type="hidden" asp-for="Drt.Kid" class="form-control" />
+			<div class="form-group">
+				<label asp-for="Drt.Fornavn" class="control-label"></label>
+				<input asp-for="Drt.Fornavn" class="form-control" />
+				<span asp-validation-for="Drt.Fornavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Efternavn" class="control-label"></label>
+				<input asp-for="Drt.Efternavn" class="form-control" />
+				<span asp-validation-for="Drt.Efternavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Firmanavn" class="control-label"></label>
+				<input asp-for="Drt.Firmanavn" class="form-control" />
+				<span asp-validation-for="Drt.Firmanavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Cvr" class="control-label"></label>
+				<input asp-for="Drt.Cvr" class="form-control" />
+				<span asp-validation-for="Drt.Cvr" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Email" class="control-label"></label>
+				<input asp-for="Drt.Email" class="form-control" />
+				<span asp-validation-for="Drt.Email" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Telefon" class="control-label"></label>
+				<input asp-for="Drt.Telefon" class="form-control" />
+				<span asp-validation-for="Drt.Telefon" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Adresse" class="control-label"></label>
+				<input asp-for="Drt.Adresse" class="form-control" />
+				<span asp-validation-for="Drt.Adresse" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Delete Kunde" class="btn btn-primary form-control" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}

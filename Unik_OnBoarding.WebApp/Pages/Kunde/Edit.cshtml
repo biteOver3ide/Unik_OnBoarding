@@ -1,0 +1,62 @@
+﻿@page
+@model Unik_OnBoarding.WebApp.Pages.Kunde.EditModel
+@{
+}
+<h2>Edit Kunde</h2>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<input type="hidden" asp-for="Urt.RowVersion" class="form-control" />
+			<input type="hidden" asp-for="Urt.Kid" class="form-control" />
+			<div class="form-group">
+				<label asp-for="Urt.Fornavn" class="control-label"></label>
+				<input asp-for="Urt.Fornavn" class="form-control" />
+				<span asp-validation-for="Urt.Fornavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Urt.Efternavn" class="control-label"></label>
+				<input asp-for="Urt.Efternavn" class="form-control" />
+				<span asp-validation-for="Urt.Efternavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Urt.Firmanavn" class="control-label"></label>
+				<input asp-for="Urt.Firmanavn" class="form-control" />
+				<span asp-validation-for="Urt.Firmanavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Urt.Cvr" class="control-label"></label>
+				<input asp-for="Urt.Cvr" class="form-control" />
+				<span asp-validation-for="Urt.Cvr" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Urt.Email" class="control-label"></label>
+				<input asp-for="Urt.Email" class="form-control" />
+				<span asp-validation-for="Urt.Email" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Urt.Telefon" class="control-label"></label>
+				<input asp-for="Urt.Telefon" class="form-control" />
+				<span asp-validation-for="Urt.Telefon" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Urt.Adresse" class="control-label"></label>
+				<input asp-for="Urt.Adresse" class="form-control" />
+				<span asp-validation-for="Urt.Adresse" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Update Kunde" class="btn btn-primary form-control" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}

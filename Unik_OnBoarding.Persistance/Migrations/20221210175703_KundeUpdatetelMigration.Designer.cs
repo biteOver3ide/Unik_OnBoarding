@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unik_OnBoarding.Persistance.DbContext;
 
@@ -11,9 +12,10 @@ using Unik_OnBoarding.Persistance.DbContext;
 namespace Unik_OnBoarding.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221210175703_KundeUpdatetelMigration")]
+    partial class KundeUpdatetelMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -123,9 +125,8 @@ namespace Unik_OnBoarding.Persistance.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<string>("Telefon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Telefon")
+                        .HasColumnType("int");
 
                     b.HasKey("Kid");
 
@@ -141,7 +142,7 @@ namespace Unik_OnBoarding.Persistance.Migrations
                             Email = "aab@vejle.dk",
                             Firmanavn = "AAB",
                             Fornavn = "Søren",
-                            Telefon = "41424344"
+                            Telefon = 41424344
                         },
                         new
                         {
@@ -152,7 +153,7 @@ namespace Unik_OnBoarding.Persistance.Migrations
                             Email = "bo-to@vejle.dk",
                             Firmanavn = "Bo-To",
                             Fornavn = "Jan",
-                            Telefon = "41785968"
+                            Telefon = 41785968
                         });
                 });
 

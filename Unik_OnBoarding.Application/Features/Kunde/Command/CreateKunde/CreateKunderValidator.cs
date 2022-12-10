@@ -6,9 +6,9 @@ public class CreateKunderValidator : AbstractValidator<CreateKunderCommand>
 {
     public CreateKunderValidator()
     {
-        //RuleFor(k => k.Kid)
-        //    .NotEmpty().WithMessage("Skal ikke være tomt")
-        //    .NotNull();
+        RuleFor(c => c.Cvr)
+            .NotEmpty().WithMessage("Skal ikke være tomt")
+            .NotNull();
 
         RuleFor(e => e.Email)
             .NotEmpty()

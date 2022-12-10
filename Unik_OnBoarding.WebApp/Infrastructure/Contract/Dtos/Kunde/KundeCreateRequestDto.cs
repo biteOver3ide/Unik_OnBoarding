@@ -3,10 +3,8 @@ using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
 
-public class KundeQueryResultDto
+public class KundeCreateRequestDto
 {
-    [Key] public Guid Kid { get; set; }
-
     [StringLength(30)]
     [MinLength(3, ErrorMessage = "{0} må ikke være korter end {1} bogstaver. ")]
     [Required(ErrorMessage = "indtast et gyldig {0}")]
@@ -42,6 +40,4 @@ public class KundeQueryResultDto
     public string Adresse { get; set; }
 
     //public List<ProjektEntity>? Projekt { get; set; }
-
-    [Timestamp] public byte[] RowVersion { get; set; }
 }
