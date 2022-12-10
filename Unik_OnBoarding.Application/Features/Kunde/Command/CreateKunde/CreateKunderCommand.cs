@@ -4,8 +4,6 @@ namespace Unik_OnBoarding.Application.Features.Kunde.Command.CreateKunde;
 
 public class CreateKunderCommand : IRequest<Guid>
 {
-    public Guid Kid { get; set; }
-
     public string Name { get; set; }
 
     public string Email { get; set; }

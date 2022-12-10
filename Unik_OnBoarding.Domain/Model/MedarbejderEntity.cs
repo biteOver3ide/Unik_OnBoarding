@@ -6,13 +6,13 @@ public class MedarbejderEntity
 {
     [Key] public Guid MedarbejderId { get; set; }
 
-    public string Fornavn { get; set; }
+    [Required] public string Fornavn { get; set; }
 
-    public string Efternavn { get; set; }
+    [Required] public string Efternavn { get; set; }
 
-    public string Email { get; set; }
+    [Required] public string Email { get; set; }
 
-    public string Telefon { get; set; }
+    [Required] public string Telefon { get; set; }
 
     public Jobtitler Job { get; set; }
 

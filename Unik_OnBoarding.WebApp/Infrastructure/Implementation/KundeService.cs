@@ -4,7 +4,6 @@ using Unik_OnBoarding.Persistance.Repositories;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 using KundeCreateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde.KundeCreateDto;
-using KundeUpdateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde.KundeUpdateDto;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
