@@ -7,18 +7,18 @@ public class MedarbejderQueryResultDto
 {
     [Key] public Guid MedarbejderId { get; set; }
 
-    [Required] public string Fornavn { get; set; }
+    [Required(ErrorMessage = "indtast et gyldig navn")]
+    public string Fornavn { get; set; }
 
+    [Required(ErrorMessage = "indtast et gyldig efternavn")]
     public string Efternavn { get; set; }
 
     [EmailAddress]
-    [Compare("GentageEmail")]
     [Required(ErrorMessage = "indtast en gyldig email")]
     public string Email { get; set; }
 
-    public string GentageEmail { get; set; }
-
-    [Required] public string Telefon { get; set; }
+    [Required(ErrorMessage = "indtast en gyldig telefon nummer")]
+    public string Telefon { get; set; }
 
     public Jobtitler Job { get; set; }
 
