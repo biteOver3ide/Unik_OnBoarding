@@ -9,7 +9,12 @@ public class MedarbejderCreateRequestDto
 
     public string Efternavn { get; set; }
 
-    [Required] public string Email { get; set; }
+    [EmailAddress]
+    [Compare("GentageEmail")]
+    [Required(ErrorMessage = "indtast en gyldig email")]
+    public string Email { get; set; }
+
+    public string GentageEmail { get; set; }
 
     [Required] public string Telefon { get; set; }
 
