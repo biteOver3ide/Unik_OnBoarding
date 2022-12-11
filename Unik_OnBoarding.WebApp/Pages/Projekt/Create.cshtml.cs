@@ -1,46 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DbContext;
+using Microsoft.EntityFrameworkCore;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
-namespace Unik_OnBoarding.WebApp.Pages.Projekt
+namespace Unik_OnBoarding.WebApp.Pages.Projekt;
+
+public class CreateModel : PageModel
 {
-    public class CreateModel : PageModel
+    private readonly IProjektService _projektService;
+    private readonly IKundeService _kundeService;
+
+    public CreateModel(IProjektService projektService, IKundeService kundeService)
     {
-        private readonly Unik_OnBoarding.Persistance.DbContext.AppDbContext _context;
+        _projektService = projektService;
+        _kundeService = kundeService;
+    }
 
-        public CreateModel(Unik_OnBoarding.Persistance.DbContext.AppDbContext context)
+    [BindProperty] public CreateProjektRequestDto Crt { get; set; }
+    [BindProperty] public QueryKundeResultDto KundeView { get; set; }
+
+    public async Task<IActionResult> OnPost()
+    {
+        if (!ModelState.IsValid) return Page();
+
+        try
         {
-            _context = context;
+            await _projektService.Create(Crt);
+            return new RedirectToPageResult("/Projekt/Index");
         }
-
-        public IActionResult OnGet()
+        catch (DbUpdateConcurrencyException e)
         {
-        ViewData["KundeId"] = new SelectList(_context.Kunder, "Kid", "Adresse");
+            ModelState.AddModelError(string.Empty, "Concurrency conflict");
             return Page();
-        }
-
-        [BindProperty]
-        public ProjektEntity ProjektEntity { get; set; }
-        
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
-        {
-          if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Projektes.Add(ProjektEntity);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
         }
     }
 }

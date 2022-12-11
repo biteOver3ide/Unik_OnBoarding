@@ -5,34 +5,34 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>ProjektEntity</h4>
-<hr />
+<h2>Opret Projekt</h2>
+<hr/>
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ProjektEntity.ProjektTitle" class="control-label"></label>
-                <input asp-for="ProjektEntity.ProjektTitle" class="form-control" />
-                <span asp-validation-for="ProjektEntity.ProjektTitle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProjektEntity.KundeId" class="control-label"></label>
-                <select asp-for="ProjektEntity.KundeId" class ="form-control" asp-items="ViewBag.KundeId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+	<div class="col-md-4">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Crt.ProjektTitle" class="control-label"></label>
+				<input asp-for="Crt.ProjektTitle" class="form-control" />
+				<span asp-validation-for="Crt.ProjektTitle" class="text-danger"></span>
+			</div>
+			<div class="mb-3">
+				<label> Vælg Kunde</label>
+				<select asp-for="KundeView.Kid" asp-items="@(new SelectList(Model.KundeView.Firmanavn,"Kid","KundeId"))" class="form-control" required>
+					<option value="">Vælg en</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Add Projekt" class="btn btn-primary form-control" />
+			</div>
+		</form>
+	</div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+	<a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

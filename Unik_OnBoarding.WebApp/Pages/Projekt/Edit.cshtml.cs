@@ -1,78 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
-namespace Unik_OnBoarding.WebApp.Pages.Projekt
+namespace Unik_OnBoarding.WebApp.Pages.Projekt;
+
+public class EditModel : PageModel
 {
-    public class EditModel : PageModel
+    private readonly IProjektService _projektService;
+
+    public EditModel(IProjektService projektService)
     {
-        private readonly Unik_OnBoarding.Persistance.DbContext.AppDbContext _context;
+        _projektService = projektService;
+    }
 
-        public EditModel(Unik_OnBoarding.Persistance.DbContext.AppDbContext context)
+    [BindProperty] public QueryProjektResultDto Urt { get; set; }
+
+    public async Task<IActionResult> OnGet(Guid Id)
+    {
+        if (Id == null) return NotFound();
+
+        try
         {
-            _context = context;
+            Urt = await _projektService.Get(Id);
         }
-
-        [BindProperty]
-        public ProjektEntity ProjektEntity { get; set; } = default!;
-
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        catch (Exception e)
         {
-            if (id == null || _context.Projektes == null)
-            {
-                return NotFound();
-            }
-
-            var projektentity =  await _context.Projektes.FirstOrDefaultAsync(m => m.ProjektId == id);
-            if (projektentity == null)
-            {
-                return NotFound();
-            }
-            ProjektEntity = projektentity;
-           ViewData["KundeId"] = new SelectList(_context.Kunder, "Kid", "Adresse");
+            ModelState.AddModelError(string.Empty, e.Message);
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        return Page();
+    }
+
+
+    public async Task<IActionResult> OnPost()
+    {
+        if (!ModelState.IsValid)
+            return Page();
+
+        try
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Attach(ProjektEntity).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProjektEntityExists(ProjektEntity.ProjektId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
+            await _projektService.Edit(Urt);
+            return RedirectToPage("/Projekt/Index");
         }
-
-        private bool ProjektEntityExists(Guid id)
+        catch (DbUpdateConcurrencyException e)
         {
-          return _context.Projektes.Any(e => e.ProjektId == id);
+            ModelState.AddModelError(string.Empty, $"Concurrency conflict {e}");
+            return Page();
         }
     }
 }

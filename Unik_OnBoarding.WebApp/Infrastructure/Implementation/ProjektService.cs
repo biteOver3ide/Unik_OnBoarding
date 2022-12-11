@@ -14,10 +14,10 @@ public class ProjektService : IProjektService
         _httpClient = httpClient;
     }
 
-    async Task IProjektService.Create(CreateProjektDto dto)
+    async Task IProjektService.Create(CreateProjektRequestDto requestDto)
     {
         var response =
-            await _httpClient.PostAsJsonAsync("api/Projekt", dto);
+            await _httpClient.PostAsJsonAsync("api/Projekt", requestDto);
 
         if (response.IsSuccessStatusCode) return;
 
@@ -30,7 +30,7 @@ public class ProjektService : IProjektService
         await _httpClient.DeleteAsync($"api/Projekt/{id}");
     }
 
-    async Task IProjektService.Edit(UpdateProjektDto updateProjektDto)
+    async Task IProjektService.Edit(QueryProjektResultDto updateProjektDto)
     {
         var response =
             await _httpClient.PutAsJsonAsync("api/Projekt", updateProjektDto);

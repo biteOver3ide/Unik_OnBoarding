@@ -7,7 +7,7 @@ public class ProjektDto
 {
     [Key] public Guid ProjektId { get; set; }
 
-    [Required] public string ProjektTitle { get; set; }
+    public string ProjektTitle { get; set; }
 
     public KundeEntity Kunde { get; set; }
 

@@ -6,8 +6,8 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 public interface IProjektService
 {
-    Task Create(CreateProjektDto dto);
-    Task Edit(UpdateProjektDto updateProjektDto);
+    Task Create(CreateProjektRequestDto requestDto);
+    Task Edit(QueryProjektResultDto updateProjektDto);
     Task Delete(Guid id);
     Task<QueryProjektResultDto?> Get(Guid id);
     Task<IEnumerable<QueryProjektResultDto>?> GetAll();

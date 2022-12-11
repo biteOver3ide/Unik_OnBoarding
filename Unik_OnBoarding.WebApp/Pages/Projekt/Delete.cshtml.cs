@@ -1,63 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
-namespace Unik_OnBoarding.WebApp.Pages.Projekt
+namespace Unik_OnBoarding.WebApp.Pages.Projekt;
+
+public class DeleteModel : PageModel
 {
-    public class DeleteModel : PageModel
+    private readonly IProjektService _projektService;
+
+
+    public DeleteModel(IProjektService projektService)
     {
-        private readonly Unik_OnBoarding.Persistance.DbContext.AppDbContext _context;
+        _projektService = projektService;
+    }
 
-        public DeleteModel(Unik_OnBoarding.Persistance.DbContext.AppDbContext context)
+    [BindProperty] public QueryProjektResultDto Drt { get; set; }
+
+    public async Task<IActionResult> OnGet(Guid id)
+    {
+        if (id == null) return NotFound();
+
+        try
         {
-            _context = context;
+            Drt = await _projektService.Get(id);
         }
-
-        [BindProperty]
-      public ProjektEntity ProjektEntity { get; set; }
-
-        public async Task<IActionResult> OnGetAsync(Guid? id)
+        catch (Exception e)
         {
-            if (id == null || _context.Projektes == null)
-            {
-                return NotFound();
-            }
-
-            var projektentity = await _context.Projektes.FirstOrDefaultAsync(m => m.ProjektId == id);
-
-            if (projektentity == null)
-            {
-                return NotFound();
-            }
-            else 
-            {
-                ProjektEntity = projektentity;
-            }
+            ModelState.AddModelError(string.Empty, e.Message);
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(Guid? id)
+        return Page();
+    }
+
+
+    public async Task<IActionResult> OnPost(Guid id)
+    {
+        if (!ModelState.IsValid)
+            return Page();
+        try
         {
-            if (id == null || _context.Projektes == null)
-            {
-                return NotFound();
-            }
-            var projektentity = await _context.Projektes.FindAsync(id);
-
-            if (projektentity != null)
-            {
-                ProjektEntity = projektentity;
-                _context.Projektes.Remove(ProjektEntity);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
+            await _projektService.Delete(id);
+            return RedirectToPage("/Projekt/Index");
+        }
+        catch (DbUpdateConcurrencyException e)
+        {
+            ModelState.AddModelError(string.Empty, $"Concurrency conflict {e}");
+            return Page();
         }
     }
 }

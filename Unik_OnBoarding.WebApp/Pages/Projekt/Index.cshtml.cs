@@ -1,33 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
-namespace Unik_OnBoarding.WebApp.Pages.Projekt
+namespace Unik_OnBoarding.WebApp.Pages.Projekt;
+
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    private readonly IProjektService _projektService;
+    private readonly IKundeService _kundeService;
+
+    public IndexModel(IProjektService projektService, IKundeService kundeService)
     {
-        private readonly Unik_OnBoarding.Persistance.DbContext.AppDbContext _context;
+        _projektService = projektService;
+        _kundeService = kundeService;
+    }
 
-        public IndexModel(Unik_OnBoarding.Persistance.DbContext.AppDbContext context)
-        {
-            _context = context;
-        }
+    [BindProperty] public IEnumerable<QueryProjektResultDto> IndexViewModel { get; set; }
+    [BindProperty] public IEnumerable<QueryKundeResultDto> KundeViewModel { get; set; }
 
-        public IList<ProjektEntity> ProjektEntity { get;set; } = default!;
-
-        public async Task OnGetAsync()
-        {
-            if (_context.Projektes != null)
-            {
-                ProjektEntity = await _context.Projektes
-                .Include(p => p.Kunde).ToListAsync();
-            }
-        }
+    public async Task OnGet()
+    {
+        IndexViewModel = await _projektService.GetAll();
+        KundeViewModel = await _kundeService.GetAll();
     }
 }

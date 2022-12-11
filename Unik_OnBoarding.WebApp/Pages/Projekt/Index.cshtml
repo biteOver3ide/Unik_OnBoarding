@@ -5,44 +5,70 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container p-3">
+	<div class="row pt-4">
+		<div class="col-6">
+			<h2 class="text-primary">Projekt List</h2>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-page="Create" class="btn btn-primary">
+				<i class="bi bi-plus-square"></i> &nbsp;Create Projekt
+			</a>
+		</div>
+	</div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjektEntity[0].ProjektTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjektEntity[0].Kunde)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjektEntity[0].RowVersion)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.ProjektEntity) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjektTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kunde.Adresse)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RowVersion)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ProjektId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ProjektId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ProjektId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+	<br /><br />
+
+	<table class="table table-bordered table-striped" style="width: 100%">
+		<thead>
+			<tr>
+				<th>Projekt Id</th>
+				<th>Projekt Title</th>
+				<th>Kunde Id</th>
+				<th>Kunde</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var obj in Model.IndexViewModel)
+			{
+				<tr>
+					<td width="50%">@obj.ProjektId</td>
+					<td width="50%">@obj.ProjektTitle</td>
+					<td>
+						<div class="w-75 btn-group" role="group">
+							<a asp-page="Delete" asp-route-id="@obj.ProjektId" class="btn btn-primary mx-2">
+								<i class="bi bi-pencil-square">Delete</i>
+							</a>
+							<a asp-page="Edit" asp-route-id="@obj.ProjektId" class="btn btn-danger mx-2">
+								<i class="bi bi-trash-fill">Edit</i>
+							</a>
+						</div>
+					</td>
+				</tr>
+			}
+			@foreach (var obj in Model.KundeViewModel)
+			{
+				<td width="30%">@obj.Kid</td>
+				<td width="30%">@obj.Firmanavn</td>
+				<td>
+					<div class="w-75 btn-group" role="group">
+						<a asp-page="Delete" asp-route-id="@obj.Kid" class="btn btn-primary mx-2">
+							<i class="bi bi-pencil-square">Delete</i>
+						</a>
+						<a asp-page="Edit" asp-route-id="@obj.Kid" class="btn btn-danger mx-2">
+							<i class="bi bi-trash-fill">Edit</i>
+						</a>
+					</div>
+				</td>
+			}
+		</tbody>
+	</table>
+
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}
