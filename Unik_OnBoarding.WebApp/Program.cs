@@ -56,7 +56,6 @@ builder.Services.AddHttpClient<IBookingService, BookingService>(client =>
 
 builder.Services.AddHttpClient<IMedarbejderService, MedarbejderService>(client =>
     client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
-//builder.Services.AddScoped<IMedarbejderService, MedarbejderService>();
 
 builder.Services.AddHttpClient<IOpgaverService, OpgaverService>(client =>
     client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));

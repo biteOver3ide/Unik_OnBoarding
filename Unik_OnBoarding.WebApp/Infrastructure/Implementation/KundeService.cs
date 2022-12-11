@@ -2,7 +2,6 @@
 using Unik_OnBoarding.Application.Implementation.Kunde.dto;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
-using KundeCreateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde.KundeCreateRequestDto;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
@@ -15,10 +14,10 @@ public class KundeService : IKundeService
         _httpClient = httpClient;
     }
 
-    async Task IKundeService.Create(KundeCreateDto kundeCreateRequestDto)
+    async Task IKundeService.Create(CreateKundeRequestDto createKundeRequestDto)
     {
         var response =
-            await _httpClient.PostAsJsonAsync("api/Kunde", kundeCreateRequestDto);
+            await _httpClient.PostAsJsonAsync("api/Kunde", createKundeRequestDto);
 
         if (response.IsSuccessStatusCode) return;
 
@@ -31,10 +30,10 @@ public class KundeService : IKundeService
         await _httpClient.DeleteAsync($"api/Kunde/{id}");
     }
 
-    async Task IKundeService.Edit(KundeQueryResultDto kundeUpdateDto)
+    async Task IKundeService.Edit(QueryKundeResultDto queryKundeUpdateDto)
     {
         var response =
-            await _httpClient.PutAsJsonAsync("api/Kunde", kundeUpdateDto);
+            await _httpClient.PutAsJsonAsync("api/Kunde", queryKundeUpdateDto);
 
         if (response.IsSuccessStatusCode) return;
 
@@ -42,23 +41,18 @@ public class KundeService : IKundeService
         throw new Exception(message);
     }
 
-    async Task<KundeQueryResultDto?> IKundeService.Get(Guid id)
+    async Task<QueryKundeResultDto?> IKundeService.Get(Guid id)
     {
-        return await _httpClient.GetFromJsonAsync<KundeQueryResultDto>($"api/Kunde/{id}");
+        return await _httpClient.GetFromJsonAsync<QueryKundeResultDto>($"api/Kunde/{id}");
     }
 
-    async Task<IEnumerable<KundeQueryResultDto>?> IKundeService.GetAll()
+    async Task<IEnumerable<QueryKundeResultDto>?> IKundeService.GetAll()
     {
-        return await _httpClient.GetFromJsonAsync<List<KundeQueryResultDto>>("api/Kunde");
+        return await _httpClient.GetFromJsonAsync<List<QueryKundeResultDto>>("api/Kunde");
     }
 
     async Task<IEnumerable<KundeDto>> IKundeService.GetAllDataAsync(Expression<Func<KundeDto, bool>>? filter)
     {
-        throw new NotImplementedException();
-    }
-
-    async Task<KundeDto> IKundeService.GetByIdAsync(Guid Id, Expression<Func<KundeDto, bool>>? filter)
-    {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<List<KundeDto>>("api/Kunde");
     }
 }

@@ -15,7 +15,7 @@ public class CreateModel : PageModel
         _medarbejderService = medarbejderService;
     }
 
-    [BindProperty] public MedarbejderCreateRequestDto Crt { get; set; }
+    [BindProperty] public CreateMedarbejderRequestDto Crt { get; set; }
 
     public async Task<IActionResult> OnPost()
     {

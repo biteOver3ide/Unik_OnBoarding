@@ -15,7 +15,7 @@ public class CreateModel : PageModel
         _kundeService = kundeService;
     }
 
-    [BindProperty] public KundeCreateRequestDto Crt { get; set; }
+    [BindProperty] public CreateKundeRequestDto Crt { get; set; }
 
     public async Task<IActionResult> OnPost()
     {

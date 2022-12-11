@@ -14,10 +14,10 @@ public class MedarbejderService : IMedarbejderService
         _httpClient = httpClient;
     }
 
-    async Task IMedarbejderService.Create(MedarbejderCreateRequestDto medarbejderCreatedto)
+    async Task IMedarbejderService.Create(CreateMedarbejderRequestDto createMedarbejderCreatedto)
     {
         var response =
-            await _httpClient.PostAsJsonAsync("api/Medarbejder", medarbejderCreatedto);
+            await _httpClient.PostAsJsonAsync("api/Medarbejder", createMedarbejderCreatedto);
 
         if (response.IsSuccessStatusCode) return;
 
@@ -30,10 +30,10 @@ public class MedarbejderService : IMedarbejderService
         await _httpClient.DeleteAsync($"api/Medarbejder/{id}");
     }
 
-    async Task IMedarbejderService.Edit(MedarbejderQueryResultDto medarbejderUpdateDto)
+    async Task IMedarbejderService.Edit(QueryMedarbejderResultDto queryMedarbejderUpdateDto)
     {
         var response =
-            await _httpClient.PutAsJsonAsync("api/Medarbejder", medarbejderUpdateDto);
+            await _httpClient.PutAsJsonAsync("api/Medarbejder", queryMedarbejderUpdateDto);
 
         if (response.IsSuccessStatusCode) return;
 
@@ -41,14 +41,14 @@ public class MedarbejderService : IMedarbejderService
         throw new Exception(message);
     }
 
-    async Task<MedarbejderQueryResultDto?> IMedarbejderService.Get(Guid id)
+    async Task<QueryMedarbejderResultDto?> IMedarbejderService.Get(Guid id)
     {
-        return await _httpClient.GetFromJsonAsync<MedarbejderQueryResultDto>($"api/Medarbejder/{id}");
+        return await _httpClient.GetFromJsonAsync<QueryMedarbejderResultDto>($"api/Medarbejder/{id}");
     }
 
-    async Task<IEnumerable<MedarbejderQueryResultDto>?> IMedarbejderService.GetAll()
+    async Task<IEnumerable<QueryMedarbejderResultDto>?> IMedarbejderService.GetAll()
     {
-        return await _httpClient.GetFromJsonAsync<List<MedarbejderQueryResultDto>>("api/Medarbejder");
+        return await _httpClient.GetFromJsonAsync<List<QueryMedarbejderResultDto>>("api/Medarbejder");
     }
 
     async Task<IEnumerable<MedarbejderDto>> IMedarbejderService.GetAllDataAsync(

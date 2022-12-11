@@ -1,4 +1,6 @@
-﻿using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
+﻿using System.Linq.Expressions;
+using Unik_OnBoarding.Application.Implementation.Booking.dto;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Implementation;
@@ -12,7 +14,27 @@ public class BookingService : IBookingService
         _httpClient = httpClient;
     }
 
-    async Task IBookingService.Create(BookingCreateDto dto)
+    async Task IBookingService.Delete(Guid id)
+    {
+        await _httpClient.DeleteAsync($"api/Booking/{id}");
+    }
+
+    async Task<QueryBookingResultDto?> IBookingService.Get(Guid id)
+    {
+        return await _httpClient.GetFromJsonAsync<QueryBookingResultDto>($"api/Booking/{id}");
+    }
+
+    async Task<IEnumerable<QueryBookingResultDto>?> IBookingService.GetAll()
+    {
+        return await _httpClient.GetFromJsonAsync<List<QueryBookingResultDto>>("api/Booking");
+    }
+
+    async Task<IEnumerable<BookingDto>> IBookingService.GetAllDataAsync(Expression<Func<BookingDto, bool>>? filter)
+    {
+        return await _httpClient.GetFromJsonAsync<IEnumerable<BookingDto>>("api/Projekt");
+    }
+
+    async Task IBookingService.Create(CreateBookingDto dto)
     {
         {
             var response = await _httpClient.PostAsJsonAsync("api/Booking", dto);
@@ -25,21 +47,14 @@ public class BookingService : IBookingService
         }
     }
 
-    Task IBookingService.Edit(BookingUpdateDto bookingUpdateViewModel)
+    async Task IBookingService.Edit(QueryBookingResultDto updateBookingViewModel)
     {
-        throw new NotImplementedException();
+        var response =
+            await _httpClient.PutAsJsonAsync("api/Booking", updateBookingViewModel);
+
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
-
-    Task<BookingQueryResultDto?> IBookingService.Get(Guid id)
-    {
-        throw new NotImplementedException();
-    }
-
-    Task<IEnumerable<BookingQueryResultDto>?> IBookingService.GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
-
-
 }

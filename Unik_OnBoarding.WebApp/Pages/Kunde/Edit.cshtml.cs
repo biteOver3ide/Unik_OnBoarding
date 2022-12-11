@@ -15,7 +15,7 @@ public class EditModel : PageModel
         _kundeService = kundeService;
     }
 
-    [BindProperty] public KundeQueryResultDto Urt { get; set; }
+    [BindProperty] public QueryKundeResultDto Urt { get; set; }
 
     public async Task<IActionResult> OnGet(Guid Id)
     {

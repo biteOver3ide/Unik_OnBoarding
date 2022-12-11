@@ -1,6 +1,6 @@
 ﻿namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
 
-public class OpgaverCreateDto
+public class CreateOpgaverDto
 {
     public Guid OpgaveId { get; set; }
     public string OpgaveName { get; set; }

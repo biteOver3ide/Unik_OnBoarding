@@ -2,8 +2,6 @@
 using Unik_OnBoarding.Application.Implementation.Opgaver.dto;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
-using OpgaverCreateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver.OpgaverCreateDto;
-using OpgaverUpdateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver.OpgaverUpdateDto;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
@@ -11,29 +9,41 @@ public class OpgaverService : IOpgaverService
 {
     private readonly HttpClient _httpClient;
 
-    public OpgaverService(HttpClient httpClient)
+    async Task IOpgaverService.Create(CreateOpgaverDto dto)
     {
-        _httpClient = httpClient;
+        var response =
+            await _httpClient.PostAsJsonAsync("api/Opgaver", dto);
+
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
 
-    public Task Create(OpgaverCreateDto dto)
+    async Task IOpgaverService.Delete(Guid id)
     {
-        throw new NotImplementedException();
+        await _httpClient.DeleteAsync($"api/Opgaver/{id}");
     }
 
-    public Task Edit(OpgaverUpdateDto medarbejderUpdateDto)
+    async Task IOpgaverService.Edit(QueryOpgaverResultDto opgaverResult)
     {
-        throw new NotImplementedException();
+        var response =
+            await _httpClient.PutAsJsonAsync("api/Opgaver", opgaverResult);
+
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
 
-    public Task<OpgaverQueryResultDto?> Get(Guid id)
+    async Task<QueryOpgaverResultDto?> IOpgaverService.Get(Guid id)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<QueryOpgaverResultDto>($"api/Opgaver/{id}");
     }
 
-    public Task<IEnumerable<OpgaverQueryResultDto>?> GetAll()
+    async Task<IEnumerable<QueryOpgaverResultDto>?> IOpgaverService.GetAll()
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<List<QueryOpgaverResultDto>>("api/Opgaver");
     }
 
     async Task<IEnumerable<OpgaverDto>> IOpgaverService.GetAllDataAsync(Expression<Func<OpgaverDto, bool>>? filter)

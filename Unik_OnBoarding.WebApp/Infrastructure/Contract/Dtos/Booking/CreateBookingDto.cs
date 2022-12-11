@@ -4,7 +4,7 @@ using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
 
-public class BookingCreateDto
+public class CreateBookingDto
 {
     public Guid ProjectId { get; set; }
     public Guid OpgaveId { get; set; }

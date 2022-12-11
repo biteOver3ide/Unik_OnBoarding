@@ -27,15 +27,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Create">Dashboard</a>
 	                    </li>
 	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Create">Medarbejder Create</a>
+		                    <a class="nav-link text-dark" asp-area="" asp-page="/Kunde/Index">Kunde</a>
 	                    </li>
 	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Edit">Medarbejder Update</a>
+		                    <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Index">Medarbejder</a>
 	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Index">Medarbejder Index</a>
-	                    </li>
-@*	                   @if (AuthService.AuthorizeAsync(User, "TeknikerPolicy").Result.Succeeded)
+	                    @*	                   @if (AuthService.AuthorizeAsync(User, "TeknikerPolicy").Result.Succeeded)
 	                   {
 		                   <li class="nav-item">
 			                   <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Tekniker/Index">Dashboard</a>

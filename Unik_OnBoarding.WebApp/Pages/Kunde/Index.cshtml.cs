@@ -15,7 +15,7 @@ public class IndexModel : PageModel
         _kundeService = kundeService;
     }
 
-    [BindProperty] public IEnumerable<KundeQueryResultDto> IndexViewModel { get; set; }
+    [BindProperty] public IEnumerable<QueryKundeResultDto> IndexViewModel { get; set; }
 
     public async Task OnGet()
     {

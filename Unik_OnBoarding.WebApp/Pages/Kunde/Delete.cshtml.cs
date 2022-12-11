@@ -17,7 +17,7 @@ namespace Unik_OnBoarding.WebApp.Pages.Kunde
             
         }
 
-        [BindProperty] public KundeQueryResultDto Drt { get; set; }
+        [BindProperty] public QueryKundeResultDto Drt { get; set; }
 
         public async Task<IActionResult> OnGet(Guid id)
         {

@@ -2,7 +2,7 @@
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
 
-public class BookingQueryResultDto
+public class UpdateBookingDto
 {
     public Guid BookingId { get; set; }
     public OpgaverEntity Opgave { get; set; }

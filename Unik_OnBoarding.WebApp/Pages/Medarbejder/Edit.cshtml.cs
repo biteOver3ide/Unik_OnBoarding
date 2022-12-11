@@ -15,7 +15,7 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
             _medarbejderService = medarbejderService;
         }
 
-        [BindProperty] public MedarbejderQueryResultDto Urt { get; set; }
+        [BindProperty] public QueryMedarbejderResultDto Urt { get; set; }
 
         public async Task<IActionResult> OnGet(Guid Id)
         {

@@ -18,13 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\Contract\Dtos\Projekt\" />
-    <Folder Include="Infrastructure\Contract\Dtos\Opgaver\" />
-    <Folder Include="Infrastructure\Contract\Dtos\Kompetence\" />
-    <Folder Include="Infrastructure\Contract\Dtos\Booking\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Unik_OnBoarding.Application\Unik_OnBoarding.Application.csproj" />
     <ProjectReference Include="..\Unik_OnBoarding.Domain\Unik_OnBoarding.Domain.csproj" />
     <ProjectReference Include="..\Unik_OnBoarding.Persistance.Migartions\Unik_OnBoarding.Persistance.User.Migartions.csproj" />

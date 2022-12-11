@@ -1,4 +1,6 @@
-﻿using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kompetence;
+﻿using System.Linq.Expressions;
+using Unik_OnBoarding.Application.Implementation.Kompetencer.dto;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kompetence;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Implementation;
@@ -12,23 +14,46 @@ public class KompetenceService : IKompetenceService
         _httpClient = httpClient;
     }
 
-    public Task Create(KompetenceCreateDto dto)
+    async Task IKompetenceService.Create(CreateKompetenceDto dto)
     {
-        throw new NotImplementedException();
+        var response =
+            await _httpClient.PostAsJsonAsync("api/Kompetence", dto);
+
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
 
-    public Task Edit(KompetenceUpdateDto kompetenceUpdateDto)
+    async Task IKompetenceService.Delete(Guid id)
     {
-        throw new NotImplementedException();
+        await _httpClient.DeleteAsync($"api/Kompetence/{id}");
     }
 
-    public Task<KompetenceQueryResultDto?> Get(Guid id)
+    async Task IKompetenceService.Edit(QueryKompetenceResultDto kompetenceUpdateDto)
     {
-        throw new NotImplementedException();
+        var response =
+            await _httpClient.PutAsJsonAsync("api/Kompetence", kompetenceUpdateDto);
+
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
 
-    public Task<IEnumerable<KompetenceQueryResultDto>?> GetAll()
+    async Task<QueryKompetenceResultDto?> IKompetenceService.Get(Guid id)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<QueryKompetenceResultDto>($"api/Kompetence/{id}");
+    }
+
+    async Task<IEnumerable<QueryKompetenceResultDto>?> IKompetenceService.GetAll()
+    {
+        return await _httpClient.GetFromJsonAsync<List<QueryKompetenceResultDto>>("api/Kompetence");
+    }
+
+    async Task<IEnumerable<KompetenceDto>> IKompetenceService.GetAllDataAsync(
+        Expression<Func<KompetenceDto, bool>>? filter)
+    {
+        return await _httpClient.GetFromJsonAsync<IEnumerable<KompetenceDto>>("api/Kompetence");
     }
 }

@@ -14,7 +14,7 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
             _medarbejderService = medarbejderService;
         }
 
-        [BindProperty] public IEnumerable<MedarbejderQueryResultDto> IndexViewModel { get; set; }
+        [BindProperty] public IEnumerable<QueryMedarbejderResultDto> IndexViewModel { get; set; }
 
         public async Task OnGet()
         {

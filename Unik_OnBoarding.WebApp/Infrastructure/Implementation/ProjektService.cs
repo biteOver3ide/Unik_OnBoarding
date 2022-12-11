@@ -2,8 +2,6 @@
 using Unik_OnBoarding.Application.Implementation.Projekt.dto;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
-using ProjektCreateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt.ProjektCreateDto;
-using ProjektUpdateDto = Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt.ProjektUpdateDto;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Implementation;
 
@@ -16,28 +14,45 @@ public class ProjektService : IProjektService
         _httpClient = httpClient;
     }
 
-    public Task Create(ProjektCreateDto dto)
+    async Task IProjektService.Create(CreateProjektDto dto)
     {
-        throw new NotImplementedException();
+        var response =
+            await _httpClient.PostAsJsonAsync("api/Projekt", dto);
+
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
 
-    public Task Edit(ProjektUpdateDto projektUpdateDto)
+    async Task IProjektService.Delete(Guid id)
     {
-        throw new NotImplementedException();
+        await _httpClient.DeleteAsync($"api/Projekt/{id}");
     }
 
-    public Task<ProjektQueryResultDto?> Get(Guid id)
+    async Task IProjektService.Edit(UpdateProjektDto updateProjektDto)
     {
-        throw new NotImplementedException();
+        var response =
+            await _httpClient.PutAsJsonAsync("api/Projekt", updateProjektDto);
+
+        if (response.IsSuccessStatusCode) return;
+
+        var message = await response.Content.ReadAsStringAsync();
+        throw new Exception(message);
     }
 
-    public Task<IEnumerable<ProjektQueryResultDto>?> GetAll()
+    async Task<QueryProjektResultDto?> IProjektService.Get(Guid id)
     {
-        throw new NotImplementedException();
+        return await _httpClient.GetFromJsonAsync<QueryProjektResultDto>($"api/Projekt/{id}");
     }
 
-    public async Task<IEnumerable<ProjektDto>> GetAllDataAsync(Expression<Func<ProjektDto, bool>>? filter = null)
+    async Task<IEnumerable<QueryProjektResultDto>?> IProjektService.GetAll()
     {
-        return await _httpClient.GetFromJsonAsync<IEnumerable<ProjektDto>>($"api/Projekt");
+        return await _httpClient.GetFromJsonAsync<List<QueryProjektResultDto>>("api/Projekt");
+    }
+
+    async Task<IEnumerable<ProjektDto>> IProjektService.GetAllDataAsync(Expression<Func<ProjektDto, bool>>? filter)
+    {
+        return await _httpClient.GetFromJsonAsync<IEnumerable<ProjektDto>>("api/Projekt");
     }
 }

@@ -5,41 +5,41 @@
 <form method="post">
 	<div class="border p-3 mt-4">
 		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Ny Booking</h2>
+			<h2 class="text-primary pl-3">Ny CreateBooking</h2>
 			<hr />
 		</div>
 		<div asp-validation-summary="All"></div>
-		@*<div class="mb-3">
-			<label asp-for="Booking.ProjectId"></label>
-			<input asp-for="Kunde.FullName" class="form-control" required />
-			<span asp-validation-for="Kunde.FullName" class="text-danger"></span>
-		</div>*@
+		<div class="mb-3">
+			<label asp-for="CreateBooking.ProjectId"></label>
+			<input asp-for="IndexKunde" class="form-control" required />
+			<span asp-validation-for="IndexKunde" class="text-danger"></span>
+		</div>
 		@*<div class="mb-3">
 			<label> Vælg klient</label>
-			<select asp-for="Booking.ProjectId" asp-items="@(new SelectList(Model.KunderList,"KundeId","FullName"))" class="form-select" aria-label="Default select example"
+			<select asp-for="CreateBooking.ProjectId" asp-items="@(new SelectList(Model.KunderList,"KundeId","FullName"))" class="form-select" aria-label="Default select example"
 					required>
 				<option value="">Vælg en</option>
 			</select>
-		</div>*@
+		</div>
 		<div class="mb-3">
 			<label> Vælg Projek</label>
-			<select asp-for="Booking.ProjectId" asp-items="@(new SelectList(Model.ProjectsList,"ProjectId","ProjectTitle"))" class="form-select" aria-label="Default select example"
+			<select asp-for="CreateBooking.ProjectId" asp-items="@(new SelectList(Model.ProjectsList,"ProjectId","ProjectTitle"))" class="form-select" aria-label="Default select example"
 					required>
 				<option value="">Vælg en</option>
 			</select>
 		</div>
 		<div class="mb-3">
 			<label> Vælg Opgave</label>
-			<select asp-for="Booking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList,"OpgaveId","Title"))" class="form-control" required>
+			<select asp-for="CreateBooking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList,"OpgaveId","Title"))" class="form-control" required>
 				<option value="">Vælg en</option>
 			</select>
 		</div>
 		<div class="mb-3">
 			<label> Vælg Medarbejde</label>
-			<select asp-for="Booking.MedarbejdeId" asp-items="@(new SelectList(Model.MedarbejderList,"MedarbejdeId","FirstName"))" class="form-control" required>
+			<select asp-for="CreateBooking.MedarbejdeId" asp-items="@(new SelectList(Model.MedarbejderList,"MedarbejdeId","FirstName"))" class="form-control" required>
 				<option value="">Vælg en</option>
 			</select>
-		</div>
+		</div>*@
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
 			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -48,16 +48,16 @@
 			<div class="row align-items-center p-2">
 				<div class="col-3" id="firstDate">Start Dato:</div>
 				<div class="col-3">
-					<input type="datetime-local" class="form-control" asp-for="Booking.StartDate" />
+					<input type="datetime-local" class="form-control" asp-for="CreateBooking.StartDate" />
 				</div>
 				<div class="col-3" id="secondDate">End Dato:</div>
 				<div class="col-3">
-					<input type="datetime-local" class="form-control" asp-for="Booking.EndDate"/>
+					<input type="datetime-local" class="form-control" asp-for="CreateBooking.EndDate"/>
 				</div>
 			</div>
 		</div>
 		<div class="col-3">
-			<input type="number" class="form-control" asp-for="Booking.Duration" />
+			<input type="number" class="form-control" asp-for="CreateBooking.Duration" />
 		</div>
 
 		@*<div class="mb-3">

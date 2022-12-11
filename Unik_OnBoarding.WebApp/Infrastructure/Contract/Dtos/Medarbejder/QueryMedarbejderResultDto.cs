@@ -3,7 +3,7 @@ using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 
-public class MedarbejderQueryResultDto
+public class QueryMedarbejderResultDto
 {
     [Key] public Guid MedarbejderId { get; set; }
 

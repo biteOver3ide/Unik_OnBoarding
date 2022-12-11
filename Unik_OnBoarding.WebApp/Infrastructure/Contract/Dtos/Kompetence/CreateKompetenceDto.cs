@@ -1,6 +1,8 @@
-﻿namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kompetence;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class KompetenceUpdateDto
+namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kompetence;
+
+public class CreateKompetenceDto
 {
     public Guid KompetenceId { get; set; }
     public string KompetenceName { get; set; }

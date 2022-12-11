@@ -6,10 +6,10 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 public interface IMedarbejderService
 {
-    Task Create(MedarbejderCreateRequestDto medarbejderCreatedto);
-    Task Edit(MedarbejderQueryResultDto medarbejderUpdateDto);
+    Task Create(CreateMedarbejderRequestDto createMedarbejderCreatedto);
+    Task Edit(QueryMedarbejderResultDto queryMedarbejderUpdateDto);
     Task Delete(Guid id);
-    Task<MedarbejderQueryResultDto?> Get(Guid id);
-    Task<IEnumerable<MedarbejderQueryResultDto>?> GetAll();
+    Task<QueryMedarbejderResultDto?> Get(Guid id);
+    Task<IEnumerable<QueryMedarbejderResultDto>?> GetAll();
     Task<IEnumerable<MedarbejderDto>> GetAllDataAsync(Expression<Func<MedarbejderDto, bool>>? filter = null);
 }
