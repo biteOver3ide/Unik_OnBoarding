@@ -1,0 +1,40 @@
+﻿@page
+@model Unik_OnBoarding.WebApp.Pages.Kompetencer.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete Kompetencer</h2>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<input type="hidden" asp-for="Drt.RowVersion" class="form-control" />
+			<input type="hidden" asp-for="Drt.KompetenceId" class="form-control" />
+			<div class="form-group">
+				<label asp-for="Drt.Job" class="control-label"></label>
+				<input asp-for="Drt.Job" class="form-control" />
+				<span asp-validation-for="Drt.Job" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Beskrivelse" class="control-label"></label>
+				<input asp-for="Drt.Beskrivelse" class="form-control" />
+				<span asp-validation-for="Drt.Beskrivelse" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Delete Kompetencer" class="btn btn-primary form-control" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+	}

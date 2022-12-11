@@ -1,10 +1,16 @@
 ﻿using MediatR;
+using System.ComponentModel.DataAnnotations;
+using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Application.Features.Kompetence.Command.UpdateKompetence;
 
 public class UpdateKompetenceCommand : IRequest
 {
-    public Guid KompetenceId { get; set; }
-    public string KompetenceName { get; set; }
-    public string Beskrivelse { get; set; }
+    [Required] public Guid KompetenceId { get; set; }
+
+    [Required] public Jobtitler Job { get; set; }
+
+    [Required] public string Beskrivelse { get; set; }
+
+    [Timestamp] public byte[] RowVersion { get; set; }
 }

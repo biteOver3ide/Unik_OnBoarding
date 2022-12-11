@@ -1,0 +1,43 @@
+﻿@page
+@using Unik_OnBoarding.Domain.Model
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Unik_OnBoarding.WebApp.Pages.Kompetencer.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Opret Kompetencer</h2>
+<hr/>
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Crt.Job" class="control-label"></label>
+				<select asp-for="Crt.Job"
+				        class="form-control" 
+				        asp-items="Html.GetEnumSelectList<Jobtitler>()">
+					<option>Select type ...</option>
+				</select>
+				<span asp-validation-for="Crt.Job" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Crt.Beskrivelse" class="control-label"></label>
+				<input asp-for="Crt.Beskrivelse" class="form-control" />
+				<span asp-validation-for="Crt.Beskrivelse" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Add Kompetencer" class="btn btn-primary form-control" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

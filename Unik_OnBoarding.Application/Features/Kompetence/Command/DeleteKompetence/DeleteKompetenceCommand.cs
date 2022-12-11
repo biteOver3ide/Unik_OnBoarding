@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using System.ComponentModel.DataAnnotations;
+using MediatR;
 
 namespace Unik_OnBoarding.Application.Features.Kompetence.Command.DeleteKompetence;
 
 public class DeleteKompetenceCommand : IRequest
 {
-    public Guid KompetenceId { get; set; }
+    [Required] public Guid KompetenceId { get; set; }
 }

@@ -1,0 +1,48 @@
+﻿@page
+@model Unik_OnBoarding.WebApp.Pages.Projekt.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjektEntity[0].ProjektTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjektEntity[0].Kunde)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjektEntity[0].RowVersion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ProjektEntity) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjektTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kunde.Adresse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RowVersion)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ProjektId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ProjektId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ProjektId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

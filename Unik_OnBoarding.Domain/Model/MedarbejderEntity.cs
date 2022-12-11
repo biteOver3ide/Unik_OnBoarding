@@ -16,6 +16,5 @@ public class MedarbejderEntity
 
     public Jobtitler Job { get; set; }
 
-    [Timestamp]
-    public byte[] RowVersion { get; set; }
+    [Timestamp] public byte[] RowVersion { get; set; }
 }   
