@@ -4,227 +4,248 @@
 }
 <!--second-->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 <body>
-<div class="container">
-<h1 class="text-4xl text-center py-10">Task Manager Dashboard</h1>
-<section>
-	<div class="container">
-		<!--Headre-->
-		<div class="container p-6 m-3">
-			<div>
-			</div>
-			<div class="row border border-dark align-items-center">
-				<div class="col-sm-4">
-					<label> Vælg Kunde</label>
-					<select asp-items="@(new SelectList(Model.KundeList, "Kid", "Firmanavn"))" class="form-select" aria-label="Default select example"
-					        required>
-						<option value="">Vælg en</option>
-					</select>
-				</div>
-				<div class="col-sm-8 bg-success text-white">
-					<p>Kunder Info</p>
-				</div>
-			</div>
-		</div>
-		<!--Headre-->
-		<!--Task Overview-->
-		<div class="container m-2 p-2 ">
-			<div class="row">
-				<!--Table-->
-				<div class="col-8">
-					<h2 class="p-2 bg-primary text-white fw-40 rounded-2">Task Over View</h2>
-					<table class="table table-hover table-dark">
-						<thead>
-						<tr>
-							<th scope="col">ID</th>
-							<!-- <th scope="col">Descriptions</th> -->
-							<th scope="col">Navn</th>
-							<!-- <th scope="col">End Dto.</th> -->
-							<!-- <th scope="col">Assign To</th> -->
-							<th scope="col">Frima</th>
-							<th scope="col">Cvr</th>
-							<th scope="col">Action</th>
-						</tr>
-						</thead>
-						<tbody>
-						@foreach (var item in Model.KundeList)
-						{
-							<tr>
-								<td>@item.Kid</td>
-								<!-- <td>Prapare some pc in kontor</td> -->
-								<td>@DateTime.Now</td>
-								<!-- <td>15-nov-2022</td> -->
-								<!-- <td>Juan Khanjer</td> -->
-								<td>
-									<span class="badge rounded-pill bg-secondary">@item.Efternavn</span>
-								</td>
-								<td>
-									<span class="badge bg-success">cvr</span>@item.Cvr
-								</td>
-								<td>
-									<!-- Button trigger modal -->
-									<button type="button" class="btn btn-primary" data-bs-toggle="modal"
-									        data-bs-target="#exampleModal">
-										View
-									</button>
-								</td>
-							</tr>
-						}
-						</tbody>
-					</table>
-				</div>
-				<!--Table-->
-				<!--Chart-->
-				<div class="col-4">
-					<div style="width: 400px">
-						<canvas id="myChart" width="200" height="200"></canvas>
-					</div>
-				</div>
-				<!--End Chart-->
-			</div>
-		</div>
+    <div class="container">
+        <h1 class="text-4xl text-center py-10">Task Manager Dashboard</h1>
+        <section>
+            <div class="container">
+                <!--Headre-->
+                <div class="container p-6 m-3">
+                    <div>
+                    </div>
+                    <div class="row border border-dark align-items-center">
+                        <div class="col-sm-4">
+                            <label> Vælg Kunde</label>
+                            <select asp-items="@(new SelectList(Model.KundeList, "Kid", "Firmanavn"))" class="form-select" aria-label="Default select example"
+                                    required>
+                                <option value="">Vælg en</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-8 bg-success text-white">
+                            <p>Kunder Info</p>
+                        </div>
+                    </div>
+                </div>
+                <!--Headre-->
+                <!--Task Overview-->
+                <div class="container m-2 p-2 ">
+                    <div class="row">
+                        <!--Table-->
+                        <div class="col-8">
+                            <h2 class="p-2 bg-primary text-white fw-40 rounded-2">Task Over View</h2>
+                            <table class="table table-hover table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>                                       
+                                        <th scope="col">Navn</th>                                     
+                                        <th scope="col">Frima</th>
+                                        <th scope="col">Cvr</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.KundeList)
+                                    {
+                                        <tr>
+                                            <td>@item.Kid</td>                                           
+                                            <td>@DateTime.Now</td>                                          
+                                            <td>
+                                                <span class="badge rounded-pill bg-secondary">@item.Efternavn</span>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-success">cvr</span>@item.Cvr
+                                            </td>
+                                            <td>
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal@(item.Kid)">
+                                                    View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--Table-->
+                        <!--Chart-->
+                        <div class="col-4">
+                            <div style="width: 400px">
+                                <canvas id="myChart" width="200" height="200"></canvas>
+                            </div>
+                        </div>
+                        <!--End Chart-->
+                    </div>
+                </div>
 
-		<!-- Modal -->
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-		     aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header card-header">
-						<h1 class="modal-title fs-5" id="exampleModalLabel">
-							Task
-						</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-						        aria-label="Close">
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-12">
-									<h2 class="mb-2">Progress:</h2>
-									<div class="progress mb-2">
-										<div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-									</div>
-								</div>
+                <!-- Modal -->
+                @foreach (var item in Model.KundeList)
+                {
+                    <div class="modal fade" id="exampleModal@(item.Kid)" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header card-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                        @item.Efternavn
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2 class="mb-2">Progress:</h2>
+                                                <div class="progress mb-2">
+                                                    <div class="progress-bar" role="progressbar" aria-label="Example with label" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                                </div>
+                                            </div>
 
-							</div>
-							<div class="row ">
-								<div class="col-md-12 p-2">
-									<h2>Assign To: <span class="badge bg-secondary d-flex m-2">Juan Khanjar</span></h2>
-								</div>
+                                        </div>
+                                        <div class="row ">
+                                            <div class="col-md-12 p-2">
+                                                <h2>CVR: <span class="badge bg-secondary d-flex m-2">@item.Cvr</span></h2>
+                                            </div>
 
-							</div>
-							<div class="row">
-								<div class="col-md-12 ">
-									<h2>Description</h2>
-									<p>
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum at molestias error expedita. Consequatur ad unde ut,
-										eum reiciendis perspiciatis harum praesentium adipisci recusandae a eos exercitationem doloribus magni blanditiis!
-									</p>
-								</div>
-							</div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 ">
+                                                <h2>Email</h2>
+                                                <p>
+                                                    @item.Email
+                                                </p>
+                                            </div>
+                                        </div>
 
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-							Close
-						</button>
-						<button type="button" class="btn btn-primary">
-							Save changes
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--End Model-->
-	</div>
-</section>
-<div class="container mb-4">
-	<div class="row ">
-		<h2 class="bg-secondary p-2 text-center text-white rounded-2">Assign Tasks</h2>
-		<div class="col-sm-12">
-			<form method="post">
-				
-				<div class="row pb-2">
-					<h2 class="text-primary pl-3">Ny Booking</h2>
-					<hr/>
-				</div>
-				<div asp-validation-summary="All"></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                }
+                <!--End Model-->
+            </div>
+        </section>
+        <div class="container mb-4">
+            <div class="row ">
+                <h2 class="bg-secondary p-2 text-center text-white rounded-2">Assign Tasks</h2>
+                <div class="col-sm-12">
+                    <form method="post">
 
-				<div class="mb-3">
-					<label> Vælg Projek</label>
-					<select asp-for="Booking.ProjectId" asp-items="@(new SelectList(Model.ProjektList, "ProjektId", "ProjektTitle"))" class="form-select" aria-label="Default select example"
-					        required>
-						<option value="">Vælg en</option>
-					</select>
-				</div>
-				@*<div class="mb-3">
-                                <label> Vælg Opgave</label>
-                                <select asp-for="Booking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList,"OpgaveId","OpgaveName"))" class="form-control" required>
-                                    <option value="">Vælg en</option>
-                                </select>
-                            </div>*@
-				<div class="mb-3">
-					<label> Vælg Medarbejde</label>
-					<select asp-for="Booking.MedarbejdeId" asp-items="@(new SelectList(Model.MedarbejderList, "MedarbejderId", "Fornavn"))" class="form-select" aria-label="Default select example"
-					        required>
-						<option value="">Vælg en</option>
-					</select>
-				</div>
-				<div class="mb-3">
-					<label> Vælg Opgave</label>
-					<select asp-for="Booking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList, "OpgaveId", "OpgaveName"))" class="form-select" aria-label="Default select example"
-					        required>
-						<option value="">Vælg en</option>
-					</select>
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-				</div>
-				<div class="mb-3">
-					<div class="row align-items-center p-2">
-						<div class="col-3">Start Dato:</div>
-						<div class="col-3">
-							<input type="date" id="fDate" class="form-control" asp-for="Booking.StartDate"/>
-						</div>
-						<div class="col-3">End Dato:</div>
-						<div class="col-3">
-							<input type="date" id="eDate" class="form-control" asp-for="Booking.EndDate"/>
-						</div>
-					</div>
-					<input type="number" class="form-control" id="antanday" asp-for="Booking.Duration"/>
-
-				</div>
+                        <div class="row pb-2">
+                            <h2 class="text-primary pl-3">Ny Booking</h2>
+                            <hr />
+                        </div>
+                        <div asp-validation-summary="All"></div>
+                        <!--Project DropDL-->
+                        <div class="mb-3">
+                            <label> Vælg Projek</label>
+                            <select asp-for="Booking.ProjectId" asp-items="@(new SelectList(Model.ProjektList, "ProjektId", "ProjektTitle"))" class="form-select" aria-label="Default select example"
+                                    required>
+                                <option value="">Vælg en</option>
+                            </select>
+                        </div>
+                        <!--MedArbejder DropDL-->
+                        <div class="mb-3">
+                            <label> Vælg Medarbejde</label>
+                            <select asp-for="Booking.MedarbejdeId" asp-items="@(new SelectList(Model.MedarbejderList, "MedarbejderId", "Fornavn"))" class="form-select" aria-label="Default select example"
+                                    required>
+                                <option value="">Vælg en</option>
+                            </select>
+                        </div>
+                        <!--Opgaver DropDL-->
+                        <div class="mb-3">
+                            <label> Vælg Opgave</label>
+                            <select asp-for="Booking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList, "OpgaveId", "OpgaveName"))" class="form-select" aria-label="Default select example"
+                                    required>
+                                <option value="">Vælg en</option>
+                            </select>
+                        </div>
+                        <!--Description Area-->
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <!--Date Time PickerL-->
+                        <div class="mb-3">
+                            <div class="row align-items-center p-2">
+                                <div class="col-3">Start Dato:</div>
+                                <div class="col-3">
+                                    <input type="date" id="start-date" class="form-control" asp-for="Booking.StartDate" />
+                                </div>
+                                <div class="col-3">End Dato:</div>
+                                <div class="col-3">
+                                    <input type="date" id="end-date" class="form-control" onchange="dateChange" asp-for="Booking.EndDate" />
+                                </div>
+                            </div>
+                            <input type="number" class="form-control" id="date-deferent" asp-for="Booking.Duration" />
+                        </div>
 
 
-				<button type="submit" class="btn btn-primary" style="width: 150px;">Create</button>
-				<a asp-page="Index" class="btn btn-secondary" style="width: 150px;"> Back to List</a>
+                        <button type="submit" class="btn btn-primary" style="width: 150px;">Create</button>
+                        <a asp-page="Index" class="btn btn-secondary" style="width: 150px;"> Back to List</a>
 
 
-			</form>
-		</div>
-	</div>
-</div>
-</div>
-<script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-<script src="charts.js"></script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="charts.js"></script>
 
-<script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-<script src="~/js/charts.js"></script>
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="~/js/charts.js"></script>
 
 </body>
 
 <!--second-->
-
 @section Scripts{
-	@{
-		<partial name="_ValidationScriptsPartial"/>
-	}
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+    <script type="text/javascript">
+        dateChange = function () {
+            const elem1 = document.getElementById('start-date').value;
+
+            const elem2 = document.getElementById('end-date').value;
+
+            let result = document.getElementById('date-deferent');
+
+            if (elem1 == elem2) {
+                result.value = 1;
+                return;
+            }
+            if (elem1 > elem2) {
+                alert("start date cannot be after end date!!!!");
+                return;
+            }
+
+            let date1 = new Date(elem1);
+            let date2 = new Date(elem2);
+
+            // To calculate the time difference of two dates
+            let Difference_In_Time = date2.getTime() - date1.getTime();
+
+            // To calculate the no. of days between two dates
+            let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+            //To display the final no. of days (result)
+
+            result.value = Difference_In_Days;
+        }
+    </script>
 
 }
