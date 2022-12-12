@@ -46,7 +46,7 @@ public class MedarbejderService : IMedarbejderService
         return await _httpClient.GetFromJsonAsync<QueryMedarbejderResultDto>($"api/Medarbejder/{id}");
     }
 
-    async Task<IEnumerable<QueryMedarbejderResultDto>?> IMedarbejderService.GetAll()
+    async Task<IEnumerable<QueryMedarbejderResultDto>> IMedarbejderService.GetAll()
     {
         return await _httpClient.GetFromJsonAsync<List<QueryMedarbejderResultDto>>("api/Medarbejder");
     }

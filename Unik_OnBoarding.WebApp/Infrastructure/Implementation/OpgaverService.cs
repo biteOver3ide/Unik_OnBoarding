@@ -9,6 +9,10 @@ public class OpgaverService : IOpgaverService
 {
     private readonly HttpClient _httpClient;
 
+    public OpgaverService(HttpClient httpClient)
+    {
+        _httpClient = httpClient;
+    }
     async Task IOpgaverService.Create(CreateOpgaverDto dto)
     {
         var response =
@@ -41,7 +45,7 @@ public class OpgaverService : IOpgaverService
         return await _httpClient.GetFromJsonAsync<QueryOpgaverResultDto>($"api/Opgaver/{id}");
     }
 
-    async Task<IEnumerable<QueryOpgaverResultDto>?> IOpgaverService.GetAll()
+   public async Task<IEnumerable<QueryOpgaverResultDto>?> GetAll()
     {
         return await _httpClient.GetFromJsonAsync<List<QueryOpgaverResultDto>>("api/Opgaver");
     }

@@ -2,38 +2,45 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Projekt;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Pages.Admin.Bookings;
 
+[BindProperties]
 public class CreateModel : PageModel
 {
     private readonly IBookingService _bookingService;
     private readonly IKundeService _kundeService;
+    private readonly IMedarbejderService _medarbejderService;
+    private readonly IOpgaverService _opgaverService;
+    private readonly IProjektService _projektService;
 
 
-    public CreateModel(IBookingService bookingService, IKundeService kundeService)
+    public CreateModel(IBookingService bookingService, IKundeService kundeService,
+        IProjektService projektService, IMedarbejderService medarbejderService, IOpgaverService opgaverService)
     {
         _bookingService = bookingService;
         _kundeService = kundeService;
+        _projektService = projektService;
+        _medarbejderService = medarbejderService;
+        _opgaverService = opgaverService;
     }
 
-    [BindProperty] public CreateBookingDto CreateBooking { get; set; }
-    [BindProperty] public IEnumerable<QueryKundeResultDto> IndexKunde { get; set; }
+    public CreateBookingDto Booking { get; set; }
+    public IEnumerable<QueryKundeResultDto> KundeList { get; set; }
+    public IEnumerable<QueryProjektResultDto> ProjektList { get; set; }
+    public IEnumerable<QueryMedarbejderResultDto> MedarbejderList { get; set; }
+    public IEnumerable<QueryOpgaverResultDto> OpgaverList { get; set; }
 
-    public async Task<IActionResult> OnGet()
+    public async Task OnGet()
     {
-        try
-        {
-            IndexKunde = await _kundeService.GetAll();
-        }
-        catch (Exception e)
-        {
-            ModelState.AddModelError(string.Empty, e.Message);
-            return Page();
-        }
-
-        return Page();
+        KundeList = await _kundeService.GetAll();
+        ProjektList = await _projektService.GetAll();
+        MedarbejderList = await _medarbejderService.GetAll();
+        OpgaverList = await _opgaverService.GetAll();
     }
 
 
@@ -41,7 +48,8 @@ public class CreateModel : PageModel
     {
         if (ModelState.IsValid)
         {
-            await _bookingService.Create(CreateBooking);
+            
+            await _bookingService.Create(Booking);
             TempData["success"] = "Kunden created successfully";
             //return RedirectToPage("Index");
         }

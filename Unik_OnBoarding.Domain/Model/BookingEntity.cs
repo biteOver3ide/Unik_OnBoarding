@@ -10,17 +10,17 @@ public class BookingEntity
     {
     }
 
-    public BookingEntity(Guid bookId, Guid projektid, Guid opgaveId, Guid medarbejderId, DateTime startDate,
-        DateTime endDate)
-    {
-        BookId = bookId;
-        ProjektId = projektid;
-        OpgaveId = opgaveId;
-        MedarbejderId = medarbejderId;
-        StartDate = startDate;
-        EndDate = endDate;
-        Duration = BusinessDaysLeft(startDate, EndDate);
-    }
+    //public BookingEntity(Guid bookId, Guid projektid, Guid opgaveId, Guid medarbejderId, DateTime startDate,
+    //    DateTime endDate)
+    //{
+    //    BookId = bookId;
+    //    ProjektId = projektid;
+    //    OpgaveId = opgaveId;
+    //    MedarbejderId = medarbejderId;
+    //    StartDate = startDate;
+    //    EndDate = endDate;
+    //    Duration = BusinessDaysLeft(startDate, EndDate);
+    //}
     [Key]
     public Guid BookId { get; set; }
     public int Duration { get; set; }
