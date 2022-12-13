@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
@@ -44,14 +45,36 @@ public class CreateModel : PageModel
     }
 
 
-    public async Task OnPost()
+    public async Task <IActionResult> OnPost()
     {
-        if (ModelState.IsValid)
+        //ClearFieldErrors(key => key.Contains("RowVersion"));
+        //if (!ModelState.IsValid) return Page();
+        if (!ModelState.IsValid)
+
+        try
         {
-            
             await _bookingService.Create(Booking);
             TempData["success"] = "Kunden created successfully";
-            //return RedirectToPage("Index");
+            return new RedirectToPageResult("Index");
+        }
+        catch (DbUpdateConcurrencyException e)
+        {
+            ModelState.AddModelError(string.Empty, "Concurrency conflict");
+            return Page();
+        }
+    }
+
+    private void ClearFieldErrors(Func<string, bool> predicate)
+    {
+        foreach (var field in ModelState)
+        {
+            if (field.Value.ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid)
+            {
+                if (predicate(field.Key))
+                {
+                    field.Value.ValidationState = Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Valid;
+                }
+            }
         }
     }
 }

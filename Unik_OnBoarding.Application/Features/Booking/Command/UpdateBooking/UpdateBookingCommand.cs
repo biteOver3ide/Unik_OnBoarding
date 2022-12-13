@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
+using MediatR;
 using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Application.Features.Booking.Command.UpdateBooking;
@@ -11,4 +13,6 @@ public class UpdateBookingCommand : IRequest
     public MedarbejderEntity Medarbejder { get; set; }
     public DateTime StartDate { get; set; } = DateTime.UtcNow;
     public DateTime EndDate { get; set; }
+
+    [Timestamp] public byte[] RowVersion { get; set; }
 }
