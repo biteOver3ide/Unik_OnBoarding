@@ -12,13 +12,11 @@ public class CreateBookingDto
 
     [Required(ErrorMessage = "startdato er påkrævet")]
     [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     [DisplayName("Start dato")]
-    public DateTime StartDate { get; set; } = DateTime.UtcNow;
+    public DateTime StartDate { get; set; } 
 
     [Required(ErrorMessage = "slutdato er påkrævet")]
     [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     [DisplayName("Slut dato")]
     public DateTime EndDate { get; set; }
     public int Duration { get; set; }

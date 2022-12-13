@@ -38,28 +38,14 @@ public class CreateModel : PageModel
 
     public async Task OnGet ( )
     {
-        var KL = await _kundeService.GetAll( );
-        if (KL != null)
-        {
-            KundeList = (IEnumerable<QueryKundeResultDto>)( from k in KL select new { k.Kid, k.Firmanavn }).ToList();
-        }
-
-        var PL= await _projektService.GetAll( );
-        //check then
-        ProjektList = (IEnumerable<QueryProjektResultDto>)( from p in PL select new { p.ProjektId, p.ProjektTitle } ).ToList( );
-
-        var ML = await _medarbejderService.GetAll( );
-        //cekc then
-        MedarbejderList = (IEnumerable<QueryMedarbejderResultDto>)( from m in ML select new { m.MedarbejderId, m.Efternavn } ).ToList( );
-
-        var OL = await _opgaverService.GetAll( );
-        //check then 
-        OpgaverList = (IEnumerable<QueryOpgaverResultDto>)( from o in OL select new { o.OpgaveId, o.OpgaveName } ).ToList( );
-
+        KundeList = await _kundeService.GetAll( );
+        ProjektList = await _projektService.GetAll( );
+        MedarbejderList = await _medarbejderService.GetAll( );
+        OpgaverList = await _opgaverService.GetAll( );
     }
 
 
-    public async Task OnPost ( )
+    public async Task<IActionResult> OnPost ( )
     {
         if (ModelState.IsValid)
         {
@@ -67,8 +53,9 @@ public class CreateModel : PageModel
             TempData["success"] = "Kunden created successfully";
             //fillOut DropDoewn List Again
             OnGet( );
-            //return RedirectToPage("Index");
+            return RedirectToPage(nameof(Index));
         }
+        return Page();
     }
 
 
