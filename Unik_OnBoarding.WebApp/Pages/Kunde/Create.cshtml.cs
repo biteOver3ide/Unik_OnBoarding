@@ -15,7 +15,8 @@ public class CreateModel : PageModel
         _kundeService = kundeService;
     }
 
-    [BindProperty] public CreateKundeRequestDto Crt { get; set; }
+    [BindProperty] 
+    public CreateKundeRequestDto Crt { get; set; }
 
     public async Task<IActionResult> OnPost()
     {
@@ -28,7 +29,7 @@ public class CreateModel : PageModel
         }
         catch (DbUpdateConcurrencyException e)
         {
-            ModelState.AddModelError(string.Empty, "Concurrency conflict");
+            ModelState.AddModelError(string.Empty, $"Concurrency conflict: {e}");
             return Page();
         }
     }

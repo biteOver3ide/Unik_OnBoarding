@@ -16,7 +16,7 @@ public class GetKundeListQueryHandler : IRequestHandler<GetKundeListQuery, List<
         _mapper = mapper;
     }
 
-    async Task<List<KundeDto>> IRequestHandler<GetKundeListQuery, List<KundeDto>>.Handle(
+   public async Task<List<KundeDto>> Handle(
         GetKundeListQuery request,
         CancellationToken cancellationToken)
     {

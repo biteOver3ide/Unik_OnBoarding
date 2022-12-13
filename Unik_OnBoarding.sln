@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoaring.SqlServerCon
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{140A1B6B-DFC1-4A3A-8BD8-4F862BE48CC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBording.Tests", "..\Unik_OnBording.Tests\Unik_OnBording.Tests.csproj", "{EAB378C7-ED95-471D-8E66-E6ABFFCCB9A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{140A1B6B-DFC1-4A3A-8BD8-4F862BE48CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{140A1B6B-DFC1-4A3A-8BD8-4F862BE48CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{140A1B6B-DFC1-4A3A-8BD8-4F862BE48CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAB378C7-ED95-471D-8E66-E6ABFFCCB9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAB378C7-ED95-471D-8E66-E6ABFFCCB9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAB378C7-ED95-471D-8E66-E6ABFFCCB9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAB378C7-ED95-471D-8E66-E6ABFFCCB9A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{B1368BE4-830B-4136-929A-1ABCD73141B4} = {F4C5A349-73ED-4399-AC5E-EFE6D91CCD82}
 		{07749C26-C4B5-4809-9624-EC8EC05C5C88} = {F4C5A349-73ED-4399-AC5E-EFE6D91CCD82}
 		{2B71DEEE-5ECB-4C3B-A34E-5E7ED45F727C} = {F4C5A349-73ED-4399-AC5E-EFE6D91CCD82}
+		{EAB378C7-ED95-471D-8E66-E6ABFFCCB9A5} = {64D19FAD-D131-4D4B-B5C8-E0D03BAB119D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75C1CC84-EA59-4680-8251-4F1F9712C539}
