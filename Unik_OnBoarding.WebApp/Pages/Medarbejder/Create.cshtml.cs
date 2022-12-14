@@ -27,7 +27,7 @@ public class CreateModel : PageModel
             await _medarbejderService.Create(Crt);
             return new RedirectToPageResult("/Medarbejder/Index");
         }
-        catch (DbUpdateConcurrencyException e)
+        catch (Exception e)
         {
             ModelState.AddModelError(string.Empty, "Concurrency conflict");
             return Page();

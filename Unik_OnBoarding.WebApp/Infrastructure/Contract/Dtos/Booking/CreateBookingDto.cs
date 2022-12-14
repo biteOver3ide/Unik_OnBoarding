@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using Unik_OnBoarding.Domain.Model;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
 
@@ -13,12 +12,12 @@ public class CreateBookingDto
     [Required(ErrorMessage = "startdato er påkrævet")]
     [DataType(DataType.Date)]
     [DisplayName("Start dato")]
-    public DateTime StartDate { get; set; } 
+    public DateTime StartDate { get; set; }
 
     [Required(ErrorMessage = "slutdato er påkrævet")]
     [DataType(DataType.Date)]
     [DisplayName("Slut dato")]
     public DateTime EndDate { get; set; }
+
     public int Duration { get; set; }
-    public byte[] RowVersion { get; set; }
 }

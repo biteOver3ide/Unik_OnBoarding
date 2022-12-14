@@ -6,8 +6,8 @@ public class CreateBookingValidator : AbstractValidator<CreateBookingCommand>
 {
     public CreateBookingValidator()
     {
-        RuleFor(b => b.BookingId)
-            .NotEmpty().WithMessage("Skal ikke være tomt")
-            .NotNull();
+        //RuleFor(b => b.BookingId)
+        //    .NotEmpty().WithMessage("Skal ikke være tomt")
+        //    .NotNull();
     }
 }
