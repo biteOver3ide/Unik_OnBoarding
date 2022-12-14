@@ -11,8 +11,7 @@ public class ProjektEntity
 
     public Guid KundeId { get; set; }
 
-    [ForeignKey("KundeId")] // Realation mellem Projekt og Kunde 1 to many
-    public KundeEntity Kunde { get; set; }
+    [ForeignKey("KundeId")] public KundeEntity Kunde { get; set; }
 
     [Timestamp] public byte[] RowVersion { get; set; }
 }

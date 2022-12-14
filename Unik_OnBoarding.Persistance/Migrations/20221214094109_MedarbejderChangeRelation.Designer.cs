@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unik_OnBoarding.Persistance.DbContext;
 
@@ -11,9 +12,10 @@ using Unik_OnBoarding.Persistance.DbContext;
 namespace Unik_OnBoarding.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221214094109_MedarbejderChangeRelation")]
+    partial class MedarbejderChangeRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,7 +82,7 @@ namespace Unik_OnBoarding.Persistance.Migrations
                     b.Property<int>("Job")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("MedarbejderEntityMedarbejderId")
+                    b.Property<Guid>("MedarbejderId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<byte[]>("RowVersion")
@@ -91,7 +93,7 @@ namespace Unik_OnBoarding.Persistance.Migrations
 
                     b.HasKey("KompetenceId");
 
-                    b.HasIndex("MedarbejderEntityMedarbejderId");
+                    b.HasIndex("MedarbejderId");
 
                     b.ToTable("Kompetencerne", "Unik");
                 });
@@ -296,9 +298,13 @@ namespace Unik_OnBoarding.Persistance.Migrations
 
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.KompetenceEntity", b =>
                 {
-                    b.HasOne("Unik_OnBoarding.Domain.Model.MedarbejderEntity", null)
+                    b.HasOne("Unik_OnBoarding.Domain.Model.MedarbejderEntity", "Medarbejder")
                         .WithMany("Kompetencer")
-                        .HasForeignKey("MedarbejderEntityMedarbejderId");
+                        .HasForeignKey("MedarbejderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Medarbejder");
                 });
 
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.ProjektEntity", b =>

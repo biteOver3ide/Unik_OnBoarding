@@ -19,6 +19,8 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
     // DATA SEEDING 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasDefaultSchema("Unik");
+
         var kundeid = Guid.Parse("{c5121b63-1bd8-4b99-9712-632603eeb167}");
         var kundeid2 = Guid.Parse("{f7709162-1bd8-4b99-9712-632603eeb167}");
         var p1 = Guid.Parse("{e7709162-a03f-4b4c-aeba-12573ef27676}");
@@ -63,9 +65,9 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
                 ProjektTitle = "Onboaring Kolding AAB"
             }
         );
-        modelBuilder.Entity<MedarbejderEntity>() // to save enum as a string
-            .Property(u => u.Job)
-            .HasConversion<string>()
-            .HasMaxLength(50);
+        //modelBuilder.Entity<MedarbejderEntity>() // to save enum as a string
+        //    .Property(u => u.Job)
+        //    .HasConversion<string>()
+        //    .HasMaxLength(50);
     }
 }

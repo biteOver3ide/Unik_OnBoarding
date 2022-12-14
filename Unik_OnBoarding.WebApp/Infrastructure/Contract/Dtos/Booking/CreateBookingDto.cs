@@ -5,10 +5,10 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Booking;
 
 public class CreateBookingDto
 {
-    public Guid ProjectId { get; set; }
+    public Guid ProjektId { get; set; }
     public Guid OpgaveId { get; set; }
-    public Guid MedarbejdeId { get; set; }
-
+    public Guid MedarbejderId { get; set; }
+    
     [Required(ErrorMessage = "startdato er påkrævet")]
     [DataType(DataType.Date)]
     [DisplayName("Start dato")]
@@ -20,4 +20,6 @@ public class CreateBookingDto
     public DateTime EndDate { get; set; }
 
     public int Duration { get; set; }
+
+    
 }

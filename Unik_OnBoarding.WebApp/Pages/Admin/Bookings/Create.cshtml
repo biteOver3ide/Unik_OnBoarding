@@ -149,7 +149,7 @@
                         <!--Project DropDL-->
                         <div class="mb-3">
                             <label> Vælg Projek</label>
-                            <select asp-for="Booking.ProjectId" asp-items="@(new SelectList(Model.ProjektList, "ProjektId", "ProjektTitle"))" class="form-select" aria-label="Default select example"
+                            <select asp-for="Booking.ProjektId" asp-items="@(new SelectList(Model.ProjektList, "ProjektId", "ProjektTitle"))" class="form-select" aria-label="Default select example"
                                     required>
                                 <option value="">Vælg en</option>
                             </select>
@@ -157,7 +157,7 @@
                         <!--MedArbejder DropDL-->
                         <div class="mb-3">
                             <label> Vælg Medarbejder</label>
-                            <select asp-for="Booking.MedarbejdeId" asp-items="@(new SelectList(Model.MedarbejderList, "MedarbejderId", "Fornavn"))" class="form-select" aria-label="Default select example"
+                            <select asp-for="Booking.MedarbejderId" asp-items="@(new SelectList(Model.MedarbejderList, "MedarbejderId", "Fornavn"))" class="form-select" aria-label="Default select example"
                                     required>
                                 <option value="">Vælg en</option>
                             </select>

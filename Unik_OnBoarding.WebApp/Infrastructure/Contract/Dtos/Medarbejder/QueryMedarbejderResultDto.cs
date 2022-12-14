@@ -5,7 +5,7 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 
 public class QueryMedarbejderResultDto
 {
-    [Key] public Guid MedarbejderId { get; set; }
+    public Guid MedarbejderId { get; set; }
 
     [StringLength(30)]
     [MinLength(3, ErrorMessage = "{0} må ikke være korter end {1} bogstaver. ")]

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Unik_OnBoarding.Persistance.DbContext;
 
@@ -11,9 +12,10 @@ using Unik_OnBoarding.Persistance.DbContext;
 namespace Unik_OnBoarding.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221214093212_changeFieldMirgarion")]
+    partial class changeFieldMirgarion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,9 +82,6 @@ namespace Unik_OnBoarding.Persistance.Migrations
                     b.Property<int>("Job")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("MedarbejderEntityMedarbejderId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
@@ -90,8 +89,6 @@ namespace Unik_OnBoarding.Persistance.Migrations
                         .HasColumnType("rowversion");
 
                     b.HasKey("KompetenceId");
-
-                    b.HasIndex("MedarbejderEntityMedarbejderId");
 
                     b.ToTable("Kompetencerne", "Unik");
                 });
@@ -294,13 +291,6 @@ namespace Unik_OnBoarding.Persistance.Migrations
                     b.Navigation("Projekt");
                 });
 
-            modelBuilder.Entity("Unik_OnBoarding.Domain.Model.KompetenceEntity", b =>
-                {
-                    b.HasOne("Unik_OnBoarding.Domain.Model.MedarbejderEntity", null)
-                        .WithMany("Kompetencer")
-                        .HasForeignKey("MedarbejderEntityMedarbejderId");
-                });
-
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.ProjektEntity", b =>
                 {
                     b.HasOne("Unik_OnBoarding.Domain.Model.KundeEntity", "Kunde")
@@ -315,11 +305,6 @@ namespace Unik_OnBoarding.Persistance.Migrations
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.KundeEntity", b =>
                 {
                     b.Navigation("Projekt");
-                });
-
-            modelBuilder.Entity("Unik_OnBoarding.Domain.Model.MedarbejderEntity", b =>
-                {
-                    b.Navigation("Kompetencer");
                 });
 #pragma warning restore 612, 618
         }

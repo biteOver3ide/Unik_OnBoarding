@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Unik_OnBoarding.Domain.Model;
 
@@ -14,7 +15,10 @@ public class MedarbejderEntity
 
     [Required] public string Telefon { get; set; }
 
+    [Column(TypeName = "nvarchar(24)")]
     public Jobtitler Job { get; set; }
+
+    public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
 
     [Timestamp] public byte[] RowVersion { get; set; }
 }   
