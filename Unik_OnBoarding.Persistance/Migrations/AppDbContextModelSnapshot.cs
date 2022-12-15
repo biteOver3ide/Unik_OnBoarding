@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoarding.Persistance.DatabaseContext;
 
 #nullable disable
 

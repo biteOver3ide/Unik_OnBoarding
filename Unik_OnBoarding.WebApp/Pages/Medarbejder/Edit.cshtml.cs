@@ -30,7 +30,7 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
                 ModelState.AddModelError(string.Empty, e.Message);
                 return Page();
             }
-
+            
             return Page();
         }
 

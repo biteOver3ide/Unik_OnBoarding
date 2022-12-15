@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Application.Interfaceses;
-using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoarding.Persistance.DatabaseContext;
 
 namespace Unik_OnBoarding.Persistance.Repositories;
 

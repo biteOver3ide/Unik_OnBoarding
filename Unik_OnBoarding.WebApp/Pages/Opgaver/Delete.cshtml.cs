@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoarding.Persistance.DatabaseContext;
 
 namespace Unik_OnBoarding.WebApp.Pages.Opgaver
 {
     public class DeleteModel : PageModel
     {
-        private readonly Unik_OnBoarding.Persistance.DbContext.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public DeleteModel(Unik_OnBoarding.Persistance.DbContext.AppDbContext context)
+        public DeleteModel(AppDbContext context)
         {
             _context = context;
         }

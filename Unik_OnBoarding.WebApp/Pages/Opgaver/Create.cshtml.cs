@@ -6,15 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoarding.Persistance.DatabaseContext;
 
 namespace Unik_OnBoarding.WebApp.Pages.Opgaver
 {
     public class CreateModel : PageModel
     {
-        private readonly Unik_OnBoarding.Persistance.DbContext.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public CreateModel(Unik_OnBoarding.Persistance.DbContext.AppDbContext context)
+        public CreateModel(AppDbContext context)
         {
             _context = context;
         }

@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Domain.Model;
 
-namespace Unik_OnBoarding.Persistance.DbContext;
+namespace Unik_OnBoarding.Persistance.DatabaseContext;
 
-public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
+public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -65,9 +65,5 @@ public class AppDbContext : Microsoft.EntityFrameworkCore.DbContext
                 ProjektTitle = "Onboaring Kolding AAB"
             }
         );
-        //modelBuilder.Entity<MedarbejderEntity>() // to save enum as a string
-        //    .Property(u => u.Job)
-        //    .HasConversion<string>()
-        //    .HasMaxLength(50);
     }
 }

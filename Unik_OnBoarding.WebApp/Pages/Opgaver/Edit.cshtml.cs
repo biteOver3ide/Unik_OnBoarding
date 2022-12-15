@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DbContext;
+using Unik_OnBoarding.Persistance.DatabaseContext;
 
 namespace Unik_OnBoarding.WebApp.Pages.Opgaver
 {
     public class EditModel : PageModel
     {
-        private readonly Unik_OnBoarding.Persistance.DbContext.AppDbContext _context;
+        private readonly AppDbContext _context;
 
-        public EditModel(Unik_OnBoarding.Persistance.DbContext.AppDbContext context)
+        public EditModel(AppDbContext context)
         {
             _context = context;
         }

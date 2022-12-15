@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 
-namespace Unik_OnBoarding.Persistance.DbContext;
+namespace Unik_OnBoarding.Persistance.DatabaseContext;
 
 public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
 {
