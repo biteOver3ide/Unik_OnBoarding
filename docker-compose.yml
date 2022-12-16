@@ -25,7 +25,7 @@ services:
       dockerfile: Unik_OnBoarding.Api\Dockerfile
     environment:
          "ASPNETCORE_ENVIRONMENT": "Development"
-         "ConnectionStrings:AppConnectionString": "Server=db;Database=Unik_OnBoardingDB;user id=api;password=apiPassw0rd!; MultipleActiveResultSets=true"
+         "ConnectionStrings:AppConnectionString": "Server=db;Database=Unik_OnBoardingDB;user id=sa;password=SqlPassw0rd!; MultipleActiveResultSets=true"
 
     depends_on:
       - db
@@ -40,9 +40,9 @@ services:
         ACCEPT_EULA: "Y"
 
     volumes:
-      - C:\Temp\SqlVolume\data:/var/opt/mssql/data
-      - C:\Temp\SqlVolume\log:/var/opt/mssql/log
-      - C:\Temp\SqlVolume\secrets:/var/opt/mssql/secrets 
+      - C:\Temp\SqlVolumeUnik\data:/var/opt/mssql/data
+      - C:\Temp\SqlVolumeUnik\log:/var/opt/mssql/log
+      - C:\Temp\SqlVolumeUnik\secrets:/var/opt/mssql/secrets 
 
     container_name: sql2019
     hostname: sql1
