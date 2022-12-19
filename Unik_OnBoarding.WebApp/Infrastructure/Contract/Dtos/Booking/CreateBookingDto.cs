@@ -8,6 +8,7 @@ public class CreateBookingDto
     public Guid ProjektId { get; set; }
     public Guid OpgaveId { get; set; }
     public Guid MedarbejderId { get; set; }
+    public string? Beskrivelse { get; set; }
     
     [Required(ErrorMessage = "startdato er påkrævet")]
     [DataType(DataType.Date)]

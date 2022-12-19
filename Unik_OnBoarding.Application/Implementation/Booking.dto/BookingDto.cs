@@ -12,6 +12,7 @@ public class BookingDto
     public Guid OpgaveId { get; set; }
     public Guid MedarbejderId { get; set; }
     public int Duration { get; set; }
+    public string? Beskrivelse { get; set; }
 
     // Navigation prop
     public OpgaverEntity Opgave { get; set; }
@@ -33,4 +34,7 @@ public class BookingDto
     [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
     [DisplayName("Slut dato")]
     public DateTime EndDate { get; set; }
+
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
 }

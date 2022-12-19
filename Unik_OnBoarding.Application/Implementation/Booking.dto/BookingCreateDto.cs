@@ -12,6 +12,7 @@ public class BookingCreateDto
     public Guid OpgaveId { get; set; }
     public Guid MedarbejderId { get; set; }
     public int Duration { get; set; }
+    public string? Beskrivelse { get; set; }
 
     // Navigation prop
     public OpgaverEntity Opgave { get; set; }

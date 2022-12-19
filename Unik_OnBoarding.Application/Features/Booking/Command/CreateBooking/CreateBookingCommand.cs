@@ -10,4 +10,5 @@ public class CreateBookingCommand : IRequest<Guid>
     public DateTime StartDate { get; set; } = DateTime.UtcNow;
     public DateTime EndDate { get; set; }
     public int Duration { get; set; }
+    public string? Beskrivelse { get; set; }
 }

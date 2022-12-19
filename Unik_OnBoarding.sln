@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoaring.SqlServerCon
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{140A1B6B-DFC1-4A3A-8BD8-4F862BE48CC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unik_OnBoaring.Test", "..\Unik_OnBoaring.Test\Unik_OnBoaring.Test.csproj", "{A8DF004A-4C77-4745-AB75-472C92C7FC12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unik_OnBoaring.Test", "..\Unik_OnBoaring.Test\Unik_OnBoaring.Test.csproj", "{A8DF004A-4C77-4745-AB75-472C92C7FC12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

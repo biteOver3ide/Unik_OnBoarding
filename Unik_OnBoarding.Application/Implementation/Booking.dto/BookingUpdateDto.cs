@@ -34,4 +34,7 @@ public class BookingUpdateDto
     [DisplayName("Slut dato")]
     public DateTime EndDate { get; set; }
 
+    [Timestamp]
+    public byte[] RowVersion { get; set; }
+
 }
