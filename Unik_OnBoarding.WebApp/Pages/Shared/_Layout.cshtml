@@ -5,47 +5,68 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>@ViewData["Title"] - Unik Onboaring</title>
+	@*	<!--Bootstrap-->
+	<link rel="stylesheet" href="~/css/bootstrap.css"/>
+	<link rel="stylesheet" href="~/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="~/css/prism-okaidia.css"/>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 	<link rel="stylesheet" href="~/Unik_OnBoarding.WebApp.styles.css" asp-append-version="true"/>
+	<!--Calendar Script-->
+	<link rel="stylesheet" href="~/css/main.css"/>
+	<script src="~/js/main.js"></script>
+	<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+	<script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>*@
+	
+	<link rel="stylesheet" href="~/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="~/css/prism-okaidia.css" />
+	<!--Full Calendar Scripts-->
+	<link rel="stylesheet" href="~/css/main.css" />
+	<script src="~/js/main.js"></script>
+	<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+	<script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
+
+	<link rel="stylesheet" href="~/css/site.css" />
+
 </head>
 <body>
 <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Unik Onboaring</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Bookings/Create">Admin Dashboard</a>
-                        </li>
-	                    <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Admin/Create">Dashboard</a>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-page="/Kunde/Index">Kunde</a>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Index">Medarbejder</a>
-	                    </li>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-page="/Kompetencer/Index">Skill</a>
-	                    </li>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-page="/Projekt/Index">Projekt</a>
-	                    </li>
-	                    </li>
-	                    <li class="nav-item">
-		                    <a class="nav-link text-dark" asp-area="" asp-page="/Opgaver/Index">Opgaver</a>
-	                    </li>
-	                    @*	                   @if (AuthService.AuthorizeAsync(User, "TeknikerPolicy").Result.Succeeded)
+	<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<div class="container">
+			<a class="navbar-brand" asp-area="" asp-page="/Index">Unik Onboaring</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+			        aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+				<ul class="navbar-nav flex-grow-1">
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-page="/Admin/Bookings/Create">Admin Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-page="/Admin/Create">Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-page="/Kunde/Index">Kunde</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Index">Medarbejder</a>
+					</li>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-page="/Kompetencer/Index">Skill</a>
+					</li>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-page="/Projekt/Index">Projekt</a>
+					</li>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-page="/Opgaver/Index">Opgaver</a>
+					</li>
+					@*	                   @if (AuthService.AuthorizeAsync(User, "TeknikerPolicy").Result.Succeeded)
 	                   {
 		                   <li class="nav-item">
 			                   <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Tekniker/Index">Dashboard</a>
@@ -54,28 +75,29 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Medarbejder/Tekniker/Create">Coach</a>
 		                   </li>*@
 
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container mb-3">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+				</ul>
+				<partial name="_LoginPartial"/>
+			</div>
+		</div>
+	</nav>
+</header>
+<div class="container mb-3">
+	<main role="main" class="pb-3">
+		@RenderBody()
+	</main>
+</div>
 
-    <footer class="border-top footer text-muted ">
-        <div class="container">
-            &copy; 2022 - Unik_OnBoarding.WebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+<footer class="border-top footer text-muted ">
+	<div class="container">
+		&copy; 2022 - Unik_OnBoarding.WebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+	</div>
+</footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/prism.js"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>

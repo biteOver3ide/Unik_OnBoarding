@@ -1,45 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DatabaseContext;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
-namespace Unik_OnBoarding.WebApp.Pages.Opgaver
+namespace Unik_OnBoarding.WebApp.Pages.Opgaver;
+
+public class CreateModel : PageModel
 {
-    public class CreateModel : PageModel
-    {
-        private readonly AppDbContext _context;
+	private readonly IOpgaverService _opgaverService;
 
-        public CreateModel(AppDbContext context)
-        {
-            _context = context;
-        }
+	public CreateModel(IOpgaverService opgaverService)
+	{
+		_opgaverService = opgaverService;
+	}
 
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
+	[BindProperty] public CreateOpgaverDto Crt { get; set; }
 
-        [BindProperty]
-        public OpgaverEntity OpgaverEntity { get; set; }
-        
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
-        {
-          if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+	public async Task<IActionResult> OnPost()
+	{
+		if (!ModelState.IsValid) return Page();
 
-            _context.Opgaver.Add(OpgaverEntity);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
-        }
-    }
+		try
+		{
+			await _opgaverService.Create(Crt);
+			return new RedirectToPageResult("/Opgaver/Index");
+		}
+		catch (Exception e)
+		{
+			ModelState.AddModelError(string.Empty, "Concurrency conflict");
+			return Page();
+		}
+	}
 }

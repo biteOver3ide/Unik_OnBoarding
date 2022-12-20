@@ -7,57 +7,54 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.Domain.Model;
 using Unik_OnBoarding.Persistance.DatabaseContext;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Pages.Opgaver
 {
     public class DeleteModel : PageModel
     {
-        private readonly AppDbContext _context;
+	    private readonly IOpgaverService _opgaverService;
 
-        public DeleteModel(AppDbContext context)
-        {
-            _context = context;
-        }
+	    public DeleteModel(IOpgaverService opgaverService)
+	    {
+		    _opgaverService = opgaverService;
+	    }
 
-        [BindProperty]
-      public OpgaverEntity OpgaverEntity { get; set; }
+	    [BindProperty]
+      public QueryOpgaverResultDto Drt { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
-        {
-            if (id == null || _context.Opgaver == null)
-            {
-                return NotFound();
-            }
+      public async Task<IActionResult> OnGet(Guid id)
+      {
+	      if (id == null) return NotFound();
 
-            var opgaverentity = await _context.Opgaver.FirstOrDefaultAsync(m => m.OpgaveId == id);
+	      try
+	      {
+		      Drt = await _opgaverService.Get(id);
+	      }
+	      catch (Exception e)
+	      {
+		      ModelState.AddModelError(string.Empty, e.Message);
+		      return Page();
+	      }
 
-            if (opgaverentity == null)
-            {
-                return NotFound();
-            }
-            else 
-            {
-                OpgaverEntity = opgaverentity;
-            }
-            return Page();
-        }
+	      return Page();
+      }
 
-        public async Task<IActionResult> OnPostAsync(Guid? id)
-        {
-            if (id == null || _context.Opgaver == null)
-            {
-                return NotFound();
-            }
-            var opgaverentity = await _context.Opgaver.FindAsync(id);
-
-            if (opgaverentity != null)
-            {
-                OpgaverEntity = opgaverentity;
-                _context.Opgaver.Remove(OpgaverEntity);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
-        }
-    }
+      public async Task<IActionResult> OnPost(Guid id)
+      {
+	      if (!ModelState.IsValid)
+		      return Page();
+	      try
+	      {
+		      await _opgaverService.Delete(id);
+		      return RedirectToPage("/Opgaver/Index");
+	      }
+	      catch (DbUpdateConcurrencyException e)
+	      {
+		      ModelState.AddModelError(string.Empty, $"Concurrency conflict {e}");
+		      return Page();
+	      }
+      }
+	}
 }

@@ -11,6 +11,4 @@ public class CreateKompetenceDto
     [MinLength(3, ErrorMessage = "{0} må ikke være korter end {1} bogstaver. ")]
     [Required(ErrorMessage = "indtast et gyldig {0}")]
     public string Beskrivelse { get; set; }
-
-    [Timestamp] public byte[] RowVersion { get; set; }
 }

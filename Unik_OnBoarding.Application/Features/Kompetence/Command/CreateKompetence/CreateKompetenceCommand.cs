@@ -10,5 +10,4 @@ public class CreateKompetenceCommand : IRequest<Guid>
 
     [Required] public string Beskrivelse { get; set; }
 
-    [Timestamp] public byte[] RowVersion { get; set; }
 }

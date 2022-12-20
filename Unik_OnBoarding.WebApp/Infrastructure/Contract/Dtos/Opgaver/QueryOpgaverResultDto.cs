@@ -1,9 +1,11 @@
-﻿namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
 
 public class QueryOpgaverResultDto
 {
     public Guid OpgaveId { get; set; }
     public string OpgaveName { get; set; }
     public string Beskrivelse { get; set; }
-    public byte[] RowVersion { get; set; }
+    [Timestamp] public byte[] RowVersion { get; set; }
 }

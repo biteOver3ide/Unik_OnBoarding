@@ -1,77 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DatabaseContext;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
-namespace Unik_OnBoarding.WebApp.Pages.Opgaver
+namespace Unik_OnBoarding.WebApp.Pages.Opgaver;
+
+public class EditModel : PageModel
 {
-    public class EditModel : PageModel
-    {
-        private readonly AppDbContext _context;
+	private readonly IOpgaverService _opgaverService;
 
-        public EditModel(AppDbContext context)
-        {
-            _context = context;
-        }
+	public EditModel(IOpgaverService opgaverService)
+	{
+		_opgaverService = opgaverService;
+	}
 
-        [BindProperty]
-        public OpgaverEntity OpgaverEntity { get; set; } = default!;
+	[BindProperty] public QueryOpgaverResultDto Urt { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(Guid? id)
-        {
-            if (id == null || _context.Opgaver == null)
-            {
-                return NotFound();
-            }
+	public async Task<IActionResult> OnGet(Guid Id)
+	{
+		if (Id == null) return NotFound();
 
-            var opgaverentity =  await _context.Opgaver.FirstOrDefaultAsync(m => m.OpgaveId == id);
-            if (opgaverentity == null)
-            {
-                return NotFound();
-            }
-            OpgaverEntity = opgaverentity;
-            return Page();
-        }
+		try
+		{
+			Urt = await _opgaverService.Get(Id);
+		}
+		catch (Exception e)
+		{
+			ModelState.AddModelError(string.Empty, e.Message);
+			return Page();
+		}
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+		return Page();
+	}
 
-            _context.Attach(OpgaverEntity).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!OpgaverEntityExists(OpgaverEntity.OpgaveId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+	public async Task<IActionResult> OnPost()
+	{
+		if (!ModelState.IsValid)
+			return Page();
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool OpgaverEntityExists(Guid id)
-        {
-          return _context.Opgaver.Any(e => e.OpgaveId == id);
-        }
-    }
+		try
+		{
+			await _opgaverService.Edit(Urt);
+			return RedirectToPage("/Opgaver/Index");
+		}
+		catch (DbUpdateConcurrencyException e)
+		{
+			ModelState.AddModelError(string.Empty, $"Concurrency conflict {e}");
+			return Page();
+		}
+	}
 }

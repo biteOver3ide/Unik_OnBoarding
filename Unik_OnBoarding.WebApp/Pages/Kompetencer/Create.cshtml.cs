@@ -24,7 +24,7 @@ public class CreateModel : PageModel
         try
         {
             await _kompetenceService.Create(Crt);
-            return new RedirectToPageResult("/Kompetener/Index");
+            return new RedirectToPageResult("/Kompetencer/Index");
         }
         catch (DbUpdateConcurrencyException e)
         {

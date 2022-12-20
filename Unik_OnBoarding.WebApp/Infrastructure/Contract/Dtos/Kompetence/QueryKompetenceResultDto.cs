@@ -5,7 +5,7 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kompetence;
 
 public class QueryKompetenceResultDto
 {
-    [Key ]public Guid KompetenceId { get; set; }
+    public Guid KompetenceId { get; set; }
 
     public Jobtitler Job { get; set; }
 

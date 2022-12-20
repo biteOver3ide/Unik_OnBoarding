@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
@@ -8,29 +7,28 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder;
 
 public class CreateModel : PageModel
 {
-    private readonly IMedarbejderService _medarbejderService;
+	private readonly IMedarbejderService _medarbejderService;
 
-    public CreateModel(IMedarbejderService medarbejderService)
-    {
-        _medarbejderService = medarbejderService;
-    }
+	public CreateModel(IMedarbejderService medarbejderService)
+	{
+		_medarbejderService = medarbejderService;
+	}
 
-    [BindProperty] public CreateMedarbejderRequestDto Crt { get; set; }
+	[BindProperty] public CreateMedarbejderRequestDto Crt { get; set; }
 
-    public async Task<IActionResult> OnPost()
-    {
+	public async Task<IActionResult> OnPost()
+	{
+		if (!ModelState.IsValid) return Page();
 
-        if (!ModelState.IsValid) return Page();
-
-        try
-        {
-            await _medarbejderService.Create(Crt);
-            return new RedirectToPageResult("/Medarbejder/Index");
-        }
-        catch (Exception e)
-        {
-            ModelState.AddModelError(string.Empty, "Concurrency conflict");
-            return Page();
-        }
-    }
-} 
+		try
+		{
+			await _medarbejderService.Create(Crt);
+			return new RedirectToPageResult("/Medarbejder/Index");
+		}
+		catch (Exception e)
+		{
+			ModelState.AddModelError(string.Empty, "Concurrency conflict");
+			return Page();
+		}
+	}
+}

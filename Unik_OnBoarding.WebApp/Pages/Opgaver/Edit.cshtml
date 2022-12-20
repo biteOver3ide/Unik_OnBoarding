@@ -5,32 +5,31 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>OpgaverEntity</h4>
+<h3>OpgaverEntity</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="OpgaverEntity.OpgaveId" />
+	        <input type="hidden" asp-for="Urt.RowVersion" class="form-control" />
+	        <input type="hidden" asp-for="Urt.OpgaveId" class="form-control" />
+	        <div class="form-group">
+		        <label asp-for="Urt.OpgaveName" class="control-label"></label>
+		        <input asp-for="Urt.OpgaveName" class="form-control" />
+		        <span asp-validation-for="Urt.OpgaveName" class="text-danger"></span>
+	        </div>
+            <br/>
             <div class="form-group">
-                <label asp-for="OpgaverEntity.OpgaveName" class="control-label"></label>
-                <input asp-for="OpgaverEntity.OpgaveName" class="form-control" />
-                <span asp-validation-for="OpgaverEntity.OpgaveName" class="text-danger"></span>
+                <label asp-for="Urt.Beskrivelse" class="control-label"></label>
+                <input asp-for="Urt.Beskrivelse" class="form-control" />
+                <span asp-validation-for="Urt.Beskrivelse" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OpgaverEntity.Beskrivelse" class="control-label"></label>
-                <input asp-for="OpgaverEntity.Beskrivelse" class="form-control" />
-                <span asp-validation-for="OpgaverEntity.Beskrivelse" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Update Opgave" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br/>
 <div>
     <a asp-page="./Index">Back to List</a>
 </div>

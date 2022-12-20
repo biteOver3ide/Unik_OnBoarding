@@ -12,16 +12,20 @@
 		<form method="post">
 			<input type="hidden" asp-for="Drt.RowVersion" class="form-control" />
 			<input type="hidden" asp-for="Drt.ProjektId" class="form-control" />
-			<div class="form-group">
-				<label asp-for="Drt.ProjektId" class="control-label"></label>
-				<input asp-for="Drt.ProjektId" class="form-control" />
-				<span asp-validation-for="Drt.ProjektId" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="Drt.ProjektTitle" class="control-label"></label>
-				<input asp-for="Drt.ProjektTitle" class="form-control" />
-				<span asp-validation-for="Drt.ProjektTitle" class="text-danger"></span>
-			</div>
+			<table class="table table-hover">
+				<thead>
+				<tr>
+					<th scope="col">Projekt Title</th>
+				</tr>
+				</thead>
+				<tbody>
+				
+					<tr class="table-danger">
+						<th scope="row">@Model.Drt.ProjektTitle</th>
+					</tr>
+				
+				</tbody>
+			</table>
 			<div class="form-group">
 				<input type="submit" value="Delete Projekt" class="btn btn-primary form-control" />
 			</div>

@@ -1,23 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Unik_OnBoarding.Domain.Model;
-using Unik_OnBoarding.Persistance.DatabaseContext;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
+using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Pages.Opgaver;
 
 public class IndexModel : PageModel
 {
-    private readonly AppDbContext _context;
+	private readonly IOpgaverService _opgaverService;
 
-    public IndexModel(AppDbContext context)
-    {
-        _context = context;
-    }
+	public IndexModel(IOpgaverService opgaverService)
+	{
+		_opgaverService = opgaverService;
+	}
 
-    public IList<OpgaverEntity> OpgaverEntity { get; set; } = default!;
+	[BindProperty] public IEnumerable<QueryOpgaverResultDto> IndexViewModel { get; set; }
 
-    public async Task OnGetAsync()
-    {
-        if (_context.Opgaver != null) OpgaverEntity = await _context.Opgaver.ToListAsync();
-    }
+	public async Task OnGet()
+	{
+		IndexViewModel = await _opgaverService.GetAll();
+	}
 }
