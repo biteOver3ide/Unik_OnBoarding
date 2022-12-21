@@ -1,0 +1,45 @@
+﻿@page
+@model Unik_OnBoarding.WebApp.Pages.Admin.DeleteBookingModel
+@{
+}
+<h2>Delete Booking</h2>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<input type="hidden" asp-for="Drt.RowVersion" class="form-control" />
+			<input type="hidden" asp-for="Drt.BookingId" class="form-control" />
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">Beskrivelse</th>
+						<th scope="col">Start</th>
+						<th scope="col">End</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr class="table-danger">
+						<th scope="row">@Model.Drt.Beskrivelse</th>
+						<th scope="row">@Model.Drt.StartDate</th>
+						<th scope="row">@Model.Drt.EndDate</th>
+					</tr>
+
+				</tbody>
+			</table>
+			<div class="form-group">
+				<input type="submit" value="Delete Booking" class="btn btn-danger form-control" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

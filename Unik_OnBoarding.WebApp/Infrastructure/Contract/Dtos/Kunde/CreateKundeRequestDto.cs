@@ -38,5 +38,4 @@ public class CreateKundeRequestDto
     [Required(ErrorMessage = "indtast et gyldig {0}")]
     public string Adresse { get; set; }
 
-    //public List<ProjektEntity>? Projekt { get; set; }
 }

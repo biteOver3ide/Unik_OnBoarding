@@ -1,0 +1,265 @@
+﻿@page
+@model BookingDashboardModel
+@{
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+<body>
+
+<div class="container">
+	<h1 class="text-4xl text-center py-10">Task Manager Dashboard</h1>
+	<br/>
+	<!--Start kunde-->
+	<section>
+		<div class="container">
+			<!--Task Overview-->
+			<div class="container m-2 p-2 ">
+				<div class="row">
+					<!--Table-->
+					<div class="col-8">
+						<h2 class="p-2 bg-primary text-white fw-40 rounded-2">Kunde Info</h2>
+						<table class="table table-hover table-dark">
+							<thead>
+							<tr>
+								<th scope="col">Navn</th>
+								<th scope="col">Firma</th>
+								<th scope="col">Cvr</th>
+								<th scope="col">Action</th>
+							</tr>
+							</thead>
+							<tbody>
+							@foreach (var item in Model.KundeList)
+							{
+								<tr>
+									<td>@item.Fornavn @item.Efternavn</td>
+									<td>@item.Firmanavn</td>
+									<td>
+										<span class="badge rounded-pill bg-secondary">cvr</span>@item.Cvr
+									</td>
+									<td>
+										<!-- Button trigger modal -->
+										<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+										        data-bs-target="#exampleModal@(item.Kid)">
+											Kontakt info
+										</button>
+									</td>
+								</tr>
+							}
+							</tbody>
+						</table>
+					</div>
+					<!--Table-->
+					<!--Chart-->
+					<div class="col-4">
+						<div style="width: 400px">
+							<canvas id="myChart" width="200" height="200"></canvas>
+						</div>
+						<br/>
+					</div>
+					<!--End Chart-->
+				</div>
+			</div>
+			<!-- Modal -->
+			@foreach (var item in Model.KundeList)
+			{
+				<div class="modal fade" id="exampleModal@(item.Kid)" tabindex="-1" aria-labelledby="exampleModalLabel"
+				     aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header card-header">
+								<h1 class="modal-title fs-5" id="exampleModalLabel">
+									@item.Firmanavn Kunde infomation
+								</h1>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"
+								        aria-label="Close">
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="container">
+									<div class="row ">
+										<div class="col-md-12 p-2">
+											<h2>Navn: <span class="badge bg-secondary d-flex m-2">@item.Fornavn @item.Efternavn</span></h2>
+										</div>
+									</div>
+									<div class="row ">
+										<div class="col-md-12 p-2">
+											<h2>Adresse: <span class="badge bg-secondary d-flex m-2">@item.Adresse</span></h2>
+										</div>
+									</div>
+									<div class="row ">
+										<div class="col-md-12 p-2">
+											<h2>Email: <span class="badge bg-secondary d-flex m-2">@item.Email</span></h2>
+										</div>
+									</div>
+									<div class="row ">
+										<div class="col-md-12 p-2">
+											<h2>Telefon: <span class="badge bg-secondary d-flex m-2">@item.Telefon</span></h2>
+										</div>
+									</div>
+									<div class="row ">
+										<div class="col-md-12 p-2">
+											<h2>CVR: <span class="badge bg-secondary d-flex m-2">@item.Cvr</span></h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+			<!--End Model-->
+		</div>
+	</section>
+</div>
+<script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+<div class="row">
+	<div class="col-sm-5 col-md-6">
+		<!--Start booking Form-->
+		<div class="container mb-4">
+			<div class="row ">
+				<h2 class="bg-primary p-2 text-center text-white rounded-2">Create ny booking</h2>
+				<div class="col-sm-12">
+					<form method="post">
+						<div class="row pb-2">
+							<h2 class="text-primary pl-3">Ny Booking</h2>
+							<hr/>
+						</div>
+						<div asp-validation-summary="All"></div>
+						<!--Project DropDL-->
+						<div class="mb-3">
+							<label> Vælg Projek</label>
+							<select asp-for="Booking.ProjektId" asp-items="@(new SelectList(Model.ProjektList, "ProjektId", "ProjektTitle"))" class="form-select" aria-label="Default select example"
+							        required>
+								<option value="">Vælg en</option>
+							</select>
+						</div>
+						<!--MedArbejder DropDL-->
+						<div class="mb-3">
+							<label> Vælg Medarbejder</label>
+							<select asp-for="Booking.MedarbejderId" asp-items="@(new SelectList(Model.MedarbejderList, "MedarbejderId", "Fornavn"))" class="form-select" aria-label="Default select example"
+							        required>
+								<option value="">Vælg en</option>
+							</select>
+						</div>
+						<!--Opgaver DropDL-->
+						<div class="mb-3">
+							<label> Vælg Opgave</label>
+							<select asp-for="Booking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList, "OpgaveId", "OpgaveName"))" class="form-select" aria-label="Default select example"
+							        required>
+								<option value="">Vælg en</option>
+							</select>
+						</div>
+						<!--Description Area-->
+						<div class="form-group">
+							<label asp-for="Booking.Beskrivelse" class="control-label"></label>
+							<input asp-for="Booking.Beskrivelse" class="form-control"/>
+							<span asp-validation-for="Booking.Beskrivelse" class="text-danger"></span>
+						</div>
+						<!--Date Time PickerL-->
+						<div class="mb-3">
+							<div class="row align-items-center p-2">
+								<div class="col-3">Start Dato:</div>
+								<div class="col-3">
+									<input type="date" id="start-date" class="form-control" asp-for="Booking.StartDate"/>
+								</div>
+								<div class="col-3">End Dato:</div>
+								<div class="col-3">
+									<input type="date" id="end-date" class="form-control" onchange="dateChange()" asp-for="Booking.EndDate"/>
+								</div>
+							</div>
+							<input type="number" class="form-control" id="date-deferent" asp-for="Booking.Duration"/>
+						</div>
+						<button type="submit" class="btn btn-primary" style="width: 250px;">Create</button>
+						<a asp-page="Index" class="btn btn-secondary" style="width: 250px;"> Back to List</a>
+					</form>
+				</div>
+			</div>
+
+		</div>
+		<!--End booking Form-->
+	</div>
+	<div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">
+		<table class="table table-hover">
+			<h2 class="bg-primary p-2 text-center text-white rounded-2">Booking list</h2>
+			<thead>
+			<tr>
+				<th>Booking beskrivelse</th>
+				<th>Booking start</th>
+				<th>Booking end</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			@foreach (var obj in Model.BookingList)
+			{
+				<tr class="table-warning">
+					<td scope="row">@obj.Beskrivelse</td>
+					<td scope="row">@obj.StartDate</td>
+					<td scope="row">@obj.EndDate</td>
+					<td>
+						<div class="w-75 btn-group" role="group">
+							<a asp-page="D" asp-route-id="@obj.BookingId" class="btn btn-primary mx-2">
+								<i class="bi bi-trash-fill">Edit</i>
+							</a>
+							<a asp-page="DeleteBooking" asp-route-id="@obj.BookingId" class="btn btn-danger mx-2">
+								<i class="bi bi-pencil-square">Delete</i>
+							</a>
+						</div>
+					</td>
+				</tr>
+			}
+			</tbody>
+		</table>
+	</div>
+</div>
+<br/>
+<script src="~/js/Chart.js"></script>
+</body>
+
+<!--second-->
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+
+	<script type="text/javascript">
+		dateChange = function() {
+			const elem1 = document.getElementById('start-date').value;
+
+			const elem2 = document.getElementById('end-date').value;
+
+			const result = document.getElementById('date-deferent');
+
+			if (elem1 == elem2) {
+				result.value = 1;
+				return;
+			}
+			if (elem1 > elem2) {
+				alert("start date cannot be after end date!!!!");
+				return;
+			}
+
+			const date1 = new Date(elem1);
+			const date2 = new Date(elem2);
+
+			// To calculate the time difference of two dates
+			const Difference_In_Time = date2.getTime() - date1.getTime();
+
+			// To calculate the no. of days between two dates
+			const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+			//To display the final no. of days (result)
+
+			result.value = Difference_In_Days;
+		}
+	</script>
+
+}
