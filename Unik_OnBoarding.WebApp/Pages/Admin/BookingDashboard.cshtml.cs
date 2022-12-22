@@ -47,14 +47,14 @@ namespace Unik_OnBoarding.WebApp.Pages.Admin
 	    }
 
 
-	    public async Task<IActionResult> OnPost()
+		public async Task<IActionResult> OnPost()
 	    {
 		    if (!ModelState.IsValid) return Page();
 
 		    try
 		    {
 			    await _bookingService.Create(Booking);
-			    return new RedirectToPageResult("/Admin/BookingDashboard");
+			    return RedirectToPage("/Admin/BookingIndex");
 			}
 		    catch (Exception e)
 		    {

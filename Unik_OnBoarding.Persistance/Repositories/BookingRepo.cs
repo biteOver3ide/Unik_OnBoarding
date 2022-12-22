@@ -21,7 +21,7 @@ public class BookingRepo : BaseRepo<BookingEntity>, IBookingRepository
     public async Task<BookingEntity> GetBookingByIdAsync(Guid bookingId)
     {
         var booking = new BookingEntity();
-        booking = await _appDbContext.Bookinger.Where(b => b.BookId == bookingId).FirstOrDefaultAsync();
+        booking = await _appDbContext.Bookinger.Where(b => b.BookingId == bookingId).FirstOrDefaultAsync();
         return booking;
     }
 }

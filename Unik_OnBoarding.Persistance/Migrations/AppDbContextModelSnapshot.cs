@@ -25,7 +25,7 @@ namespace Unik_OnBoarding.Persistance.Migrations
 
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.BookingEntity", b =>
                 {
-                    b.Property<Guid>("BookId")
+                    b.Property<Guid>("BookingId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -56,7 +56,7 @@ namespace Unik_OnBoarding.Persistance.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("BookId");
+                    b.HasKey("BookingId");
 
                     b.HasIndex("MedarbejderId");
 

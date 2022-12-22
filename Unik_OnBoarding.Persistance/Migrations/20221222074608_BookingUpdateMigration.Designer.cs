@@ -12,8 +12,8 @@ using Unik_OnBoarding.Persistance.DatabaseContext;
 namespace Unik_OnBoarding.Persistance.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221214094330_MedarbejderChangeRelationer")]
-    partial class MedarbejderChangeRelationer
+    [Migration("20221222074608_BookingUpdateMigration")]
+    partial class BookingUpdateMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,21 +24,6 @@ namespace Unik_OnBoarding.Persistance.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("KompetenceEntityMedarbejderEntity", b =>
-                {
-                    b.Property<Guid>("KompetencerKompetenceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("MedarbejderId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("KompetencerKompetenceId", "MedarbejderId");
-
-                    b.HasIndex("MedarbejderId");
-
-                    b.ToTable("KompetenceEntityMedarbejderEntity", "Unik");
-                });
 
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.BookingEntity", b =>
                 {
@@ -97,6 +82,9 @@ namespace Unik_OnBoarding.Persistance.Migrations
                     b.Property<int>("Job")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("MedarbejderEntityMedarbejderId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
@@ -104,6 +92,8 @@ namespace Unik_OnBoarding.Persistance.Migrations
                         .HasColumnType("rowversion");
 
                     b.HasKey("KompetenceId");
+
+                    b.HasIndex("MedarbejderEntityMedarbejderId");
 
                     b.ToTable("Kompetencerne", "Unik");
                 });
@@ -279,21 +269,6 @@ namespace Unik_OnBoarding.Persistance.Migrations
                         });
                 });
 
-            modelBuilder.Entity("KompetenceEntityMedarbejderEntity", b =>
-                {
-                    b.HasOne("Unik_OnBoarding.Domain.Model.KompetenceEntity", null)
-                        .WithMany()
-                        .HasForeignKey("KompetencerKompetenceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Unik_OnBoarding.Domain.Model.MedarbejderEntity", null)
-                        .WithMany()
-                        .HasForeignKey("MedarbejderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.BookingEntity", b =>
                 {
                     b.HasOne("Unik_OnBoarding.Domain.Model.MedarbejderEntity", "Medarbejder")
@@ -321,6 +296,13 @@ namespace Unik_OnBoarding.Persistance.Migrations
                     b.Navigation("Projekt");
                 });
 
+            modelBuilder.Entity("Unik_OnBoarding.Domain.Model.KompetenceEntity", b =>
+                {
+                    b.HasOne("Unik_OnBoarding.Domain.Model.MedarbejderEntity", null)
+                        .WithMany("Kompetencer")
+                        .HasForeignKey("MedarbejderEntityMedarbejderId");
+                });
+
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.ProjektEntity", b =>
                 {
                     b.HasOne("Unik_OnBoarding.Domain.Model.KundeEntity", "Kunde")
@@ -335,6 +317,11 @@ namespace Unik_OnBoarding.Persistance.Migrations
             modelBuilder.Entity("Unik_OnBoarding.Domain.Model.KundeEntity", b =>
                 {
                     b.Navigation("Projekt");
+                });
+
+            modelBuilder.Entity("Unik_OnBoarding.Domain.Model.MedarbejderEntity", b =>
+                {
+                    b.Navigation("Kompetencer");
                 });
 #pragma warning restore 612, 618
         }

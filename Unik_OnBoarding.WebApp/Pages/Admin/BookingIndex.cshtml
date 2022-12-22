@@ -1,0 +1,54 @@
+﻿@page
+@model Unik_OnBoarding.WebApp.Pages.Admin.BookingIndexModel
+@{
+}
+<div class="container p-3">
+	<div class="row pt-4">
+		<div class="col-6">
+			<h3 class="text-primary">Booking List</h3>
+		</div>
+		<div class="col-6 text-end">
+			<a asp-page="BookingDashboard" class="btn btn-warning">
+				<i class="bi bi-plus-square"></i> &nbsp;Create Booking
+			</a>
+		</div>
+	</div>
+
+	<br/><br/>
+
+	<table class="table table-hover">
+		<thead>
+		<tr>
+			<th scope="col">Beskrivelse</th>
+			<th scope="col">Start Date</th>
+			<th scope="col">End Date</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+		@foreach (var obj in Model.IndexViewModel)
+		{
+			<tr class="table-primary">
+				<td>@obj.Beskrivelse </td>
+				<td>@obj.StartDate</td>
+				<td>@obj.EndDate</td>
+				<td>
+					<div class="w-75 btn-group" role="group">
+						<a asp-page="EditBooking" asp-route-id="@obj.BookingId" class="btn btn-primary mx-2">
+							<i class="bi bi-trash-fill">Edit</i>
+						</a>
+						<a asp-page="DeleteBooking" asp-route-id="@obj.BookingId" class="btn btn-danger mx-2">
+							<i class="bi bi-pencil-square">Delete</i>
+						</a>
+					</div>
+				</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+</div>
+
+@section Scripts {
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -7,7 +7,7 @@ namespace Unik_OnBoarding.Application.Implementation.Booking.dto;
 
 public class BookingDto
 {
-    [Key] public Guid BookId { get; set; }
+    [Key] public Guid BookingId { get; set; }
     public Guid ProjektId { get; set; }
     public Guid OpgaveId { get; set; }
     public Guid MedarbejderId { get; set; }
