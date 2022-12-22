@@ -30,7 +30,7 @@ public class KundeService : IKundeService
         await _httpClient.DeleteAsync($"api/Kunde/{id}");
     }
 
-    async Task IKundeService.Edit( UpdateKundeDto queryKundeUpdateDto )
+    async Task IKundeService.Edit(QueryKundeResultDto queryKundeUpdateDto)
     {
         var response =
             await _httpClient.PutAsJsonAsync("api/Kunde", queryKundeUpdateDto);

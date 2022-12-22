@@ -7,7 +7,7 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 public interface IKundeService
 {
     Task Create(CreateKundeRequestDto createKundeRequestDto);
-    Task Edit(UpdateKundeDto queryKundeUpdateDto);
+    Task Edit(QueryKundeResultDto queryKundeUpdateDto);
     Task Delete(Guid id);
     Task<QueryKundeResultDto?> Get(Guid id);
     Task<IEnumerable<QueryKundeResultDto>?> GetAll();

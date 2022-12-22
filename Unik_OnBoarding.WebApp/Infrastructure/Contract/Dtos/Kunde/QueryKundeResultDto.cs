@@ -40,7 +40,5 @@ public class QueryKundeResultDto
     [Required(ErrorMessage = "indtast et gyldig {0}")]
     public string Adresse { get; set; }
 
-    //public List<ProjektEntity>? Projekt { get; set; }
-
     [Timestamp] public byte[] RowVersion { get; set; }
 }
