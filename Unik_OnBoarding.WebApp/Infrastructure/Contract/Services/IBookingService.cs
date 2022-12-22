@@ -6,11 +6,11 @@ namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 public interface IBookingService
 {
-    Task Create(CreateBookingDto dto);
-    Task Edit(QueryBookingResultDto updateBookingViewModel);
-    Task Delete(Guid id);
-    Task<QueryBookingResultDto?> Get(Guid id);
-    Task<IEnumerable<QueryBookingResultDto>?> GetAll();
-    Task<IEnumerable<BookingDto>> GetAllDataAsync(Expression<Func<BookingDto, bool>>? filter = null);
+	Task Create ( CreateBookingDto dto );
+	Task Edit ( UpdateBookingDto updateBookingViewModel );
+	Task Delete ( Guid id );
+	Task<QueryBookingResultDto?> Get ( Guid id );
+	Task<IEnumerable<QueryBookingResultDto>?> GetAll ( );
+	Task<IEnumerable<BookingDto>> GetAllDataAsync ( Expression<Func<BookingDto, bool>>? filter = null );
 }
 

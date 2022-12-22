@@ -2,107 +2,80 @@
 @model Unik_OnBoarding.WebApp.Pages.Admin.EditBookingModel
 @{
 }
-<h3>Edit Booking</h3>
-<hr />
-<div class="row">
-	<div class="col-md-4">
-		<form method="post">
-			<input type="hidden" asp-for="UrtBooking.RowVersion" class="form-control" />
-			<input type="hidden" asp-for="UrtBooking.BookId" class="form-control" />
-@*			<input type="hidden" asp-for="UrtBooking.OpgaveId" class="form-control" />
-			<input type="hidden" asp-for="UrtBooking.MedarbejderId" class="form-control" />
-			<input type="hidden" asp-for="UrtBooking.ProjektId" class="form-control" />
-			<input type="hidden" asp-for="UrtBooking.Beskrivelse" class="form-control" />*@
-			@*			<!--Project DropDL-->
-			<div class="mb-3">
-				<label> Vælg Projek</label>
-				<select asp-for="UrtBooking.ProjektId" asp-items="@(new SelectList(Model.ProjektList, "ProjektId", "ProjektTitle"))" class="form-select" aria-label="Default select example"
-				        required>
-					<option value="">Vælg en</option>
-				</select>
-			</div>
-			<!--MedArbejder DropDL-->
-			<div class="mb-3">
-				<label> Vælg Medarbejder</label>
-				<select asp-for="UrtBooking.MedarbejderId" asp-items="@(new SelectList(Model.MedarbejderList, "MedarbejderId", "Fornavn"))" class="form-select" aria-label="Default select example"
-				        required>
-					<option value="">Vælg en</option>
-				</select>
-			</div>
-			<!--Opgaver DropDL-->
-			<div class="mb-3">
-				<label> Vælg Opgave</label>
-				<select asp-for="UrtBooking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList, "OpgaveId", "OpgaveName"))" class="form-select" aria-label="Default select example"
-				        required>
-					<option value="">Vælg en</option>
-				</select>
-			</div>
-			<!--Description Area-->*@
-			<div class="form-group">
-				<label asp-for="UrtBooking.Beskrivelse" class="control-label"></label>
-				<input asp-for="UrtBooking.Beskrivelse" class="form-control"/>
-				<span asp-validation-for="UrtBooking.Beskrivelse" class="text-danger"></span>
-			</div>
-				<!--Date Time PickerL-->
-				<div class="mb-3">
-					<div class="row align-items-center p-2">
-						<div class="col-3">Start Dato:</div>
-						<div class="col-3">
-							<input type="date" id="start-date" class="form-control" asp-for="UrtBooking.StartDate" />
-						</div>
-						<div class="col-3">End Dato:</div>
-						<div class="col-3">
-							<input type="date" id="end-date" class="form-control" onchange="dateChange()" asp-for="UrtBooking.EndDate" />
-						</div>
-					</div>
-					<input type="number" class="form-control" id="date-deferent" asp-for="UrtBooking.Duration" />
-				</div>
-			<div class="form-group">
-				<input type="submit" value="Update Booking" class="btn btn-primary form-control" />
-			</div>
-		</form>
+<form method="post">
+	<input hidden asp-for="UrtBooking.BookId" />
+	<input hidden asp-for="UrtBooking.RowVersion" />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary pl-3">Edit Booking</h2>
+			<hr />
+		</div>
+		<div asp-validation-summary="All"></div>
+		<div class="mb-3">
+			<label asp-for="UrtBooking.ProjektId"></label>
+			<input asp-for="UrtBooking.ProjektId" class="form-control" />
+			<span asp-validation-for="UrtBooking.ProjektId" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="UrtBooking.OpgaveId"></label>
+			<input asp-for="UrtBooking.OpgaveId" class="form-control" />
+			<span asp-validation-for="UrtBooking.OpgaveId" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="UrtBooking.MedarbejderId"></label>
+			<input asp-for="UrtBooking.MedarbejderId" class="form-control" />
+			<span asp-validation-for="UrtBooking.MedarbejderId" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="UrtBooking.Beskrivelse"></label>
+			<input asp-for="UrtBooking.Beskrivelse" class="form-control" />
+			<span asp-validation-for="UrtBooking.Beskrivelse" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="objectToUpdate.Descriptions"></label>
+			<input asp-for="objectToUpdate.Descriptions" class="form-control" />
+			<span asp-validation-for="objectToUpdate.Descriptions" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+		<a asp-page="BookingDashboard" class="btn btn-secondary" style="width:150px;"> Back to List</a>
 	</div>
-</div>
 
-<div>
-	<a asp-page="Index">Back to List</a>
-</div>
+</form>
 
 @section Scripts {
-	@{
-		await Html.RenderPartialAsync("_ValidationScriptsPartial");
-	}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        dateChange = function () {
+            const elem1 = document.getElementById('start-date').value;
 
-	<script type="text/javascript">
-		dateChange = function () {
-			const elem1 = document.getElementById('start-date').value;
+            const elem2 = document.getElementById('end-date').value;
 
-			const elem2 = document.getElementById('end-date').value;
+            const result = document.getElementById('date-deferent');
 
-			const result = document.getElementById('date-deferent');
+            if (elem1 == elem2) {
+                result.value = 1;
+                return;
+            }
+            if (elem1 > elem2) {
+                alert("start date cannot be after end date!!!!");
+                return;
+            }
 
-			if (elem1 == elem2) {
-				result.value = 1;
-				return;
-			}
-			if (elem1 > elem2) {
-				alert("start date cannot be after end date!!!!");
-				return;
-			}
+            const date1 = new Date(elem1);
+            const date2 = new Date(elem2);
 
-			const date1 = new Date(elem1);
-			const date2 = new Date(elem2);
+            // To calculate the time difference of two dates
+            const Difference_In_Time = date2.getTime() - date1.getTime();
 
-			// To calculate the time difference of two dates
-			const Difference_In_Time = date2.getTime() - date1.getTime();
+            // To calculate the no. of days between two dates
+            const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
-			// To calculate the no. of days between two dates
-			const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+            //To display the final no. of days (result)
 
-			//To display the final no. of days (result)
-
-			result.value = Difference_In_Days;
-		}
-	</script>
+            result.value = Difference_In_Days;
+        }
+    </script>
 
 }

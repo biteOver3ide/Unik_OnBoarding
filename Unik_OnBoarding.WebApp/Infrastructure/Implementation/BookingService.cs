@@ -47,7 +47,7 @@ public class BookingService : IBookingService
         }
     }
 
-    async Task IBookingService.Edit(QueryBookingResultDto updateBookingViewModel)
+    async Task IBookingService.Edit( UpdateBookingDto updateBookingViewModel )
     {
         var response =
             await _httpClient.PutAsJsonAsync("api/Booking", updateBookingViewModel);
