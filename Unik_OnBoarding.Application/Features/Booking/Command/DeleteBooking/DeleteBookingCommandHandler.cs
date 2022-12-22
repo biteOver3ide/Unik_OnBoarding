@@ -14,7 +14,7 @@ public class DeleteBookingCommandHandler : IRequestHandler<DeleteBookingCommand>
 
     public async Task<Unit> Handle(DeleteBookingCommand request, CancellationToken cancellationToken)
     {
-        var bookingFromDb = await _bookingRepository.GetBookingByIdAsync(request.BookingId);
+        var bookingFromDb = await _bookingRepository.GetBookingByIdAsync(request.BookId);
 
         await _bookingRepository.DeleteAsync(bookingFromDb);
         return Unit.Value;

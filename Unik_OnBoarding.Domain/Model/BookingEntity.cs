@@ -6,7 +6,7 @@ namespace Unik_OnBoarding.Domain.Model;
 
 public class BookingEntity
 {
-    [Key] public Guid BookingId { get; set; }
+    [Key] public Guid BookId { get; set; }
 
     public Guid ProjektId { get; set; }
 

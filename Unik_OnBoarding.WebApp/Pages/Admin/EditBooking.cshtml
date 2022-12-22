@@ -7,23 +7,56 @@
 <div class="row">
 	<div class="col-md-4">
 		<form method="post">
-			<input type="hidden" asp-for="Urt.RowVersion" class="form-control" />
-			<input type="hidden" asp-for="Urt.BookingId" class="form-control" />
-			<div class="form-group">
-				<label asp-for="Urt.Beskrivelse" class="control-label"></label>
-				<input asp-for="Urt.Beskrivelse" class="form-control" />
-				<span asp-validation-for="Urt.Beskrivelse" class="text-danger"></span>
+			<input type="hidden" asp-for="UrtBooking.RowVersion" class="form-control" />
+			<input type="hidden" asp-for="UrtBooking.BookId" class="form-control" />
+@*			<input type="hidden" asp-for="UrtBooking.OpgaveId" class="form-control" />
+			<input type="hidden" asp-for="UrtBooking.MedarbejderId" class="form-control" />
+			<input type="hidden" asp-for="UrtBooking.ProjektId" class="form-control" />
+			<input type="hidden" asp-for="UrtBooking.Beskrivelse" class="form-control" />*@
+			@*			<!--Project DropDL-->
+			<div class="mb-3">
+				<label> Vælg Projek</label>
+				<select asp-for="UrtBooking.ProjektId" asp-items="@(new SelectList(Model.ProjektList, "ProjektId", "ProjektTitle"))" class="form-select" aria-label="Default select example"
+				        required>
+					<option value="">Vælg en</option>
+				</select>
 			</div>
-			<div class="form-group">
-				<label asp-for="Urt.StartDate" class="control-label"></label>
-				<input asp-for="Urt.StartDate" class="form-control" />
-				<span asp-validation-for="Urt.StartDate" class="text-danger"></span>
+			<!--MedArbejder DropDL-->
+			<div class="mb-3">
+				<label> Vælg Medarbejder</label>
+				<select asp-for="UrtBooking.MedarbejderId" asp-items="@(new SelectList(Model.MedarbejderList, "MedarbejderId", "Fornavn"))" class="form-select" aria-label="Default select example"
+				        required>
+					<option value="">Vælg en</option>
+				</select>
 			</div>
-			<div class="form-group">
-				<label asp-for="Urt.EndDate" class="control-label"></label>
-				<input asp-for="Urt.EndDate" class="form-control" />
-				<span asp-validation-for="Urt.EndDate" class="text-danger"></span>
+			<!--Opgaver DropDL-->
+			<div class="mb-3">
+				<label> Vælg Opgave</label>
+				<select asp-for="UrtBooking.OpgaveId" asp-items="@(new SelectList(Model.OpgaverList, "OpgaveId", "OpgaveName"))" class="form-select" aria-label="Default select example"
+				        required>
+					<option value="">Vælg en</option>
+				</select>
 			</div>
+			<!--Description Area-->*@
+			<div class="form-group">
+				<label asp-for="UrtBooking.Beskrivelse" class="control-label"></label>
+				<input asp-for="UrtBooking.Beskrivelse" class="form-control"/>
+				<span asp-validation-for="UrtBooking.Beskrivelse" class="text-danger"></span>
+			</div>
+				<!--Date Time PickerL-->
+				<div class="mb-3">
+					<div class="row align-items-center p-2">
+						<div class="col-3">Start Dato:</div>
+						<div class="col-3">
+							<input type="date" id="start-date" class="form-control" asp-for="UrtBooking.StartDate" />
+						</div>
+						<div class="col-3">End Dato:</div>
+						<div class="col-3">
+							<input type="date" id="end-date" class="form-control" onchange="dateChange()" asp-for="UrtBooking.EndDate" />
+						</div>
+					</div>
+					<input type="number" class="form-control" id="date-deferent" asp-for="UrtBooking.Duration" />
+				</div>
 			<div class="form-group">
 				<input type="submit" value="Update Booking" class="btn btn-primary form-control" />
 			</div>
@@ -39,4 +72,37 @@
 	@{
 		await Html.RenderPartialAsync("_ValidationScriptsPartial");
 	}
+
+	<script type="text/javascript">
+		dateChange = function () {
+			const elem1 = document.getElementById('start-date').value;
+
+			const elem2 = document.getElementById('end-date').value;
+
+			const result = document.getElementById('date-deferent');
+
+			if (elem1 == elem2) {
+				result.value = 1;
+				return;
+			}
+			if (elem1 > elem2) {
+				alert("start date cannot be after end date!!!!");
+				return;
+			}
+
+			const date1 = new Date(elem1);
+			const date2 = new Date(elem2);
+
+			// To calculate the time difference of two dates
+			const Difference_In_Time = date2.getTime() - date1.getTime();
+
+			// To calculate the no. of days between two dates
+			const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+			//To display the final no. of days (result)
+
+			result.value = Difference_In_Days;
+		}
+	</script>
+
 }

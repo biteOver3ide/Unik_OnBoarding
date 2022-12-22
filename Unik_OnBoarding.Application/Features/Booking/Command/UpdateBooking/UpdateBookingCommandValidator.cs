@@ -6,7 +6,7 @@ public class UpdateBookingCommandValidator : AbstractValidator<UpdateBookingComm
 {
     public UpdateBookingCommandValidator()
     {
-        RuleFor(b => b.BookingId)
+        RuleFor(b => b.BookId)
             .NotEmpty().WithMessage("Skal ikke være tomt")
             .NotNull();
     }

@@ -10,7 +10,7 @@ public class BookingTypeConfiguration : IEntityTypeConfiguration<BookingEntity>
     {
         {
             builder.ToTable("Booking", "Unik");
-            builder.HasKey(x => x.BookingId);
+            builder.HasKey(x => x.BookId);
         }
     }
 }

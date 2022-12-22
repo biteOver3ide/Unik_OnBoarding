@@ -205,8 +205,11 @@
 					<td scope="row">@obj.EndDate</td>
 					<td>
 						<div class="w-75 btn-group" role="group">
-							<a asp-page="BookingIndex" class="btn btn-warning mx-2">
-								<i class="bi bi-pencil-square">Details</i>
+							<a asp-page="EditBooking" asp-route-id="@obj.BookId" class="btn btn-primary mx-2">
+								<i class="bi bi-trash-fill">Edit</i>
+							</a>
+							<a asp-page="DeleteBooking" asp-route-id="@obj.BookId" class="btn btn-danger mx-2">
+								<i class="bi bi-pencil-square">Delete</i>
 							</a>
 						</div>
 					</td>

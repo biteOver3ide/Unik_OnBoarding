@@ -99,7 +99,7 @@ public class BookingController : ControllerBase
     {
         try
         {
-            var deleteBooking = new DeleteBookingCommand { BookingId = id };
+            var deleteBooking = new DeleteBookingCommand { BookId = id };
             await _mediator.Send(deleteBooking);
             return NoContent();
         }

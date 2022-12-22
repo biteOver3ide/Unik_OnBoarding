@@ -7,7 +7,7 @@ namespace Unik_OnBoarding.Application.Features.Booking.Command.UpdateBooking;
 
 public class UpdateBookingCommand : IRequest
 {
-    public Guid BookingId { get; set; }
+    public Guid BookId { get; set; }
     public OpgaverEntity Opgave { get; set; }
     public ProjektEntity Projekt { get; set; }
     public MedarbejderEntity Medarbejder { get; set; }

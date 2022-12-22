@@ -26,6 +26,6 @@ public class CreateBookingCommandHandler : IRequestHandler<CreateBookingCommand,
         if (result.Errors.Any()) throw new Exception("Forkert indtasting");
 
         booking = await _bookingRepository.AddAsync(booking);
-        return booking.BookingId;
+        return booking.BookId;
     }
 }
