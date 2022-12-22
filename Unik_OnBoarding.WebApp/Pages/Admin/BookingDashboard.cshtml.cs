@@ -58,7 +58,7 @@ namespace Unik_OnBoarding.WebApp.Pages.Admin
 			}
 		    catch (Exception e)
 		    {
-			    ModelState.AddModelError(string.Empty, "Concurrency conflict");
+			    ModelState.AddModelError(string.Empty, $"Concurrency conflict: {e}");
 			    return Page();
 			}
 	    }

@@ -3,42 +3,52 @@
 @{
 }
 <form method="post">
-	<input hidden asp-for="UrtBooking.BookId" />
-	<input hidden asp-for="UrtBooking.RowVersion" />
-	<div class="border p-3 mt-4">
-		<div class="row pb-2">
-			<h2 class="text-primary pl-3">Edit Booking</h2>
-			<hr />
-		</div>
-		<div asp-validation-summary="All"></div>
-		<div class="mb-3">
-			<label asp-for="UrtBooking.ProjektId"></label>
-			<input asp-for="UrtBooking.ProjektId" class="form-control" />
-			<span asp-validation-for="UrtBooking.ProjektId" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="UrtBooking.OpgaveId"></label>
-			<input asp-for="UrtBooking.OpgaveId" class="form-control" />
-			<span asp-validation-for="UrtBooking.OpgaveId" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="UrtBooking.MedarbejderId"></label>
-			<input asp-for="UrtBooking.MedarbejderId" class="form-control" />
-			<span asp-validation-for="UrtBooking.MedarbejderId" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="UrtBooking.Beskrivelse"></label>
-			<input asp-for="UrtBooking.Beskrivelse" class="form-control" />
-			<span asp-validation-for="UrtBooking.Beskrivelse" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="objectToUpdate.Descriptions"></label>
-			<input asp-for="objectToUpdate.Descriptions" class="form-control" />
-			<span asp-validation-for="objectToUpdate.Descriptions" class="text-danger"></span>
-		</div>
-		<button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
-		<a asp-page="BookingDashboard" class="btn btn-secondary" style="width:150px;"> Back to List</a>
-	</div>
+    <input hidden asp-for="UrtBooking.BookId" />
+    <input hidden asp-for="UrtBooking.RowVersion" />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Edit Booking</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="UrtBooking.ProjektId"></label>
+            <input asp-for="UrtBooking.ProjektId" class="form-control" />
+            <span asp-validation-for="UrtBooking.ProjektId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UrtBooking.OpgaveId"></label>
+            <input asp-for="UrtBooking.OpgaveId" class="form-control" />
+            <span asp-validation-for="UrtBooking.OpgaveId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UrtBooking.MedarbejderId"></label>
+            <input asp-for="UrtBooking.MedarbejderId" class="form-control" />
+            <span asp-validation-for="UrtBooking.MedarbejderId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UrtBooking.Beskrivelse"></label>
+            <input asp-for="UrtBooking.Beskrivelse" class="form-control" />
+            <span asp-validation-for="UrtBooking.Beskrivelse" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UrtBooking.StartDate"></label>
+            <input type="date" id="start-date" asp-for="UrtBooking.StartDate" class="form-control" />
+            <span asp-validation-for="UrtBooking.StartDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UrtBooking.EndDate"></label>
+            <input type="date" id="end-date" asp-for="UrtBooking.EndDate" onchange="dateChange()" class="form-control" />
+            <span asp-validation-for="UrtBooking.EndDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="UrtBooking.Duration"></label>
+            <input type="date" id="date-deferent" asp-for="UrtBooking.Duration" class="form-control" />
+            <span asp-validation-for="UrtBooking.Duration" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+        <a asp-page="BookingIndex" class="btn btn-secondary" style="width:150px;"> Back to List</a>
+    </div>
 
 </form>
 
