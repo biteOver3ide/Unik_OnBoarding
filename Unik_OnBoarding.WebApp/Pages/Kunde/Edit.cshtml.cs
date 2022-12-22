@@ -15,7 +15,8 @@ public class EditModel : PageModel
         _kundeService = kundeService;
     }
 
-    [BindProperty] public QueryKundeResultDto Urt { get; set; }
+    [BindProperty] 
+    public UpdateKundeDto Urt { get; set; }
 
     public async Task<IActionResult> OnGet(Guid Id)
     {
@@ -23,7 +24,21 @@ public class EditModel : PageModel
 
         try
         {
-            Urt = await _kundeService.Get(Id);
+            //Search For Kunde To Update
+            QueryKundeResultDto dto = await _kundeService.Get(Id);
+            if (dto == null) return NotFound();
+            //Convert Values from Kunde to Update Object
+            Urt = new UpdateKundeDto( )
+            {
+                Kid= dto.Kid,
+                Fornavn= dto.Fornavn,
+                Efternavn= dto.Efternavn,
+                Firmanavn= dto.Firmanavn,
+                Email= dto.Email,
+                Telefon= dto.Telefon,
+                Adresse= dto.Adresse,
+                RowVersion= dto.RowVersion
+            };
         }
         catch (Exception e)
         {
