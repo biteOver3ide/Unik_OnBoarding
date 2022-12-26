@@ -18,7 +18,7 @@ public class MedarbejderRepo : BaseRepo<MedarbejderEntity>, IMedarbejderReposito
         return medarbejderlist;
     }
 
-    public async Task<MedarbejderEntity> GetMedarbejderByIdAsync(Guid medarbejderId)
+    public async Task<MedarbejderEntity> GetMedarbejderByIdAsync(Guid medarbejderId, string UserId)
     {
         var medarbejderlist = new MedarbejderEntity();
         medarbejderlist = await _appDbContext.Medarbejder.Where(m => m.MedarbejderId == medarbejderId).FirstOrDefaultAsync();

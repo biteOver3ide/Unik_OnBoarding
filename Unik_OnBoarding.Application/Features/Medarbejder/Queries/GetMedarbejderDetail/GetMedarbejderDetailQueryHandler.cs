@@ -18,7 +18,7 @@ public class GetMedarbejderDetailQueryHandler : IRequestHandler<GetMedarbejderDe
 
     public async Task<MedarbejderDto> Handle(GetMedarbejderDetailQuery request, CancellationToken cancellationToken)
     {
-        var medarbejderFromDb = await _medarbejderRepository.GetMedarbejderByIdAsync(request.MedarbejderId);
+        var medarbejderFromDb = await _medarbejderRepository.GetMedarbejderByIdAsync(request.MedarbejderId, request.UserId);
         return _mapper.Map<MedarbejderDto>(medarbejderFromDb);
     }
 }

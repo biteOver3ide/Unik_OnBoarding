@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
@@ -5,6 +6,7 @@ using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
 {
+    
     public class IndexModel : PageModel
     {
         private readonly IMedarbejderService _medarbejderService;
@@ -15,10 +17,13 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
         }
 
         [BindProperty] public IEnumerable<QueryMedarbejderResultDto> IndexViewModel { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
-        public async Task OnGet()
+        public async Task<IActionResult> OnGet(string? userId)
         {
-            IndexViewModel = await _medarbejderService.GetAll();
+            IndexViewModel = await _medarbejderService.GetAllUser(userId);
+            UserName = userId;
+            return Page();
         }
     }
 }

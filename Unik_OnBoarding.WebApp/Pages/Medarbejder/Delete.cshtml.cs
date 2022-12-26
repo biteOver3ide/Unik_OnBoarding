@@ -17,13 +17,13 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
 
         [BindProperty] public QueryMedarbejderResultDto Drt { get; set; }
 
-        public async Task<IActionResult> OnGet(Guid id)
+        public async Task<IActionResult> OnGet(Guid id, string UserId)
         {
             if (id == null) return NotFound();
 
             try
             {
-                Drt = await _medarbejderService.Get(id);
+                Drt = await _medarbejderService.Get(id, UserId);
             }
             catch (Exception e)
             {

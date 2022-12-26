@@ -6,4 +6,5 @@ namespace Unik_OnBoarding.Application.Features.Medarbejder.Queries.GetMedarbejde
 public class GetMedarbejderDetailQuery : IRequest<MedarbejderDto>
 {
     public Guid MedarbejderId { get; set; }
+    public string UserId { get; set; }
 }

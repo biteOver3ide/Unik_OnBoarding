@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Medarbejder;
 using Unik_OnBoarding.WebApp.Infrastructure.Contract.Services;
 
 namespace Unik_OnBoarding.WebApp.Pages.Medarbejder;
+
 
 public class CreateModel : PageModel
 {
@@ -14,11 +16,21 @@ public class CreateModel : PageModel
 		_medarbejderService = medarbejderService;
 	}
 
-	[BindProperty] public CreateMedarbejderRequestDto Crt { get; set; }
+	[BindProperty] public CreateMedarbejderRequestDto Crt { get; set; } = new();
 
 	public async Task<IActionResult> OnPost()
 	{
 		if (!ModelState.IsValid) return Page();
+
+		var dto = new CreateMedarbejderRequestDto
+		{
+			Fornavn = Crt.Fornavn,
+			Efternavn = Crt.Efternavn,
+			Email = Crt.Email,
+			Telefon = Crt.Telefon,
+			Job = Crt.Job,
+			UserId = User.Identity?.Name ?? string.Empty
+		};
 
 		try
 		{

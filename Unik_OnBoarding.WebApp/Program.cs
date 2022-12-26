@@ -32,17 +32,16 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     })
     .AddEntityFrameworkStores<UserDbContext>();
 
-//builder.Services.AddAuthorization(options =>
-//{
-//    options.AddPolicy("TeknikerPolicy", policyBulder => policyBulder.RequireClaim("Tekniker"));
-//});
-builder.Services.AddRazorPages();
-//builder.Services.AddRazorPages(options =>
-//{
-//    options.Conventions.AuthorizeFolder("/Medarbejder/Tekniker", "TeknikerPolicy");
-//    //options.Conventions.AuthorizeFolder("/Admin");
-//    //options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
-//});
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policyBulder => policyBulder.RequireClaim("Admin"));
+    options.AddPolicy("MedarbejderPolicy", policyBulder => policyBulder.RequireClaim("Medarbejder"));
+});
+//builder.Services.AddRazorPages();
+builder.Services.AddRazorPages(options =>
+{
+    //options.Conventions.AuthorizeFolder("/Kompetencer", "MedarbejderPolicy");
+});
 
 // IHttpClientFactory
 builder.Services.AddHttpClient<IKompetenceService, KompetenceService>(client =>

@@ -5,7 +5,7 @@ namespace Unik_OnBoarding.Application.Implementation.Medarbejder.dto;
 
 public class MedarbejderCreateDto
 {
-    public string Fornavn { get; set; }
+	public string Fornavn { get; set; }
 
     public string Efternavn { get; set; }
 

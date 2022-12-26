@@ -7,6 +7,8 @@ public class QueryMedarbejderResultDto
 {
     public Guid MedarbejderId { get; set; }
 
+    public string UserId { get; set; }
+
     [StringLength(30)]
     [MinLength(3, ErrorMessage = "{0} må ikke være korter end {1} bogstaver. ")]
     [Required(ErrorMessage = "indtast et gyldig {0}")]

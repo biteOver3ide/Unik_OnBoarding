@@ -21,4 +21,6 @@ public class MedarbejderEntity
     public IReadOnlyCollection<KompetenceEntity>? Kompetencer { get; set; }
 
     [Timestamp] public byte[] RowVersion { get; set; }
+
+    public string UserId { get; set; }
 }   
