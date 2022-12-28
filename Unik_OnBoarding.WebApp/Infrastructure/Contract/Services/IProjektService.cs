@@ -11,5 +11,4 @@ public interface IProjektService
     Task Delete(Guid id);
     Task<QueryProjektResultDto?> Get(Guid id);
     Task<IEnumerable<QueryProjektResultDto>?> GetAll();
-    Task<IEnumerable<ProjektDto>> GetAllDataAsync(Expression<Func<ProjektDto, bool>>? filter = null);
 }

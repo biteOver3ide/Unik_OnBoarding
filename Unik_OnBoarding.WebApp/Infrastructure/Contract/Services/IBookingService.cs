@@ -11,6 +11,5 @@ public interface IBookingService
 	Task Delete ( Guid id );
 	Task<QueryBookingResultDto?> Get ( Guid id );
 	Task<IEnumerable<QueryBookingResultDto>?> GetAll ( );
-	Task<IEnumerable<BookingDto>> GetAllDataAsync ( Expression<Func<BookingDto, bool>>? filter = null );
 }
 

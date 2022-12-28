@@ -23,7 +23,7 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
 
             try
             {
-                Drt = await _medarbejderService.Get(id, UserId);
+                Drt = await _medarbejderService.Get(id);
             }
             catch (Exception e)
             {

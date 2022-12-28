@@ -10,7 +10,7 @@ services:
       dockerfile: Unik_OnBoarding.WebApp\Dockerfile
     environment:
          "ASPNETCORE_ENVIRONMENT": "Development"
-         "ConnectionStrings:UserAppConnection": "Server=db;Database=Unik_OnBoarding_UserDB;user id=web;password=webPassw0rd!; MultipleActiveResultSets=true;"      
+         "ConnectionStrings:UserAppConnection": "Server=db;Database=Unik_OnBoarding_UserDB;user id=sa;password=SqlPassw0rd!; MultipleActiveResultSets=true"     
          "UnikBaseUrl" : "http://unik_onboarding.api"
     depends_on:
       - db

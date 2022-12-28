@@ -49,9 +49,4 @@ public class OpgaverService : IOpgaverService
     {
         return await _httpClient.GetFromJsonAsync<List<QueryOpgaverResultDto>>("api/Opgaver");
     }
-
-    async Task<IEnumerable<OpgaverDto>> IOpgaverService.GetAllDataAsync(Expression<Func<OpgaverDto, bool>>? filter)
-    {
-        return await _httpClient.GetFromJsonAsync<IEnumerable<OpgaverDto>>("api/Opgaver");
-    }
 }

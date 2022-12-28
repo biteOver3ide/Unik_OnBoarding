@@ -50,9 +50,4 @@ public class ProjektService : IProjektService
     {
         return await _httpClient.GetFromJsonAsync<List<QueryProjektResultDto>>("api/Projekt");
     }
-
-    async Task<IEnumerable<ProjektDto>> IProjektService.GetAllDataAsync(Expression<Func<ProjektDto, bool>>? filter)
-    {
-        return await _httpClient.GetFromJsonAsync<IEnumerable<ProjektDto>>("api/Projekt");
-    }
 }

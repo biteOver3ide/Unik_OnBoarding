@@ -45,9 +45,11 @@ public class AutoMapping : Profile
         CreateMap<MedarbejderEntity, MedarbejderUpdateDto>().ReverseMap();
         CreateMap<MedarbejderEntity, CreateMedarbejderCommand>().ReverseMap();
         CreateMap<MedarbejderEntity, UpdateMedarbejderCommand>().ReverseMap();
+        CreateMap<MedarbejderEntity, UpdateMedarbejderCommand>()
+	        .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.UserName));
 
-        // Automapping for Kompetencer
-        CreateMap<KompetenceEntity, KompetenceDto>().ReverseMap();
+		// Automapping for Kompetencer
+		CreateMap<KompetenceEntity, KompetenceDto>().ReverseMap();
         CreateMap<KompetenceEntity, KompetenceCreateDto>().ReverseMap();
         CreateMap<KompetenceEntity, KompetenceUpdateDto>().ReverseMap();
         CreateMap<KompetenceEntity, CreateKompetenceCommand>().ReverseMap();

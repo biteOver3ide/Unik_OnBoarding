@@ -11,5 +11,4 @@ public interface IKompetenceService
     Task Delete(Guid id);
     Task<QueryKompetenceResultDto?> Get(Guid id);
     Task<IEnumerable<QueryKompetenceResultDto>?> GetAll();
-    Task<IEnumerable<KompetenceDto>> GetAllDataAsync(Expression<Func<KompetenceDto, bool>>? filter = null);
 }

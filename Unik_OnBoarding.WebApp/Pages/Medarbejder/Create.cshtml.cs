@@ -16,22 +16,22 @@ public class CreateModel : PageModel
 		_medarbejderService = medarbejderService;
 	}
 
-	[BindProperty] public CreateMedarbejderRequestDto Crt { get; set; } = new();
+	[BindProperty] public CreateMedarbejderRequestDto Crt { get; set; }
 
 	public async Task<IActionResult> OnPost()
 	{
+		
+
+		//var dto = new CreateMedarbejderRequestDto
+		//{
+		//	Fornavn = Crt.Fornavn,
+		//	Efternavn = Crt.Efternavn,
+		//	Email = Crt.Email,
+		//	Telefon = Crt.Telefon,
+		//	Job = Crt.Job,
+		//	UserId = User.Identity?.Name ?? string.Empty
+		//};
 		if (!ModelState.IsValid) return Page();
-
-		var dto = new CreateMedarbejderRequestDto
-		{
-			Fornavn = Crt.Fornavn,
-			Efternavn = Crt.Efternavn,
-			Email = Crt.Email,
-			Telefon = Crt.Telefon,
-			Job = Crt.Job,
-			UserId = User.Identity?.Name ?? string.Empty
-		};
-
 		try
 		{
 			await _medarbejderService.Create(Crt);

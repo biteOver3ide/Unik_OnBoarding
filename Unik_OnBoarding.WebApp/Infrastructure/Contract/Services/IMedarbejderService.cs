@@ -9,8 +9,7 @@ public interface IMedarbejderService
     Task Create(CreateMedarbejderRequestDto createMedarbejderCreatedto);
     Task Edit(QueryMedarbejderResultDto queryMedarbejderUpdateDto);
     Task Delete(Guid id);
-    Task<QueryMedarbejderResultDto?> Get(Guid id, string UserId);
+    Task<QueryMedarbejderResultDto?> Get(Guid id);
     Task<IEnumerable<QueryMedarbejderResultDto>?> GetAll();
     Task<IEnumerable<QueryMedarbejderResultDto>?> GetAllUser(string identityName);
-    Task Load(Guid id, string UserId);
 }

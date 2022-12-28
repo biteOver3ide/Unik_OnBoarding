@@ -29,11 +29,6 @@ public class BookingService : IBookingService
         return await _httpClient.GetFromJsonAsync<List<QueryBookingResultDto>>("api/Booking");
     }
 
-    async Task<IEnumerable<BookingDto>> IBookingService.GetAllDataAsync(Expression<Func<BookingDto, bool>>? filter)
-    {
-        return await _httpClient.GetFromJsonAsync<IEnumerable<BookingDto>>("api/Projekt");
-    }
-
     async Task IBookingService.Create(CreateBookingDto dto)
     {
         {

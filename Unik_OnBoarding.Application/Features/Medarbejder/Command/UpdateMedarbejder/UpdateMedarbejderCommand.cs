@@ -16,7 +16,7 @@ public class UpdateMedarbejderCommand : IRequest
 
     [Required] public string Telefon { get; set; }
 
-    public string UserId { get; set; }
+    public string UserName { get; set; }
 
 	public Jobtitler Job { get; set; }
 

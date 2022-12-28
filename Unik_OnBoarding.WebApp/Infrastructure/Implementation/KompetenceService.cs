@@ -50,10 +50,4 @@ public class KompetenceService : IKompetenceService
     {
         return await _httpClient.GetFromJsonAsync<List<QueryKompetenceResultDto>>("api/Kompetence");
     }
-
-    async Task<IEnumerable<KompetenceDto>> IKompetenceService.GetAllDataAsync(
-        Expression<Func<KompetenceDto, bool>>? filter)
-    {
-        return await _httpClient.GetFromJsonAsync<IEnumerable<KompetenceDto>>("api/Kompetence");
-    }
 }

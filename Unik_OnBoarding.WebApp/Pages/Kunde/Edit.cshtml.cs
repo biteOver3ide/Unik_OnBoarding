@@ -17,22 +17,19 @@ public class EditModel : PageModel
 
     [BindProperty] public QueryKundeResultDto Urt { get; set; }
 
-    public async Task<IActionResult> OnGet(Guid Id)
+    public async Task<IActionResult> OnGet(Guid id)
     {
-        if (Id == null) return NotFound();
-
-        try
+	    try
         {
 			//Search For Kunde To Update
-			Urt = await _kundeService.Get(Id);
+			Urt = await _kundeService.Get(id);
         }
         catch (Exception e)
         {
             ModelState.AddModelError(string.Empty, e.Message);
             return Page();
         }
-
-        return Page();
+	    return Page();
     }
 
 

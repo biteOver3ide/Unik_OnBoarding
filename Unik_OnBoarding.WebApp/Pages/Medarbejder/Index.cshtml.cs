@@ -17,12 +17,11 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
         }
 
         [BindProperty] public IEnumerable<QueryMedarbejderResultDto> IndexViewModel { get; set; }
-        public string UserName { get; set; } = string.Empty;
+       
 
         public async Task<IActionResult> OnGet(string? userId)
         {
-            IndexViewModel = await _medarbejderService.GetAllUser(userId);
-            UserName = userId;
+            IndexViewModel = await _medarbejderService.GetAll();
             return Page();
         }
     }

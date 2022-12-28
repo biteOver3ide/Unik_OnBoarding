@@ -11,5 +11,4 @@ public interface IOpgaverService
     Task Delete(Guid id);
     Task<QueryOpgaverResultDto?> Get(Guid id);
     Task<IEnumerable<QueryOpgaverResultDto>?> GetAll();
-    Task<IEnumerable<OpgaverDto>> GetAllDataAsync(Expression<Func<OpgaverDto, bool>>? filter = null);
 }

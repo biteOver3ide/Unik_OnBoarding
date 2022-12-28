@@ -26,7 +26,7 @@ public class CreateMedarbejderRequestDto
     [Required(ErrorMessage = "indtast en gyldig telefon nummer")]
     public string Telefon { get; set; }
 
-    public string UserId { get; set; }
+	public string UserName { get; set; }
 
-    public Jobtitler Job { get; set; }
+	public Jobtitler Job { get; set; }
 }

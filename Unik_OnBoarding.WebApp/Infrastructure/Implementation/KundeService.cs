@@ -50,9 +50,4 @@ public class KundeService : IKundeService
     {
         return await _httpClient.GetFromJsonAsync<List<QueryKundeResultDto>>("api/Kunde");
     }
-
-    async Task<IEnumerable<KundeDto>> IKundeService.GetAllDataAsync(Expression<Func<KundeDto, bool>>? filter)
-    {
-        return await _httpClient.GetFromJsonAsync<List<KundeDto>>("api/Kunde");
-    }
 }

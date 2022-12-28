@@ -41,7 +41,7 @@ public class MedarbejderService : IMedarbejderService
         throw new Exception(message);
     }
 
-    async Task<QueryMedarbejderResultDto?> IMedarbejderService.Get(Guid id, string UserId)
+    async Task<QueryMedarbejderResultDto?> IMedarbejderService.Get(Guid id)
     {
         return await _httpClient.GetFromJsonAsync<QueryMedarbejderResultDto>($"api/Medarbejder/{id}");
     }
@@ -55,14 +55,4 @@ public class MedarbejderService : IMedarbejderService
     {
         return await _httpClient.GetFromJsonAsync<List<QueryMedarbejderResultDto>>("api/Medarbejder");
     }
-
-    async Task IMedarbejderService.Load(Guid id, string UserId)
-	{
-		//return await _httpClient.GetFromJsonAsync<>("api/Medarbejder");
-	}
-
-	//async Task Load(Guid id, sting UserId)
-	//{
-
-	//}
 }

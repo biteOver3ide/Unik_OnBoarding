@@ -11,5 +11,4 @@ public interface IKundeService
     Task Delete(Guid id);
     Task<QueryKundeResultDto?> Get(Guid id);
     Task<IEnumerable<QueryKundeResultDto>?> GetAll();
-    Task<IEnumerable<KundeDto>> GetAllDataAsync(Expression<Func<KundeDto, bool>>? filter = null);
 }

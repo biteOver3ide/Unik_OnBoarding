@@ -5,9 +5,11 @@ namespace Unik_OnBoarding.Application.Implementation.Medarbejder.dto;
 
 public class MedarbejderUpdateDto
 {
-    [Key] public Guid MedarbejderId { get; set; }
+    public Guid MedarbejderId { get; set; }
 
-    public string Fornavn { get; set; }
+    public string UserName { get; set; }
+
+	public string Fornavn { get; set; }
 
     public string Efternavn { get; set; }
 

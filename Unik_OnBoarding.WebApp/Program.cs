@@ -40,7 +40,9 @@ builder.Services.AddAuthorization(options =>
 //builder.Services.AddRazorPages();
 builder.Services.AddRazorPages(options =>
 {
-    //options.Conventions.AuthorizeFolder("/Kompetencer", "MedarbejderPolicy");
+    options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
+    options.Conventions.AuthorizeFolder("/Kunde", "AdminPolicy");
+    options.Conventions.AuthorizeFolder("/Projekt", "AdminPolicy");
 });
 
 // IHttpClientFactory
@@ -56,11 +58,8 @@ builder.Services.AddHttpClient<IBookingService, BookingService>(client =>
 builder.Services.AddHttpClient<IMedarbejderService, MedarbejderService>(client =>
     client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
 
-
 builder.Services.AddHttpClient<IOpgaverService, OpgaverService>(client =>
     client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
-
-
 
 builder.Services.AddHttpClient<IProjektService, ProjektService>(client =>
     client.BaseAddress = new Uri(builder.Configuration["UnikBaseUrl"]));
