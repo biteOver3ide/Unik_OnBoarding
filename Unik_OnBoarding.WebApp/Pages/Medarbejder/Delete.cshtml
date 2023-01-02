@@ -1,5 +1,6 @@
 ﻿@page
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Unik_OnBoarding.Domain.Model
 @model DeleteModel
 @{
 }
@@ -11,25 +12,35 @@
 		<form method="post">
 			<input type="hidden" asp-for="Drt.RowVersion" class="form-control" />
 			<input type="hidden" asp-for="Drt.MedarbejderId" class="form-control" />
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col">Navn</th>
-						<th scope="col">Email</th>
-						<th scope="col">Telefon</th>
-						<th scope="col">Job</th>
-					</tr>
-				</thead>
-				<tbody>
-
-					<tr class="table-danger">
-						<th scope="row">@Model.Drt.Fornavn @Model.Drt.Efternavn</th>
-						<th scope="row">@Model.Drt.Email</th>
-						<th scope="row">@Model.Drt.Telefon</th>
-						<th scope="row">@Model.Drt.Job</th>
-					</tr>
-				</tbody>
-			</table>
+			<div class="form-group">
+				<label asp-for="Drt.Fornavn" class="control-label"></label>
+				<input asp-for="Drt.Fornavn" class="form-control" />
+				<span asp-validation-for="Drt.Fornavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Efternavn" class="control-label"></label>
+				<input asp-for="Drt.Efternavn" class="form-control" />
+				<span asp-validation-for="Drt.Efternavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Email" class="control-label"></label>
+				<input asp-for="Drt.Email" class="form-control" />
+				<span asp-validation-for="Drt.Email" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Telefon" class="control-label"></label>
+				<input asp-for="Drt.Telefon" class="form-control" />
+				<span asp-validation-for="Drt.Telefon" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Job" class="control-label"></label>
+				<select asp-for="Drt.Job"
+						class="form-control"
+						asp-items="Html.GetEnumSelectList<Jobtitler>()">
+					<option>Select type ...</option>
+				</select>
+				<span asp-validation-for="Drt.Job" class="text-danger"></span>
+			</div>
 			<div class="form-group">
 				<input type="submit" value="Delete Medarbejder" class="btn btn-danger form-control"/>
 			</div>

@@ -12,25 +12,18 @@
 		<form method="post">
 			<input type="hidden" asp-for="Drt.RowVersion" class="form-control"/>
 			<input type="hidden" asp-for="Drt.OpgaveId" class="form-control"/>
-			<table class="table table-hover">
-				<thead>
-				<tr>
-					<th scope="col">Navn</th>
-					<th scope="col">Beskrivelse</th>
-					<th scope="col">Status</th>
-
-				</tr>
-				</thead>
-				<tbody>
-
-				<tr class="table-danger">
-					<th scope="row">@Model.Drt.OpgaveName</th>
-					<th scope="row">@Model.Drt.Beskrivelse</th>
-					<th scope="row">@Model.Drt.Status</th>
-
-				</tr>
-				</tbody>
-			</table>
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Drt.OpgaveName" class="control-label"></label>
+				<input asp-for="Drt.OpgaveName" class="form-control" />
+				<span asp-validation-for="Drt.OpgaveName" class="text-danger"></span>
+			</div>
+			<br />
+			<div class="form-group">
+				<label asp-for="Drt.Beskrivelse" class="control-label"></label>
+				<textarea asp-for="Drt.Beskrivelse" class="form-control" rows="3"></textarea>
+				<span asp-validation-for="Drt.Beskrivelse" class="text-danger"></span>
+			</div>
 			<div class="form-group">
 				<button id="resolveButton" type="submit" data-opId="@Model.Drt.OpgaveId" class="btn btn-danger btn-lg ">Delete Opgave</button>
 			</div>

@@ -10,18 +10,19 @@
 <div class="row">
 	<div class="col-md-4">
 		<form method="post">
-			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div asp-validation-summary="All"></div>
 			<div class="form-group">
 				<label asp-for="Crt.ProjektTitle" class="control-label"></label>
 				<input asp-for="Crt.ProjektTitle" class="form-control" />
 				<span asp-validation-for="Crt.ProjektTitle" class="text-danger"></span>
 			</div>
-			<div class="mb-3">
+@*			<div class="mb-3">
 				<label> Vælg Kunde</label>
-				<select asp-for="KundeView.Kid" asp-items="@(new SelectList(Model.KundeView.Firmanavn,"Kid","KundeId"))" class="form-control" required>
+				<select asp-for="" asp-items="@(new SelectList(Model.KundeList, "KId", "Firmanavn"))" class="form-select" aria-label="Default select example"
+				        required>
 					<option value="">Vælg en</option>
 				</select>
-			</div>
+			</div>*@
 			<div class="form-group">
 				<input type="submit" value="Add Projekt" class="btn btn-primary form-control" />
 			</div>

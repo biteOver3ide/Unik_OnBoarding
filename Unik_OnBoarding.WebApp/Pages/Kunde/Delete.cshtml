@@ -9,29 +9,41 @@
 		<form method="post">
 			<input type="hidden" asp-for="Drt.RowVersion" class="form-control"/>
 			<input type="hidden" asp-for="Drt.Kid" class="form-control"/>
-			<table class="table table-hover">
-				<thead>
-				<tr>
-					<th scope="col">Navn</th>
-					<th scope="col">Firmanavn</th>
-					<th scope="col">CVR</th>
-					<th scope="col">Adresse</th>
-					<th scope="col">Email</th>
-					<th scope="col">Telefon</th>
-				</tr>
-				</thead>
-				<tbody>
-
-				<tr class="table-danger">
-					<th scope="row">@Model.Drt.Fornavn @Model.Drt.Efternavn</th>
-					<th scope="row">@Model.Drt.Firmanavn</th>
-					<th scope="row">@Model.Drt.Cvr</th>
-					<th scope="row">@Model.Drt.Adresse</th>
-					<th scope="row">@Model.Drt.Email</th>
-					<th scope="row">@Model.Drt.Telefon</th>
-				</tr>
-				</tbody>
-			</table>
+			<div class="form-group">
+				<label asp-for="Drt.Fornavn" class="control-label"></label>
+				<input asp-for="Drt.Fornavn" class="form-control" required />
+				<span asp-validation-for="Drt.Fornavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Efternavn" class="control-label"></label>
+				<input asp-for="Drt.Efternavn" class="form-control" required />
+				<span asp-validation-for="Drt.Efternavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Firmanavn" class="control-label"></label>
+				<input asp-for="Drt.Firmanavn" class="form-control" required />
+				<span asp-validation-for="Drt.Firmanavn" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Cvr" class="control-label"></label>
+				<input asp-for="Drt.Cvr" class="form-control" />
+				<span asp-validation-for="Drt.Cvr" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Email" class="control-label"></label>
+				<input asp-for="Drt.Email" class="form-control" />
+				<span asp-validation-for="Drt.Email" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Telefon" class="control-label"></label>
+				<input asp-for="Drt.Telefon" class="form-control" />
+				<span asp-validation-for="Drt.Telefon" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Drt.Adresse" class="control-label"></label>
+				<input asp-for="Drt.Adresse" class="form-control" />
+				<span asp-validation-for="Drt.Adresse" class="text-danger"></span>
+			</div>
 			<div class="form-group">
 				<input type="submit" value="Delete Kunde" class="btn btn-danger form-control"/>
 			</div>

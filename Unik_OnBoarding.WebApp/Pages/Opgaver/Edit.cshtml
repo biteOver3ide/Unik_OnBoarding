@@ -26,15 +26,6 @@
 		        <span asp-validation-for="Urt.Beskrivelse" class="text-danger"></span>
 	        </div>
 	        <div class="form-group">
-				<label asp-for="Urt.Status" class="control-label"></label>
-				<select asp-for="Urt.Status"
-		                class="form-control" 
-		                asp-items="Html.GetEnumSelectList<Status>()">
-			        <option>Select type ...</option>
-		        </select>
-				<span asp-validation-for="Urt.Status" class="text-danger"></span>
-	        </div>
-            <div class="form-group">
                 <input type="submit" value="Update Opgave" class="btn btn-primary" />
             </div>
         </form>

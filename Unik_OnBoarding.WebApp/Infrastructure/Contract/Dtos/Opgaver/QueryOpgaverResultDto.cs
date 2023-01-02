@@ -8,6 +8,5 @@ public class QueryOpgaverResultDto
     public Guid OpgaveId { get; set; }
     public string OpgaveName { get; set; }
     public string Beskrivelse { get; set; }
-    public Status Status { get; set; }
     [Timestamp] public byte[] RowVersion { get; set; }
 }

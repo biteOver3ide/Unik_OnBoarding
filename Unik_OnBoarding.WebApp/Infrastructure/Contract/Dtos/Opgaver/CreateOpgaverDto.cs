@@ -6,5 +6,4 @@ public class CreateOpgaverDto
 {
 	public string OpgaveName { get; set; }
 	public string Beskrivelse { get; set; }
-	public Status Status { get; set; }
 }

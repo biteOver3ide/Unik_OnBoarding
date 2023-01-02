@@ -18,26 +18,21 @@ namespace Unik_OnBoarding.WebApp.Pages.Medarbejder
 	    private readonly IProjektService _projektService;
 
 
-	    public BookingModel(IBookingService bookingService,
-		    IProjektService projektService, IMedarbejderService medarbejderService, IOpgaverService opgaverService)
+	    public BookingModel(IBookingService bookingService, IMedarbejderService medarbejderService, IOpgaverService opgaverService)
 	    {
 		    _bookingService = bookingService;
-		   
-		    _projektService = projektService;
 		    _medarbejderService = medarbejderService;
 		    _opgaverService = opgaverService;
 	    }
 
 	    public CreateBookingDto Booking { get; set; }
 	    public IEnumerable<QueryBookingResultDto> BookingList { get; set; }
-	    public IEnumerable<QueryProjektResultDto> ProjektList { get; set; }
 	    public IEnumerable<QueryMedarbejderResultDto> MedarbejderList { get; set; }
 	    public IEnumerable<QueryOpgaverResultDto> OpgaverList { get; set; }
 
+
 	    public async Task OnGet()
 	    {
-		   
-		    ProjektList = await _projektService.GetAll();
 		    MedarbejderList = await _medarbejderService.GetAll();
 		    OpgaverList = await _opgaverService.GetAll();
 		    BookingList = await _bookingService.GetAll();
