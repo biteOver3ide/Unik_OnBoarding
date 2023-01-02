@@ -1,53 +1,61 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Unik_OnBoarding.Domain.DomainService;
 
 namespace Unik_OnBoarding.Domain.Model;
 
 public class BookingEntity
 {
-    [Key] public Guid BookId { get; set; }
+	private readonly IBookingDomainService _bookingDomainService;
 
-    public Guid ProjektId { get; set; }
+	//for ef only
+	internal BookingEntity()
+	{
+		
+	}
 
-    [ForeignKey("ProjektId")] public ProjektEntity Projekt { get; set; }
+	public BookingEntity(IBookingDomainService bookingDomainService)
+	{
+		_bookingDomainService = bookingDomainService;
 
-    public Guid OpgaveId { get; set; }
 
-    [ForeignKey("OpgaveId")] public OpgaverEntity Opgave { get; set; }
+		if (_bookingDomainService.BookingExsistsOnDate(StartDate.Date, EndDate.Date))
+		{
+			throw new ArgumentException("Dato er allerde booket");
+		}
+	}
 
-    public Guid MedarbejderId { get; set; }
+	[Key] public Guid BookId { get; set; }
 
-    [ForeignKey("MedarbejderId")] public MedarbejderEntity Medarbejder { get; set; }
+	public Guid ProjektId { get; set; }
 
-    [Required(ErrorMessage = "Startdato er påkrævet")]
-    [DataType(DataType.Date)]
-    [DisplayName("Start dato")]
-    public DateTime StartDate { get; set; } = DateTime.UtcNow;
+	[ForeignKey("ProjektId")] public ProjektEntity Projekt { get; set; }
 
-    [Required(ErrorMessage = "Slutdato er påkrævet")]
-    [DataType(DataType.Date)]
-    [DisplayName("Slut dato")]
-    public DateTime EndDate { get; set; }
+	public Guid OpgaveId { get; set; }
 
-    public int Duration { get; set; }
+	[ForeignKey("OpgaveId")] public OpgaverEntity Opgave { get; set; }
 
-    public string? Beskrivelse { get; set; }
+	public Guid MedarbejderId { get; set; }
 
-    [Timestamp] public byte[] RowVersion { get; set; }
+	[ForeignKey("MedarbejderId")] public MedarbejderEntity Medarbejder { get; set; }
 
-    private int BusinessDaysLeft(DateTime first, DateTime last)
-    {
-        var count = 0;
+	[Required(ErrorMessage = "Startdato er påkrævet")]
+	[DataType(DataType.Date)]
+	[DisplayName("Start dato")]
+	public DateTime StartDate { get; set; } = DateTime.UtcNow;
 
-        while (first.Date != last.Date)
-        {
-            if (first.DayOfWeek != DayOfWeek.Saturday && first.DayOfWeek != DayOfWeek.Sunday)
-                count++;
+	[Required(ErrorMessage = "Slutdato er påkrævet")]
+	[DataType(DataType.Date)]
+	[DisplayName("Slut dato")]
+	public DateTime EndDate { get; set; }
 
-            first = first.AddDays(1);
-        }
+	public int Duration { get; set; }
 
-        return count;
-    }
+	public string? Beskrivelse { get; set; }
+
+	[Column(TypeName = "nvarchar(24)")] public Status Status { get; set; } = Status.Aktiv;
+
+	[Timestamp] public byte[] RowVersion { get; set; }
+
 }

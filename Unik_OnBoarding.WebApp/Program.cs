@@ -43,6 +43,11 @@ builder.Services.AddRazorPages(options =>
     options.Conventions.AuthorizeFolder("/Admin", "AdminPolicy");
     options.Conventions.AuthorizeFolder("/Kunde", "AdminPolicy");
     options.Conventions.AuthorizeFolder("/Projekt", "AdminPolicy");
+    options.Conventions.AuthorizeFolder("/Kunde");
+    options.Conventions.AuthorizePage("/Medarbejder/Booking", "MedarbejderPolicy");
+    options.Conventions.AuthorizeFolder("/Kompetencer");
+    options.Conventions.AuthorizeFolder("/Opgaver");
+    options.Conventions.AuthorizeFolder("/Projekt");
 });
 
 // IHttpClientFactory

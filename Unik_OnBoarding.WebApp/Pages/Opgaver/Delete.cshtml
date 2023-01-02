@@ -1,8 +1,8 @@
 ﻿@page
-@model Unik_OnBoarding.WebApp.Pages.Opgaver.DeleteModel
+@model DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+	ViewData["Title"] = "Delete";
 }
 
 <h3>Delete Opgave</h3>
@@ -10,13 +10,15 @@
 <div class="row">
 	<div class="col-md-4">
 		<form method="post">
-			<input type="hidden" asp-for="Drt.RowVersion" class="form-control" />
-			<input type="hidden" asp-for="Drt.OpgaveId" class="form-control" />
+			<input type="hidden" asp-for="Drt.RowVersion" class="form-control"/>
+			<input type="hidden" asp-for="Drt.OpgaveId" class="form-control"/>
 			<table class="table table-hover">
 				<thead>
 				<tr>
 					<th scope="col">Navn</th>
 					<th scope="col">Beskrivelse</th>
+					<th scope="col">Status</th>
+
 				</tr>
 				</thead>
 				<tbody>
@@ -24,11 +26,13 @@
 				<tr class="table-danger">
 					<th scope="row">@Model.Drt.OpgaveName</th>
 					<th scope="row">@Model.Drt.Beskrivelse</th>
+					<th scope="row">@Model.Drt.Status</th>
+
 				</tr>
 				</tbody>
 			</table>
 			<div class="form-group">
-				<input type="submit" value="Delete Opgave" class="btn btn-danger form-control"/>
+				<button id="resolveButton" type="submit" data-opId="@Model.Drt.OpgaveId" class="btn btn-danger btn-lg ">Delete Opgave</button>
 			</div>
 		</form>
 	</div>
@@ -39,5 +43,24 @@
 </div>
 
 @section Scripts {
+	<script>
+	$(function() {
+		{
+			var resolveBtn = document.getElementById('resolveButton');
+			resolveBtn.addEventListener('click',
+				function(e) {
+					e.preventDefault();
+
+					var opId = resolveBtn.getAttribute('data-opId');
+
+					$.get(`?handler=resolve&id=${opId}`,
+						function() {
+							alert(`Opgave ${opId} er slettet`);
+							window.location.href = '/Index';
+						});
+				});
+		}
+		</script>
+
+	}
 	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

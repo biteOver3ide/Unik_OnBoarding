@@ -24,6 +24,7 @@
 		<tr>
 			<th scope="col">Navn</th>
 			<th scope="col">Beskivelse</th>
+			<th scope="col">Status</th>
 			<th></th>
 		</tr>
 		</thead>
@@ -33,6 +34,7 @@
 			<tr class="table-primary">
 				<td>@obj.OpgaveName</td>
 				<td>@obj.Beskrivelse</td>
+				<td>@obj.Status</td>
 				<td>
 					<div class="w-75 btn-group" role="group">
 						<a asp-page="Edit" asp-route-id="@obj.OpgaveId" class="btn btn-primary mx-2">

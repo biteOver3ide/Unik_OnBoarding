@@ -19,9 +19,7 @@ public class DeleteModel : PageModel
 
     public async Task<IActionResult> OnGet(Guid id)
     {
-        if (id == null) return NotFound();
-
-        try
+	    try
         {
             Drt = await _kompetenceService.Get(id);
         }

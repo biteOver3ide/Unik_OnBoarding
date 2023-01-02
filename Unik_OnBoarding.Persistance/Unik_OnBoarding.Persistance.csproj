@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Unik_OnBoarding.Domain\Unik_OnBoarding.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DomainService\" />
+  </ItemGroup>
+
 </Project>

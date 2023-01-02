@@ -13,15 +13,13 @@ public class BookingRepo : BaseRepo<BookingEntity>, IBookingRepository
 
     public async Task<List<BookingEntity>> GetAllBookingAsync()
     {
-        var bookinglist = new List<BookingEntity>();
-        bookinglist = await _appDbContext.Bookinger.ToListAsync();
+        var bookinglist = await _appDbContext.Bookinger.ToListAsync();
         return bookinglist;
     }
 
     public async Task<BookingEntity> GetBookingByIdAsync(Guid bookingId)
     {
-        var booking = new BookingEntity();
-        booking = await _appDbContext.Bookinger.Where(b => b.BookId == bookingId).FirstOrDefaultAsync();
+        var booking = await _appDbContext.Bookinger.Where(b => b.BookId == bookingId ).FirstOrDefaultAsync();
         return booking;
     }
 }

@@ -20,17 +20,6 @@ public class CreateModel : PageModel
 
 	public async Task<IActionResult> OnPost()
 	{
-		
-
-		//var dto = new CreateMedarbejderRequestDto
-		//{
-		//	Fornavn = Crt.Fornavn,
-		//	Efternavn = Crt.Efternavn,
-		//	Email = Crt.Email,
-		//	Telefon = Crt.Telefon,
-		//	Job = Crt.Job,
-		//	UserId = User.Identity?.Name ?? string.Empty
-		//};
 		if (!ModelState.IsValid) return Page();
 		try
 		{

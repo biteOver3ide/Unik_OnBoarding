@@ -1,7 +1,10 @@
-﻿namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
+﻿using Unik_OnBoarding.Domain.Model;
+
+namespace Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Opgaver;
 
 public class CreateOpgaverDto
 {
 	public string OpgaveName { get; set; }
-    public string Beskrivelse { get; set; }
+	public string Beskrivelse { get; set; }
+	public Status Status { get; set; }
 }

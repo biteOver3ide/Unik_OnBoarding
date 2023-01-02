@@ -13,15 +13,13 @@ public class ProjektRepo : BaseRepo<ProjektEntity>, IProjectRepository
 
     public async Task<List<ProjektEntity>> GetAllProjektAsync(bool includeKunde)
     {
-        var projektList = new List<ProjektEntity>();
-        projektList = await _appDbContext.Projektes.ToListAsync();
+        var projektList = await _appDbContext.Projektes.ToListAsync();
         return projektList;
     }
 
     public async Task<ProjektEntity> GetProjektByIdAsync(Guid projektId)
     {
-        var projekt = new ProjektEntity();
-        projekt = await _appDbContext.Projektes.Where(p => p.ProjektId == projektId).FirstOrDefaultAsync();
+        var projekt = await _appDbContext.Projektes.Where(p => p.ProjektId == projektId).FirstOrDefaultAsync();
         return projekt;
     }
 }

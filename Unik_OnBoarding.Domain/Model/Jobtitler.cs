@@ -5,4 +5,5 @@ public enum Jobtitler
     Tekniker,
     Konvertering,
     Konsulent
+
 }

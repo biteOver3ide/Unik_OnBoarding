@@ -1,18 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Unik_OnBoarding.Domain.Model;
 
 public class OpgaverEntity
 {
-    [Key] public Guid OpgaveId { get; set; }
+	[Key] public Guid OpgaveId { get; set; }
 
-    [Required]
-    [MaxLength(100, ErrorMessage = "Titellængden bør maksimalt være 100 tegn")]
-    [MinLength(10, ErrorMessage = "Titellængden bør mindst være 10 tegn")]
-    public string OpgaveName { get; set; }
+	[Required] public string OpgaveName { get; set; }
 
-    public string Beskrivelse { get; set; }
+	[Required] public string Beskrivelse { get; set; }
 
-    [Timestamp]
-    public byte[] RowVersion { get; set; }
+	[Timestamp] public byte[] RowVersion { get; set; }
 }

@@ -9,5 +9,7 @@ public class CreateBookingValidator : AbstractValidator<CreateBookingCommand>
         RuleFor(b => b.Beskrivelse)
             .NotEmpty().WithMessage("Skal ikke være tomt")
             .NotNull();
+        //RuleFor(s=>s.StartDate)
+	       // .Must()
     }
 }

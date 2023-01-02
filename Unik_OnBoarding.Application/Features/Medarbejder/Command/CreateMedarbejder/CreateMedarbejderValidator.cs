@@ -6,11 +6,8 @@ public class CreateMedarbejderValidator : AbstractValidator<CreateMedarbejderCom
 {
     public CreateMedarbejderValidator()
     {
-        //RuleFor(m => m.MedarbejderId)
-        //    .NotEmpty().WithMessage("Skal ikke være tomt")
-        //    .NotNull();
 
-        RuleFor(f => f.Fornavn)
+	    RuleFor(f => f.Fornavn)
             .NotEmpty().WithMessage("Skal ikke være tomt")
             .NotNull();
 

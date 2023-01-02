@@ -26,7 +26,7 @@ public class BaseRepo<T> : IAsyncRepository<T> where T : class
     public async Task<T> AddAsync(T entity)
     {
         await _appDbContext.Set<T>().AddAsync(entity);
-        await _appDbContext.SaveChangesAsync();
+		await _appDbContext.SaveChangesAsync();
         return entity;
     }
 

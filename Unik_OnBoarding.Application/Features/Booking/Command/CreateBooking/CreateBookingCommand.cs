@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Unik_OnBoarding.Domain.Model;
 
 namespace Unik_OnBoarding.Application.Features.Booking.Command.CreateBooking;
 
@@ -11,4 +12,5 @@ public class CreateBookingCommand : IRequest<Guid>
     public DateTime EndDate { get; set; }
     public int Duration { get; set; }
     public string? Beskrivelse { get; set; }
+    public Status Status { get; set; }
 }

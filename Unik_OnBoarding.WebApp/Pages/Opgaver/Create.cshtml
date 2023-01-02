@@ -15,14 +15,24 @@
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="form-group">
 				<label asp-for="Crt.OpgaveName" class="control-label"></label>
-				<input asp-for="Crt.OpgaveName" class="form-control"/>
+				<input asp-for="Crt.OpgaveName" class="form-control" />
 				<span asp-validation-for="Crt.OpgaveName" class="text-danger"></span>
 			</div>
 			<br/>
 			<div class="form-group">
 				<label asp-for="Crt.Beskrivelse" class="control-label"></label>
-				<input asp-for="Crt.Beskrivelse" class="form-control"/>
+				<textarea asp-for="Crt.Beskrivelse" class="form-control" rows="3"></textarea>
 				<span asp-validation-for="Crt.Beskrivelse" class="text-danger"></span>
+			</div>
+			<br/>
+			<div class="form-group">
+				<label asp-for="Crt.Status" class="control-label"></label>
+				<select asp-for="Crt.Status"
+				        class="form-control"
+				        asp-items="Html.GetEnumSelectList<Status>()">
+					<option>Select type ...</option>
+				</select>
+				<span asp-validation-for="Crt.Status" class="text-danger"></span>
 			</div>
 			<div class="form-group">
 				<input type="submit" value="Add Opgave" class="btn btn-success form-control"/>

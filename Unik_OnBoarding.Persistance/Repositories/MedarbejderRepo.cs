@@ -13,15 +13,13 @@ public class MedarbejderRepo : BaseRepo<MedarbejderEntity>, IMedarbejderReposito
 
     public async Task<List<MedarbejderEntity>> GetAllMedarbejderAsync(bool includeProjekt)
     {
-        var medarbejderlist = new List<MedarbejderEntity>();
-        medarbejderlist = await _appDbContext.Medarbejder.ToListAsync();
+        var medarbejderlist = await _appDbContext.Medarbejder.ToListAsync();
         return medarbejderlist;
     }
 
     public async Task<MedarbejderEntity> GetMedarbejderByIdAsync(Guid medarbejderId, string UserId)
     {
-        var medarbejderlist = new MedarbejderEntity();
-        medarbejderlist = await _appDbContext.Medarbejder.Where(m => m.MedarbejderId == medarbejderId).FirstOrDefaultAsync();
+        var medarbejderlist = await _appDbContext.Medarbejder.Where(m => m.MedarbejderId == medarbejderId).FirstOrDefaultAsync();
         return medarbejderlist;
     }
 }

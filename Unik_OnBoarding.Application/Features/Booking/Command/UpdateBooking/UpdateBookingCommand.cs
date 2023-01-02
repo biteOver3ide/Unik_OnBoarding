@@ -14,6 +14,7 @@ public class UpdateBookingCommand : IRequest
     public DateTime StartDate { get; set; } = DateTime.UtcNow;
     public DateTime EndDate { get; set; }
     public string? Beskrivelse { get; set; }
+    public Status Status { get; set; }
 
-    [Timestamp] public byte[] RowVersion { get; set; }
+	[Timestamp] public byte[] RowVersion { get; set; }
 }

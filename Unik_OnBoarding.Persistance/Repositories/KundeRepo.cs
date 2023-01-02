@@ -13,15 +13,13 @@ public class KundeRepo : BaseRepo<KundeEntity>, IKundeRepository
 
     public async Task<List<KundeEntity>> GetAllKundeAsync(bool includeProjekt)
     {
-        var kundelist = new List<KundeEntity>();
-        kundelist = await _appDbContext.Kunder.ToListAsync();
+        var kundelist = await _appDbContext.Kunder.ToListAsync();
         return kundelist;
     }
 
     public async Task<KundeEntity> GetKundeByIdAsync(Guid kundeId)
     {
-        var kunder = new KundeEntity();
-        kunder = await _appDbContext.Kunder.Where(k => k.Kid == kundeId).FirstOrDefaultAsync();
+        var kunder = await _appDbContext.Kunder.Where(k => k.Kid == kundeId).FirstOrDefaultAsync();
         return kunder;
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Unik_OnBoarding.Application.Interfaceses;
+using Unik_OnBoarding.Domain.DomainService;
+using Unik_OnBoarding.Persistance.DomainService;
 using Unik_OnBoarding.Persistance.Repositories;
 
 namespace Unik_OnBoarding.Persistance;
@@ -15,6 +17,7 @@ public static class PersistanceContainerConfiguration
         service.AddScoped(typeof(IBookingRepository), typeof(BookingRepo));
         service.AddScoped(typeof(IKompetencerRepository), typeof(KompetenceRepo));
         service.AddScoped(typeof(IOpgaverRepository), typeof(OpgaverRepo));
+        service.AddScoped(typeof(IBookingDomainService),typeof(BookingDomainService));
 
         return service;
     }

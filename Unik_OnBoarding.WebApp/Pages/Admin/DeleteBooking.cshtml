@@ -21,8 +21,8 @@
 				<tbody>
 				<tr class="table-danger">
 						<th scope="row">@Model.Drt.Beskrivelse</th>
-						<th scope="row">@Model.Drt.StartDate</th>
-						<th scope="row">@Model.Drt.EndDate</th>
+						<th scope="row">@Model.Drt.StartDate.Date.ToString("MM/dd/yyyy")</th>
+						<th scope="row">@Model.Drt.EndDate.Date.ToString("MM/dd/yyyy")</th>
 					</tr>
 				</tbody>
 			</table>

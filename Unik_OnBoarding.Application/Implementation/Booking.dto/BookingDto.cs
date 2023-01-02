@@ -13,9 +13,10 @@ public class BookingDto
     public Guid MedarbejderId { get; set; }
     public int Duration { get; set; }
     public string? Beskrivelse { get; set; }
+    public Status Status { get; set; }
 
-    // Navigation prop
-    public OpgaverEntity Opgave { get; set; }
+	// Navigation prop
+	public OpgaverEntity Opgave { get; set; }
 
     [ForeignKey("ProjektId")]
     public ProjektEntity Projekt { get; set; }

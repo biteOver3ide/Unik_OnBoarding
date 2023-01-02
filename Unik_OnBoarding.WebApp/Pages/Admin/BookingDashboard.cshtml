@@ -1,4 +1,6 @@
 ﻿@page
+@using Microsoft.EntityFrameworkCore
+@using Unik_OnBoarding.WebApp.Infrastructure.Contract.Dtos.Kunde
 @model BookingDashboardModel
 @{
 }
@@ -201,8 +203,8 @@
 			{
 				<tr class="table-warning">
 					<td scope="row">@obj.Beskrivelse</td>
-					<td scope="row">@obj.StartDate</td>
-					<td scope="row">@obj.EndDate</td>
+						<td scope="row">@obj.StartDate.Date.ToString("MM/dd/yyyy")</td>
+						<td scope="row">@obj.EndDate.Date.ToString("MM/dd/yyyy")</td>
 					<td>
 						<div class="w-75 btn-group" role="group">
 							<a asp-page="EditBooking" asp-route-id="@obj.BookId" class="btn btn-primary mx-2">
@@ -218,6 +220,8 @@
 			</tbody>
 		</table>
 	</div>
+	
+
 </div>
 <br/>
 <script src="~/js/Chart.js"></script>

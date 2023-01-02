@@ -13,15 +13,13 @@ public class KompetenceRepo : BaseRepo<KompetenceEntity>, IKompetencerRepository
 
     public async Task<List<KompetenceEntity>> GetAllKompetencerAsync()
     {
-        var kompetencelist = new List<KompetenceEntity>();
-        kompetencelist = await _appDbContext.Kompetencerne.ToListAsync();
+        var kompetencelist = await _appDbContext.Kompetencerne.ToListAsync();
         return kompetencelist;
     }
 
     public async Task<KompetenceEntity> GetKompetencerByIdAsync(Guid kompetencerId)
     {
-        var kompetence = new KompetenceEntity();
-        kompetence = await _appDbContext.Kompetencerne.Where(k => k.KompetenceId == kompetencerId).FirstOrDefaultAsync();
+        var kompetence = await _appDbContext.Kompetencerne.Where(k => k.KompetenceId == kompetencerId).FirstOrDefaultAsync();
         return kompetence;
     }
 }

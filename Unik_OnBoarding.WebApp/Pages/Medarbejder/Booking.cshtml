@@ -1,0 +1,111 @@
+﻿@page
+@inject UserManager<IdentityDbContext> UserManager
+@using Unik_OnBoarding.Domain.Model
+@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@model BookingModel
+@{
+}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+<body>
+
+<div class="container">
+	<h1 class="text-4xl text-center py-10">Hej @User.Identity.Name Dashboard</h1>
+	<br/>
+
+</div>
+<script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+<div class="row">
+
+
+	<table class="table table-hover">
+		<h2 class="bg-primary p-2 text-center text-white rounded-2">Booking list</h2>
+		<thead>
+		<tr>
+			<th>Booking beskrivelse</th>
+			<th>Booking start</th>
+			<th>Booking end</th>
+			<th>Status</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+
+		{
+			@foreach (var obj in Model.BookingList)
+			{
+				<tr class="table-warning">
+					<td scope="row">@obj.Beskrivelse</td>
+					<td scope="row">@obj.StartDate.Date.ToString("MM/dd/yyyy")</td>
+					<td scope="row">@obj.EndDate.Date.ToString("MM/dd/yyyy")</td>
+					<td scope="row">@obj.Status</td>
+					<td>
+						<div class="w-75 btn-group" role="group">
+							<a asp-page="EditBooking" asp-route-id="@obj.BookId" class="btn btn-primary mx-2">
+								<i class="bi bi-trash-fill">Edit</i>
+							</a>
+							<a asp-page="DeleteBooking" asp-route-id="@obj.BookId" class="btn btn-danger mx-2">
+								<i class="bi bi-pencil-square">Delete</i>
+							</a>
+						</div>
+					</td>
+				</tr>
+			}
+		}
+		else
+		{
+			<div>
+				<p>Da er ikke nogen opgaver til dig lige nu!</p>
+			</div>
+		}
+		</tbody>
+	</table>
+
+
+</div>
+<br/>
+<script src="~/js/Chart.js"></script>
+</body>
+
+<!--second-->
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial"/>
+	}
+
+	<script type="text/javascript">
+		dateChange = function() {
+			const elem1 = document.getElementById('start-date').value;
+
+			const elem2 = document.getElementById('end-date').value;
+
+			const result = document.getElementById('date-deferent');
+
+			if (elem1 == elem2) {
+				result.value = 1;
+				return;
+			}
+			if (elem1 > elem2) {
+				alert("start date cannot be after end date!!!!");
+				return;
+			}
+
+			const date1 = new Date(elem1);
+			const date2 = new Date(elem2);
+
+			// To calculate the time difference of two dates
+			const Difference_In_Time = date2.getTime() - date1.getTime();
+
+			// To calculate the no. of days between two dates
+			const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+
+			//To display the final no. of days (result)
+
+			result.value = Difference_In_Days;
+		}
+	</script>
+
+}

@@ -19,8 +19,6 @@ public class DeleteBookingModel : PageModel
 
 	public async Task<IActionResult> OnGet(Guid id)
 	{
-		if (id == null) return NotFound();
-
 		try
 		{
 			Drt = await _bookingService.Get(id);

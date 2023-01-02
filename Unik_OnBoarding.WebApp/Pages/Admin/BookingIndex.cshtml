@@ -30,8 +30,8 @@
 		{
 			<tr class="table-primary">
 				<td>@obj.Beskrivelse </td>
-				<td>@obj.StartDate</td>
-				<td>@obj.EndDate</td>
+					<td>@obj.StartDate.Date.ToString("MM/dd/yyyy")</td>
+					<td>@obj.EndDate.Date.ToString("MM/dd/yyyy")</td>
 				<td>
 					<div class="w-75 btn-group" role="group">
 						<a asp-page="EditBooking" asp-route-id="@obj.BookId" class="btn btn-primary mx-2">
